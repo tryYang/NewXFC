@@ -45,41 +45,62 @@ namespace XFC.View
                 MessageBox.Show("请先退出运行的工况");
                 return;
             }
-            if (ConstantValue.xfcInfos[0].IsChecked)
+            for (int i=0;i<ConstantValue.EquipemntList.Count;i++)
             {
-                if(int.TryParse(tb_runtime1.Text,out int result)){
-                    ConstantValue.xfcInfos[0].runtime = result;
-                    ConstantValue.runtime1 = result*60*1000;
-                    setgk(1);
-                    ConstantValue.gkStatus = GkStatus.Selected;
-                    this.Close();
-                    
-                }
-                else
+                if(ConstantValue.EquipemntList[i]!=Equipment.None)
                 {
-                    MessageBox.Show("请输入车辆1运行时间");
-                    return;
+                    GkSelect(i, ConstantValue.EquipemntList[i]);
                 }
                 
             }
-            if (ConstantValue.xfcInfos[1].IsChecked)
+           
+        }
+
+        private void GkSelect(int i, Equipment eq)
+        {
+            Control control_runtime = i == 1 ? tb_runtime1 : tb_runtime2;
+            if (eq == Equipment.Car)
             {
-                if (int.TryParse(tb_runtime2.Text, out int result))
+               
+                
+                if (int.TryParse(control_runtime.Text, out int result))
                 {
-                    ConstantValue.xfcInfos[1].runtime = result;
-                    ConstantValue.runtime2 = result * 60 * 1000;
-                    setgk(2);
+                    ConstantValue.xfcInfos[i].runtime = result;
+                    if(i == 1)
+                        ConstantValue.runtime1 = result * 60 * 1000;
+                    else
+                        ConstantValue.runtime2 = result * 60 * 1000;
+                    setcargk(i);
                     ConstantValue.gkStatus = GkStatus.Selected;
-                    this.Close();
-                   
                 }
                 else
                 {
-                    MessageBox.Show("请输入车辆2运行时间");
+                    MessageBox.Show($"请输入设备{i+1}运行时间");
                     return;
                 }
             }
+            else if(eq == Equipment.Pump)
+            {
+
+                if (int.TryParse(control_runtime.Text, out int result))
+                {
+                    ConstantValue.xfbInfos[i].runtime = result;
+                    if (i == 1)
+                        ConstantValue.runtime1 = result * 60 * 1000;
+                    else
+                        ConstantValue.runtime2 = result * 60 * 1000;
+                    setpumpgk(i);
+                    ConstantValue.gkStatus = GkStatus.Selected;
+                }
+                else
+                {
+                    MessageBox.Show($"请输入设备{i}运行时间");
+                    return;
+                }
+            }
+            this.Close();
         }
+
         public void Update()
         {
             rb_standard1.Select();
@@ -93,7 +114,7 @@ namespace XFC.View
 
         }
 
-        private void setgk(int i)
+        private void setcargk(int i)
         {
             int k = i - 1;
             if (i == 1)
@@ -126,6 +147,42 @@ namespace XFC.View
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
                 else if (rb_super2.Checked)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
+            }
+
+        }
+        private void setpumpgk(int i)
+        {
+            int k = i ;
+            if (i+1 == 1)
+            {
+
+                if (rb_13_1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Onedot3;
+                else if (rb_standard1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Diya;
+                else if (rb_high1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Gaoya;
+                else if (rb_mid1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Zhongya;
+                else if (rb_half1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Half;
+                else if (rb_super1.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Supper;
+            }
+            else if (i+1 == 2)
+            {
+                if (rb_13_2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Onedot3;
+                else if (rb_standard2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Diya;
+                else if (rb_high2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Gaoya;
+                else if (rb_mid2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Zhongya;
+                else if (rb_half2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Half;
+                else if (rb_super2.Checked)
+                    ConstantValue.xfbInfos[k].currentGk = Gk.Supper;
             }
 
         }

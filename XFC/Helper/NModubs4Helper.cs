@@ -98,7 +98,7 @@ namespace XFC.Helper
             {
                 
                 serialPort.Close();
-                ConstantValue.gkStatus = GkStatus.Close;
+                ConstantValue.gkStatus = GkStatus.Selected;
             }
             catch( Exception ex ) 
             { 

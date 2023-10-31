@@ -104,47 +104,50 @@ namespace XFC.View
             int index = int.Parse(cbx_PumpId.Text) - 1;
 
                      
-            ConstantValue.xfcInfos[index].carBasicInfo.CarID = GetCarId();
-            ConstantValue.xfcInfos[index].carBasicInfo.CarName = cbx_PumpName.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.CarFac = cbx_pumpfac.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.CarProduceTime = cbx_PumpProduceTime.Value;
-            ConstantValue.xfcInfos[index].carBasicInfo.UnderpanFac = cbx_EpitopeDifference.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.PumpFac = cbx_pumpfac.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.CarNum = tb_InPipeD.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.CarModel = tb_OutPipeD.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.UnderpanModel = cbx_EpitopeDifference.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.UnderpanVIN = tb_Speed.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.PumpModel = cbx_PumpModel.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.PumpType = waterpumptype.Text;
-            ConstantValue.xfcInfos[index].carBasicInfo.L_RatedFlow = Double.Parse(txt_lowflow.Text);
-            ConstantValue.xfcInfos[index].carBasicInfo.L_RatedPress = Double.Parse(txt_lowp.Text);
-            ConstantValue.xfcInfos[index].carBasicInfo.H_RatedFlow = Double.Parse(txt_highflow.Text);
-            ConstantValue.xfcInfos[index].carBasicInfo.H_RatedPress = Double.Parse(txt_highp.Text);
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpID = GetPumpId(); 
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpName = cbx_PumpName.Text;               //水泵名称
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpFac = cbx_pumpfac.Text;                 //水泵厂家
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpProduceTime = cbx_PumpProduceTime.Value;//水泵生产日期
+            ConstantValue.xfbInfos[index].pumpBasicInfo.EpitopeDifference = cbx_EpitopeDifference.Text;   //表位差
+            ConstantValue.xfbInfos[index].pumpBasicInfo.InPipeD = tb_InPipeD.Text;                      //进口管径
+            ConstantValue.xfbInfos[index].pumpBasicInfo.OutPipeD = tb_OutPipeD.Text;                    //出口管径
+            ConstantValue.xfbInfos[index].pumpBasicInfo.Speed = tb_Speed.Text;                          //额定转速
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpModel = cbx_PumpModel.Text;                 //水泵型号
+            ConstantValue.xfbInfos[index].pumpBasicInfo.PumpType = waterpumptype.Text;                  //水泵类型
 
-            ConstantValue.xfcInfos[index].carLab.LabID = GetLabId();
-            ConstantValue.xfcInfos[index].carLab.CarID = GetCarId();
-            ConstantValue.xfcInfos[index].carLab.CustomerDepart = cbx_CustomerDepart.Text;
-            ConstantValue.xfcInfos[index].carLab.LabDate = LabTime.Value;
-            ConstantValue.xfcInfos[index].carLab.CheckPeople = tb_UserPeople.Text;
-            ConstantValue.xfcInfos[index].carLab.L_Flowmeter = cbx_Diya.Text;
-            ConstantValue.xfcInfos[index].carLab.H_Flowmeter = cbx_Gaoya.Text;
-            ConstantValue.xfcInfos[index].carLab.ThreePress = double.Parse(ud5.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.ThreeTemp= double.Parse(ud3.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.SevenPress=double.Parse(ud8.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.SevenTemp= double.Parse(ud6.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.CarHeight = double.Parse(ud2.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.Temp = double.Parse(ud9.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.Pressure = double.Parse(ud1.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.PumpLabID = GetPumpLabId();
+            ConstantValue.xfbInfos[index].pumpLab.PumpID = GetPumpId();
+            ConstantValue.xfbInfos[index].pumpLab.CustomerDepart = cbx_CustomerDepart.Text;
+            ConstantValue.xfbInfos[index].pumpLab.LabDate = LabTime.Value;
+            ConstantValue.xfbInfos[index].pumpLab.CheckPeople = tb_UserPeople.Text;
+            ConstantValue.xfbInfos[index].pumpLab.L_Flowmeter = cbx_Diya.Text;
+            ConstantValue.xfbInfos[index].pumpLab.H_Flowmeter = cbx_Gaoya.Text;
+            ConstantValue.xfbInfos[index].pumpLab.ThreePress = double.Parse(ud4.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.ThreeTemp= double.Parse(ud3.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.SevenPress=double.Parse(ud7.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.SevenTemp= double.Parse(ud6.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.CarHeight = double.Parse(ud2.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.Temp = double.Parse(ud9.Value.ToString());
+            ConstantValue.xfbInfos[index].pumpLab.Pressure = double.Parse(ud1.Value.ToString());
 
-            ConstantValue.xfcInfos[index].IsChecked = true;
+            ConstantValue.xfbInfos[index].IsChecked = true;
             ConstantValue.gkStatus = GkStatus.Checked;
+            ConstantValue.EquipemntList[index] = Equipment.Pump;
+            SetMainWindowValue();
+           
+            this.Close();
         }
-        
-        private int GetCarId()
+
+        private void SetMainWindowValue()
+        {
+            
+        }
+
+        private int GetPumpId()
         {
             return 0;
         }
-        private int GetLabId()
+        private int GetPumpLabId()
         {
             return 0;
         }

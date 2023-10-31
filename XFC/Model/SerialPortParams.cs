@@ -22,7 +22,7 @@ namespace XFC.Model
         Selected,
         Run ,
         Stop ,
-        Close,
+      
 
     }
     public enum Gk
@@ -33,6 +33,13 @@ namespace XFC.Model
         Half,
         Gaoya,
         Zhongya
+
+    }
+    public enum Equipment
+    {
+       Car,
+       Pump,
+       None
 
     }
 }

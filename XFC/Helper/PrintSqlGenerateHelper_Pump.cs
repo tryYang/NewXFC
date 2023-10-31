@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XFC.Helper
 {
-    public class PrintSqlGenerateHelper
+    public class PrintSqlGenerateHelper_Pump
     {
         string select = string.Empty;
         string fromtable = string.Empty;
@@ -24,7 +24,7 @@ namespace XFC.Helper
          @"(select CollecTime from ConditionRecord where ConditionNum = 6) as 中压工况采集时间,avg(select L_Press from ConditionRecord where ConditionNum = 6) as 中压工况低压压力,avg(select L_Flow from ConditionRecord where ConditionNum = 6) as 中压工况低压流量,avg(select H_Press from ConditionRecord where ConditionNum = 6) as 中压工况中高压压力,avg(select H_Flow from ConditionRecord where ConditionNum = 6) as 中压工况中高压流量,avg(select VacuumDegree from ConditionRecord where ConditionNum = 6) as 中压工况真空度,avg(select Speed from ConditionRecord where ConditionNum = 6) as 中压工况消防泵转速,avg(select InTemp from ConditionRecord where ConditionNum = 6) as 中压工况输入轴温度,avg(select OutTemp from ConditionRecord where ConditionNum = 6) as 中压工况输出轴温度"
         };
 
-        public PrintSqlGenerateHelper(List<int> list)
+        public PrintSqlGenerateHelper_Pump(List<int> list)
         {
             gkList = list;
         }
@@ -38,11 +38,12 @@ namespace XFC.Helper
         }
         void TableGenerate()//表名需改变
         {
-            fromtable = @"(CarLab inner join CarBasicInfo on CarLab.CarID=CarBasicInfo.CarID) inner join ConditionRecord on CarLab.LabID=ConditionRecord.LabID";
+            fromtable = @"(PumpLab inner join PumpBasicInfo on PumpLab.PumpID=PumpBasicInfo.PumpID) inner join PumpConditionRecord on PumpLab.PumpLabID=PumpConditionRecord.PumpLabID";
         }
         void SelectGenerate()//基本信息需改变
         {
-            select = @"CheckPeople as 实验人员,CustomerDepart as 送检单位,CarName as 车辆名称,UnderpanFac as 底盘厂家,PumpFac as 水泵厂家,CarNum as 车牌号,CarModel as 车辆型号,UnderpanModel as 底盘型号,PumpModel as 水泵型号,CarFac as 生产厂家,UnderpanVIN as 底盘VIN,PumpType as 水泵类型,Pressure as 大气压力,ThreeTemp as 三米水池温度,ThreePress as 三米水池修正吸深,SevenTemp as 七米水池温度,SevenPress as 七米水池修正吸深,";
+            select = @"CheckPeople as 实验人员,CustomerDepart as 送检单位,PumpName as 水泵名称,PumpFac as 水泵厂家,PumpType as 水泵类型,InPipeD as 进口管径,OutPipeD as 出口管径,EpitopeDifference as 表位差,PumpModel as 水泵型号,Pressure as 大气压力,ThreeTemp as 三米水池温度,ThreePress as 三米水池修正吸深,SevenTemp as 七米水池温度,SevenPress as 七米水池修正吸深,";
+
             for (int i = 0; i < gkList.Count; i++)
             {
                 string temp = selectList[i];
@@ -53,13 +54,13 @@ namespace XFC.Helper
                 select += temp;
             }
         }
-        void ConditionGenerate()//需改变，且有两辆车实验时主要为这里改变
+        void ConditionGenerate()//需改变，且有两辆车实验时主要为这里改变!!!
         {
-            condition = @"CarLab.CarID =(select Max(CarID) from CarLab)";
+            condition = @"PumpLab.PumpID =(select Max(PumpID) from PumpLab)";
         }
         void GroupByGenerate()//对应非聚合函数字段，主要为基本信息，需改变
         {
-            groupby = @"CheckPeople ,CustomerDepart ,CarName ,UnderpanFac ,PumpFac ,CarNum ,CarModel ,UnderpanModel ,PumpModel ,CarFac ,UnderpanVIN ,PumpType ,Pressure ,ThreeTemp ,ThreePress  ,SevenTemp ,SevenPress";
+            groupby = @"CheckPeople ,CustomerDepart ,PumpName,PumpFac,PumpType,InPipeD,OutPipeD,EpitopeDifference,PumpModel,Pressure,ThreeTemp ,ThreePress  ,SevenTemp ,SevenPress";
         }
     }
 }

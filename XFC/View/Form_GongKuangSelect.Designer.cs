@@ -32,6 +32,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lb_status1 = new System.Windows.Forms.Label();
+            this.tb_runtime1 = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.rb_mid1 = new System.Windows.Forms.RadioButton();
@@ -61,6 +64,9 @@
             this.lb_standard1 = new System.Windows.Forms.Label();
             this.btn_confirm = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lb_status2 = new System.Windows.Forms.Label();
+            this.tb_runtime2 = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.rb_mid2 = new System.Windows.Forms.RadioButton();
@@ -91,12 +97,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.rb_standard2 = new System.Windows.Forms.RadioButton();
             this.lb_standard2 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.tb_runtime1 = new System.Windows.Forms.TextBox();
-            this.tb_runtime2 = new System.Windows.Forms.TextBox();
-            this.lb_status1 = new System.Windows.Forms.Label();
-            this.lb_status2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -172,6 +172,33 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1013, 354);
             this.panel2.TabIndex = 45;
+            // 
+            // lb_status1
+            // 
+            this.lb_status1.AutoSize = true;
+            this.lb_status1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_status1.Location = new System.Drawing.Point(926, 133);
+            this.lb_status1.Name = "lb_status1";
+            this.lb_status1.Size = new System.Drawing.Size(52, 14);
+            this.lb_status1.TabIndex = 67;
+            this.lb_status1.Text = "未建立";
+            // 
+            // tb_runtime1
+            // 
+            this.tb_runtime1.Location = new System.Drawing.Point(920, 78);
+            this.tb_runtime1.Name = "tb_runtime1";
+            this.tb_runtime1.Size = new System.Drawing.Size(64, 21);
+            this.tb_runtime1.TabIndex = 66;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label48.Location = new System.Drawing.Point(832, 132);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(82, 14);
+            this.label48.TabIndex = 64;
+            this.label48.Text = "实验状态：";
             // 
             // label27
             // 
@@ -275,7 +302,7 @@
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(82, 14);
             this.label53.TabIndex = 54;
-            this.label53.Text = "具体工况：";
+            this.label53.Text = "具体设备：";
             // 
             // label43
             // 
@@ -511,6 +538,33 @@
             this.panel1.Size = new System.Drawing.Size(1013, 353);
             this.panel1.TabIndex = 46;
             // 
+            // lb_status2
+            // 
+            this.lb_status2.AutoSize = true;
+            this.lb_status2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_status2.Location = new System.Drawing.Point(926, 128);
+            this.lb_status2.Name = "lb_status2";
+            this.lb_status2.Size = new System.Drawing.Size(52, 14);
+            this.lb_status2.TabIndex = 68;
+            this.lb_status2.Text = "未建立";
+            // 
+            // tb_runtime2
+            // 
+            this.tb_runtime2.Location = new System.Drawing.Point(920, 83);
+            this.tb_runtime2.Name = "tb_runtime2";
+            this.tb_runtime2.Size = new System.Drawing.Size(64, 21);
+            this.tb_runtime2.TabIndex = 73;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label50.Location = new System.Drawing.Point(832, 128);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(82, 14);
+            this.label50.TabIndex = 72;
+            this.label50.Text = "实验状态：";
+            // 
             // label33
             // 
             this.label33.AutoSize = true;
@@ -613,7 +667,7 @@
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(82, 14);
             this.label55.TabIndex = 58;
-            this.label55.Text = "具体工况：";
+            this.label55.Text = "具体设备：";
             // 
             // label44
             // 
@@ -823,60 +877,6 @@
             this.lb_standard2.Size = new System.Drawing.Size(39, 16);
             this.lb_standard2.TabIndex = 13;
             this.lb_standard2.Text = "未做";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label48.Location = new System.Drawing.Point(832, 132);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(82, 14);
-            this.label48.TabIndex = 64;
-            this.label48.Text = "实验状态：";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label50.Location = new System.Drawing.Point(832, 128);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(82, 14);
-            this.label50.TabIndex = 72;
-            this.label50.Text = "实验状态：";
-            // 
-            // tb_runtime1
-            // 
-            this.tb_runtime1.Location = new System.Drawing.Point(920, 78);
-            this.tb_runtime1.Name = "tb_runtime1";
-            this.tb_runtime1.Size = new System.Drawing.Size(64, 21);
-            this.tb_runtime1.TabIndex = 66;
-            // 
-            // tb_runtime2
-            // 
-            this.tb_runtime2.Location = new System.Drawing.Point(920, 83);
-            this.tb_runtime2.Name = "tb_runtime2";
-            this.tb_runtime2.Size = new System.Drawing.Size(64, 21);
-            this.tb_runtime2.TabIndex = 73;
-            // 
-            // lb_status1
-            // 
-            this.lb_status1.AutoSize = true;
-            this.lb_status1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_status1.Location = new System.Drawing.Point(926, 133);
-            this.lb_status1.Name = "lb_status1";
-            this.lb_status1.Size = new System.Drawing.Size(52, 14);
-            this.lb_status1.TabIndex = 67;
-            this.lb_status1.Text = "未建立";
-            // 
-            // lb_status2
-            // 
-            this.lb_status2.AutoSize = true;
-            this.lb_status2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb_status2.Location = new System.Drawing.Point(926, 128);
-            this.lb_status2.Name = "lb_status2";
-            this.lb_status2.Size = new System.Drawing.Size(52, 14);
-            this.lb_status2.TabIndex = 68;
-            this.lb_status2.Text = "未建立";
             // 
             // Form_GongKuangSelect
             // 

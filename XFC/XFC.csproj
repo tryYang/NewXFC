@@ -166,6 +166,7 @@
     <Compile Include="Helper\ConfigurationManager.cs" />
     <Compile Include="Helper\NModubs4Helper.cs" />
     <Compile Include="Helper\OledbHelper.cs" />
+    <Compile Include="Helper\PrintSqlGenerateHelper_Pump.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper.cs" />
     <Compile Include="Helper\SettingManager.cs" />
     <Compile Include="Helper\ValueConverter.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Model\SerialPortParams.cs" />
     <Compile Include="Model\Threshold.cs" />
     <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Model\XfbInfo.cs" />
     <Compile Include="Model\XfcInfo.cs" />
     <Compile Include="PrintSqlGenerate.cs" />
     <Compile Include="Program.cs" />
@@ -293,6 +295,9 @@
     <EmbeddedResource Include="Report\Report_Car_GaoDiYa.rdlc" />
     <EmbeddedResource Include="View\Dialog\Form_YuZhiSheZhi.resx">
       <DependentUpon>Form_YuZhiSheZhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\Print\Form_Print1.resx">
+      <DependentUpon>Form_Print1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_GongKuangSelect.resx">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>

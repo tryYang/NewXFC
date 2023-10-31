@@ -101,9 +101,14 @@ namespace XFC.View
                 MessageBox.Show("底盘VIN必须为17位");
                 return;
             }
+            else if(cbx_CarId.Text!="1"&& cbx_CarId.Text != "2")
+            {
+                MessageBox.Show("使用车辆Id只能为1和2");
+                return;
+            }
             int index = int.Parse(cbx_CarId.Text) - 1;
 
-                     
+           
             ConstantValue.xfcInfos[index].carBasicInfo.CarID = GetCarId();
             ConstantValue.xfcInfos[index].carBasicInfo.CarName = cbx_CarName.Text;
             ConstantValue.xfcInfos[index].carBasicInfo.CarFac = cbx_carfac.Text;
@@ -135,19 +140,30 @@ namespace XFC.View
             ConstantValue.xfcInfos[index].carLab.CheckPeople = tb_UserPeople.Text;
             ConstantValue.xfcInfos[index].carLab.L_Flowmeter = cbx_Diya.Text;
             ConstantValue.xfcInfos[index].carLab.H_Flowmeter = cbx_Gaoya.Text;
-            ConstantValue.xfcInfos[index].carLab.ThreePress = double.Parse(ud5.Value.ToString());
+            ConstantValue.xfcInfos[index].carLab.ThreePress = double.Parse(ud4.Value.ToString());
             ConstantValue.xfcInfos[index].carLab.ThreeTemp= double.Parse(ud3.Value.ToString());
-            ConstantValue.xfcInfos[index].carLab.SevenPress=double.Parse(ud8.Value.ToString());
+            ConstantValue.xfcInfos[index].carLab.SevenPress=double.Parse(ud7.Value.ToString());
             ConstantValue.xfcInfos[index].carLab.SevenTemp= double.Parse(ud6.Value.ToString());
             ConstantValue.xfcInfos[index].carLab.CarHeight = double.Parse(ud2.Value.ToString());
             ConstantValue.xfcInfos[index].carLab.Temp = double.Parse(ud9.Value.ToString());
             ConstantValue.xfcInfos[index].carLab.Pressure = double.Parse(ud1.Value.ToString());
-
+            SetMainWindowValue();
             ConstantValue.xfcInfos[index].IsChecked = true;
             ConstantValue.gkStatus = GkStatus.Checked;
+            ConstantValue.EquipemntList[index] = Equipment.Car;
             this.Close();
         }
-        
+        private void SetMainWindowValue()
+        {
+            Form_Main form_Main = Form_Main.getInstance();
+            form_Main.Pressure.Text = ud1.Value.ToString();
+            form_Main.Temp.Text = ud9.Value.ToString();
+            form_Main.Temp_3m.Text = ud3.Value.ToString();
+            form_Main.Temp_7m.Text = ud6.Value.ToString();
+            form_Main.Depth_3m.Text = ud4.Value.ToString();
+            form_Main.Depth_7m.Text = ud7.Value.ToString();
+
+        }
         private int GetCarId()
         {
             return 0;

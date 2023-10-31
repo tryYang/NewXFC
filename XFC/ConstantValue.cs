@@ -16,7 +16,8 @@ namespace XFC
        public static List<string> WaterPumpType = new List<string> { "低压泵","中压泵","高压泵","中低压泵", "高低压泵" };
        public static string AppSetting=" ";
        public static List<XfcInfo> xfcInfos =new List<XfcInfo>() { new XfcInfo(1), new XfcInfo(2)};
-       public static List<string> Baurates =new List<string>() {
+        public static List<XfbInfo> xfbInfos = new List<XfbInfo>() { new XfbInfo(1), new XfbInfo(2) };
+        public static List<string> Baurates =new List<string>() {
                          "2400", "4800", "9600", "19200" 
        };
        public  const int DATA_SHOW_INTERVALS = 1000;
@@ -32,7 +33,7 @@ namespace XFC
         public static int runtime1= 0;
         public static int runtime2 = 0;
 
-
+        public static List<Equipment> EquipemntList = new List<Equipment>() { Equipment.None, Equipment.None};
 
 
 

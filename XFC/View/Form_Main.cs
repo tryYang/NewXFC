@@ -74,6 +74,8 @@ namespace XFC.View
             cmb_Parity.DataSource = Enum.GetValues(typeof(Parity));
             cmb_StopBits.DataSource = new List<string> { "1","2"};
             cmb_PortNames.DataSource = SerialPort.GetPortNames();
+            var textBoxes = this.Controls.OfType<System.Windows.Forms.TextBox>();
+           
 
 
         }
@@ -240,9 +242,10 @@ namespace XFC.View
                 stopDataTimer();
                 ConstantValue.gkStatus = GkStatus.Stop;
 
-
-
-
+            }
+            else
+            {
+                MessageBox.Show("暂无工况在运行");
             }
                 
         }
@@ -250,10 +253,21 @@ namespace XFC.View
         private void btn_DisConnect_Click(object sender, EventArgs e)
         {
             if (ConstantValue.gkStatus == GkStatus.Run || ConstantValue.gkStatus == GkStatus.Stop) {
-
-                uninitDataTimer();
-                NModubs4Helper.Instance.Close();
-                ConstantValue.gkStatus= GkStatus.Close;
+                try
+                {
+                    uninitDataTimer();
+                    NModubs4Helper.Instance.Close();
+                    MessageBox.Show("工况结束");
+                }
+                catch (Exception ex){ 
+                
+                    MessageBox.Show(ex.Message);    
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("暂无工况在运行");
             }
                 
         }

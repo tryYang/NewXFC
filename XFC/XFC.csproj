@@ -166,6 +166,7 @@
     <Compile Include="Helper\ConfigurationManager.cs" />
     <Compile Include="Helper\NModubs4Helper.cs" />
     <Compile Include="Helper\OledbHelper.cs" />
+    <Compile Include="Helper\PrintHelper.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper_Pump.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper.cs" />
     <Compile Include="Helper\SettingManager.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -298,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\Print\Form_Print1.resx">
       <DependentUpon>Form_Print1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\Product\Form_ChanPin.resx">
+      <DependentUpon>Form_ChanPin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\Product\Form_ChanPinTianJia.resx">
+      <DependentUpon>Form_ChanPinTianJia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_GongKuangSelect.resx">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>

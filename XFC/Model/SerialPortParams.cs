@@ -32,7 +32,8 @@ namespace XFC.Model
         Supper,
         Half,
         Gaoya,
-        Zhongya
+        Zhongya,
+        None
 
     }
     public enum Equipment

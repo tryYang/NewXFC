@@ -38,8 +38,7 @@ namespace XFC.Helper
         public DataSet GetDataSet()
         {
             DataSet ds = new DataSet();
-            OleDbCommand cmd = new OleDbCommand(sqlstring,connection);
-            
+            OleDbCommand cmd = new OleDbCommand(sqlstring,connection);            
             OleDbDataAdapter da = new OleDbDataAdapter();
             da.SelectCommand = cmd;
             da.Fill(ds);

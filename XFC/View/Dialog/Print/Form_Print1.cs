@@ -85,7 +85,7 @@ namespace XFC.View.Dialog.Print
                             gkList.Add(4);
                         }
                         PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                        //MessageBox.Show(helper1.Generate());
+                       // MessageBox.Show(helper1.Generate());
                         ShuJuYuan(helper1.Generate(), "车载泵低压泵1", "Report_Car_DiYa.rdlc");
                     }
                     else if (textBox2.Text == "高压泵" || textBox2.Text == "中压泵")
@@ -144,7 +144,7 @@ namespace XFC.View.Dialog.Print
                             gkList.Add(4);
                         }
                         PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                        ShuJuYuan(helper1.Generate(), "车载泵中低压泵1", "Report_Car_zhongDiYa.rdlc");
+                        //ShuJuYuan(helper1.Generate(), "车载泵中低压泵1", "Report_Car_zhongDiYa.rdlc");
                     }
                     else if (textBox2.Text == "")
                     {
@@ -243,7 +243,8 @@ namespace XFC.View.Dialog.Print
                 }
                 else if (textBox1.Text == "")
                 {
-                    MessageBox.Show("当前无实验进行，请新建实验！");
+                     MessageBox.Show("当前无实验进行，请新建实验！");
+
                 }
 
             }

@@ -155,8 +155,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog3 = new System.Windows.Forms.PrintPreviewDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label118 = new System.Windows.Forms.Label();
             this.textBox_name = new System.Windows.Forms.TextBox();
@@ -169,21 +167,21 @@
             this.label121 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label110 = new System.Windows.Forms.Label();
-            this.dateTimePicker7 = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.time_start2 = new System.Windows.Forms.DateTimePicker();
+            this.btn_Print2 = new System.Windows.Forms.Button();
+            this.btn_Export2 = new System.Windows.Forms.Button();
+            this.btn_Query2 = new System.Windows.Forms.Button();
             this.label112 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.time_end2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label103 = new System.Windows.Forms.Label();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
-            this.btn_Print = new System.Windows.Forms.Button();
-            this.btn_Export = new System.Windows.Forms.Button();
-            this.btn_Query = new System.Windows.Forms.Button();
+            this.time_start1 = new System.Windows.Forms.DateTimePicker();
+            this.btn_Print1 = new System.Windows.Forms.Button();
+            this.btn_Export1 = new System.Windows.Forms.Button();
+            this.btn_Query1 = new System.Windows.Forms.Button();
             this.label111 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.time_end1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -311,6 +309,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.printPreviewDialog3 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
             this.groupBox2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -1127,7 +1127,7 @@
             this.toolStripTextBox17});
             this.toolStripMenuItem8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem8.Text = "新建试验";
             // 
             // tp_xfc_test
@@ -1159,7 +1159,7 @@
             this.toolStripTextBox20});
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem9.Text = "打开试验";
             // 
             // toolStripTextBox18
@@ -1206,7 +1206,7 @@
             // 
             this.tp_gkchoose.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkchoose.Name = "tp_gkchoose";
-            this.tp_gkchoose.Size = new System.Drawing.Size(160, 22);
+            this.tp_gkchoose.Size = new System.Drawing.Size(180, 22);
             this.tp_gkchoose.Text = "选择工况";
             // 
             // tp_gkzhanting
@@ -1247,7 +1247,7 @@
             this.tp_printtable3});
             this.toolStripTextBox8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripTextBox8.Name = "toolStripTextBox8";
-            this.toolStripTextBox8.Size = new System.Drawing.Size(161, 22);
+            this.toolStripTextBox8.Size = new System.Drawing.Size(180, 22);
             this.toolStripTextBox8.Text = "生成报表（高）";
             // 
             // tp_printtable1
@@ -1295,7 +1295,7 @@
             this.tp_xfbproduct});
             this.toolStripMenuItem11.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem11.Text = "产品信息管理";
             // 
             // tp_xfcproduct
@@ -1465,17 +1465,6 @@
             this.printPreviewDialog2.Name = "printPreviewDialog1";
             this.printPreviewDialog2.Visible = false;
             // 
-            // printPreviewDialog3
-            // 
-            this.printPreviewDialog3.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog3.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog3.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog3.Document = this.printDocument3;
-            this.printPreviewDialog3.Enabled = true;
-            this.printPreviewDialog3.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog3.Icon")));
-            this.printPreviewDialog3.Name = "printPreviewDialog1";
-            this.printPreviewDialog3.Visible = false;
-            // 
             // label118
             // 
             this.label118.AutoSize = true;
@@ -1564,13 +1553,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label110);
-            this.groupBox4.Controls.Add(this.dateTimePicker7);
-            this.groupBox4.Controls.Add(this.button3);
-            this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Controls.Add(this.time_start2);
+            this.groupBox4.Controls.Add(this.btn_Print2);
+            this.groupBox4.Controls.Add(this.btn_Export2);
+            this.groupBox4.Controls.Add(this.btn_Query2);
             this.groupBox4.Controls.Add(this.label112);
             this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Controls.Add(this.dateTimePicker2);
+            this.groupBox4.Controls.Add(this.time_end2);
             this.groupBox4.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox4.Location = new System.Drawing.Point(7, 474);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
@@ -1590,50 +1579,53 @@
             this.label110.TabIndex = 17;
             this.label110.Text = "开始时间：";
             // 
-            // dateTimePicker7
+            // time_start2
             // 
-            this.dateTimePicker7.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker7.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateTimePicker7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker7.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker7.Location = new System.Drawing.Point(98, 30);
-            this.dateTimePicker7.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker7.Name = "dateTimePicker7";
-            this.dateTimePicker7.Size = new System.Drawing.Size(204, 23);
-            this.dateTimePicker7.TabIndex = 16;
+            this.time_start2.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_start2.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.time_start2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_start2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_start2.Location = new System.Drawing.Point(98, 30);
+            this.time_start2.Margin = new System.Windows.Forms.Padding(2);
+            this.time_start2.Name = "time_start2";
+            this.time_start2.Size = new System.Drawing.Size(204, 23);
+            this.time_start2.TabIndex = 16;
             // 
-            // button3
+            // btn_Print2
             // 
-            this.button3.BackColor = System.Drawing.Color.Tan;
-            this.button3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(1193, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 39);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "打印";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_Print2.BackColor = System.Drawing.Color.Tan;
+            this.btn_Print2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Print2.Location = new System.Drawing.Point(1193, 26);
+            this.btn_Print2.Name = "btn_Print2";
+            this.btn_Print2.Size = new System.Drawing.Size(75, 39);
+            this.btn_Print2.TabIndex = 11;
+            this.btn_Print2.Text = "打印";
+            this.btn_Print2.UseVisualStyleBackColor = false;
+            this.btn_Print2.Click += new System.EventHandler(this.btn_Print2_Click);
             // 
-            // button4
+            // btn_Export2
             // 
-            this.button4.BackColor = System.Drawing.Color.Tan;
-            this.button4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.Location = new System.Drawing.Point(1035, 26);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 39);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "EXCEL导出";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Export2.BackColor = System.Drawing.Color.Tan;
+            this.btn_Export2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Export2.Location = new System.Drawing.Point(1035, 26);
+            this.btn_Export2.Name = "btn_Export2";
+            this.btn_Export2.Size = new System.Drawing.Size(100, 39);
+            this.btn_Export2.TabIndex = 10;
+            this.btn_Export2.Text = "EXCEL导出";
+            this.btn_Export2.UseVisualStyleBackColor = false;
+            this.btn_Export2.Click += new System.EventHandler(this.btn_Export2_Click);
             // 
-            // button5
+            // btn_Query2
             // 
-            this.button5.BackColor = System.Drawing.Color.Tan;
-            this.button5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button5.Location = new System.Drawing.Point(902, 26);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 39);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "查询";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_Query2.BackColor = System.Drawing.Color.Tan;
+            this.btn_Query2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Query2.Location = new System.Drawing.Point(902, 26);
+            this.btn_Query2.Name = "btn_Query2";
+            this.btn_Query2.Size = new System.Drawing.Size(75, 39);
+            this.btn_Query2.TabIndex = 9;
+            this.btn_Query2.Text = "查询";
+            this.btn_Query2.UseVisualStyleBackColor = false;
+            this.btn_Query2.Click += new System.EventHandler(this.btn_Query2_Click);
             // 
             // label112
             // 
@@ -1657,28 +1649,28 @@
             this.dataGridView2.Size = new System.Drawing.Size(1297, 306);
             this.dataGridView2.TabIndex = 2;
             // 
-            // dateTimePicker2
+            // time_end2
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateTimePicker2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(461, 30);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(204, 23);
-            this.dateTimePicker2.TabIndex = 1;
+            this.time_end2.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_end2.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.time_end2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_end2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_end2.Location = new System.Drawing.Point(461, 30);
+            this.time_end2.Margin = new System.Windows.Forms.Padding(2);
+            this.time_end2.Name = "time_end2";
+            this.time_end2.Size = new System.Drawing.Size(204, 23);
+            this.time_end2.TabIndex = 1;
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.label103);
-            this.groupBox3.Controls.Add(this.dateTimePicker6);
-            this.groupBox3.Controls.Add(this.btn_Print);
-            this.groupBox3.Controls.Add(this.btn_Export);
-            this.groupBox3.Controls.Add(this.btn_Query);
+            this.groupBox3.Controls.Add(this.time_start1);
+            this.groupBox3.Controls.Add(this.btn_Print1);
+            this.groupBox3.Controls.Add(this.btn_Export1);
+            this.groupBox3.Controls.Add(this.btn_Query1);
             this.groupBox3.Controls.Add(this.label111);
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
+            this.groupBox3.Controls.Add(this.time_end1);
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox3.Location = new System.Drawing.Point(11, 75);
@@ -1699,50 +1691,53 @@
             this.label103.TabIndex = 15;
             this.label103.Text = "开始时间：";
             // 
-            // dateTimePicker6
+            // time_start1
             // 
-            this.dateTimePicker6.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker6.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateTimePicker6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker6.Location = new System.Drawing.Point(98, 29);
-            this.dateTimePicker6.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(204, 23);
-            this.dateTimePicker6.TabIndex = 14;
+            this.time_start1.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_start1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.time_start1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_start1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_start1.Location = new System.Drawing.Point(98, 29);
+            this.time_start1.Margin = new System.Windows.Forms.Padding(2);
+            this.time_start1.Name = "time_start1";
+            this.time_start1.Size = new System.Drawing.Size(204, 23);
+            this.time_start1.TabIndex = 14;
             // 
-            // btn_Print
+            // btn_Print1
             // 
-            this.btn_Print.BackColor = System.Drawing.Color.Tan;
-            this.btn_Print.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Print.Location = new System.Drawing.Point(1193, 29);
-            this.btn_Print.Name = "btn_Print";
-            this.btn_Print.Size = new System.Drawing.Size(75, 39);
-            this.btn_Print.TabIndex = 11;
-            this.btn_Print.Text = "打印";
-            this.btn_Print.UseVisualStyleBackColor = false;
+            this.btn_Print1.BackColor = System.Drawing.Color.Tan;
+            this.btn_Print1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Print1.Location = new System.Drawing.Point(1193, 29);
+            this.btn_Print1.Name = "btn_Print1";
+            this.btn_Print1.Size = new System.Drawing.Size(75, 39);
+            this.btn_Print1.TabIndex = 11;
+            this.btn_Print1.Text = "打印";
+            this.btn_Print1.UseVisualStyleBackColor = false;
+            this.btn_Print1.Click += new System.EventHandler(this.btn_Print1_Click);
             // 
-            // btn_Export
+            // btn_Export1
             // 
-            this.btn_Export.BackColor = System.Drawing.Color.Tan;
-            this.btn_Export.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Export.Location = new System.Drawing.Point(1035, 29);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(100, 39);
-            this.btn_Export.TabIndex = 10;
-            this.btn_Export.Text = "EXCEL导出";
-            this.btn_Export.UseVisualStyleBackColor = false;
+            this.btn_Export1.BackColor = System.Drawing.Color.Tan;
+            this.btn_Export1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Export1.Location = new System.Drawing.Point(1035, 29);
+            this.btn_Export1.Name = "btn_Export1";
+            this.btn_Export1.Size = new System.Drawing.Size(100, 39);
+            this.btn_Export1.TabIndex = 10;
+            this.btn_Export1.Text = "EXCEL导出";
+            this.btn_Export1.UseVisualStyleBackColor = false;
+            this.btn_Export1.Click += new System.EventHandler(this.btn_Export1_Click);
             // 
-            // btn_Query
+            // btn_Query1
             // 
-            this.btn_Query.BackColor = System.Drawing.Color.Tan;
-            this.btn_Query.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Query.Location = new System.Drawing.Point(902, 29);
-            this.btn_Query.Name = "btn_Query";
-            this.btn_Query.Size = new System.Drawing.Size(75, 39);
-            this.btn_Query.TabIndex = 9;
-            this.btn_Query.Text = "查询";
-            this.btn_Query.UseVisualStyleBackColor = false;
+            this.btn_Query1.BackColor = System.Drawing.Color.Tan;
+            this.btn_Query1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Query1.Location = new System.Drawing.Point(902, 29);
+            this.btn_Query1.Name = "btn_Query1";
+            this.btn_Query1.Size = new System.Drawing.Size(75, 39);
+            this.btn_Query1.TabIndex = 9;
+            this.btn_Query1.Text = "查询";
+            this.btn_Query1.UseVisualStyleBackColor = false;
+            this.btn_Query1.Click += new System.EventHandler(this.btn_Query_Click);
             // 
             // label111
             // 
@@ -1753,17 +1748,17 @@
             this.label111.TabIndex = 5;
             this.label111.Text = "结束时间：";
             // 
-            // dateTimePicker1
+            // time_end1
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(461, 29);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 23);
-            this.dateTimePicker1.TabIndex = 1;
+            this.time_end1.CalendarFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_end1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.time_end1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.time_end1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.time_end1.Location = new System.Drawing.Point(461, 29);
+            this.time_end1.Margin = new System.Windows.Forms.Padding(2);
+            this.time_end1.Name = "time_end1";
+            this.time_end1.Size = new System.Drawing.Size(204, 23);
+            this.time_end1.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -3027,6 +3022,17 @@
             this.tabControl1.Size = new System.Drawing.Size(1325, 910);
             this.tabControl1.TabIndex = 10;
             // 
+            // printPreviewDialog3
+            // 
+            this.printPreviewDialog3.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog3.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog3.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog3.Document = this.printDocument3;
+            this.printPreviewDialog3.Enabled = true;
+            this.printPreviewDialog3.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog3.Icon")));
+            this.printPreviewDialog3.Name = "printPreviewDialog1";
+            this.printPreviewDialog3.Visible = false;
+            // 
             // Form_Main
             // 
             this.AccessibleName = "123";
@@ -3141,8 +3147,6 @@
         public  System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         public  System.Drawing.Printing.PrintDocument printDocument2;
         public  System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
-        public  System.Drawing.Printing.PrintDocument printDocument3;
-        public  System.Windows.Forms.PrintPreviewDialog printPreviewDialog3;
         public  System.ComponentModel.BackgroundWorker backgroundWorker1;
         public  System.Windows.Forms.Label label118;
         public  System.Windows.Forms.TextBox textBox_name;
@@ -3188,21 +3192,21 @@
         public  System.Windows.Forms.Label label121;
         public  System.Windows.Forms.GroupBox groupBox4;
         public  System.Windows.Forms.Label label110;
-        public  System.Windows.Forms.DateTimePicker dateTimePicker7;
-        public  System.Windows.Forms.Button button3;
-        public  System.Windows.Forms.Button button4;
-        public  System.Windows.Forms.Button button5;
+        public  System.Windows.Forms.DateTimePicker time_start2;
+        public  System.Windows.Forms.Button btn_Print2;
+        public  System.Windows.Forms.Button btn_Export2;
+        public  System.Windows.Forms.Button btn_Query2;
         public  System.Windows.Forms.Label label112;
         public  System.Windows.Forms.DataGridView dataGridView2;
-        public  System.Windows.Forms.DateTimePicker dateTimePicker2;
+        public  System.Windows.Forms.DateTimePicker time_end2;
         public  System.Windows.Forms.GroupBox groupBox3;
         public  System.Windows.Forms.Label label103;
-        public  System.Windows.Forms.DateTimePicker dateTimePicker6;
-        public  System.Windows.Forms.Button btn_Print;
-        public  System.Windows.Forms.Button btn_Export;
-        public  System.Windows.Forms.Button btn_Query;
+        public  System.Windows.Forms.DateTimePicker time_start1;
+        public  System.Windows.Forms.Button btn_Print1;
+        public  System.Windows.Forms.Button btn_Export1;
+        public  System.Windows.Forms.Button btn_Query1;
         public  System.Windows.Forms.Label label111;
-        public  System.Windows.Forms.DateTimePicker dateTimePicker1;
+        public  System.Windows.Forms.DateTimePicker time_end1;
         public  System.Windows.Forms.DataGridView dataGridView1;
         public  System.Windows.Forms.TabPage tabPage2;
         public  System.Windows.Forms.Panel panel4;
@@ -3374,5 +3378,7 @@
         public  System.Windows.Forms.TextBox Troque110kw1;
         public  System.Windows.Forms.Label label61;
         public  System.Windows.Forms.Label label62;
+        public System.Windows.Forms.PrintPreviewDialog printPreviewDialog3;
+        public System.Drawing.Printing.PrintDocument printDocument3;
     }
 }

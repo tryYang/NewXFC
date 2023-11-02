@@ -19,7 +19,7 @@ namespace XFC.Model
         public List<bool> IsGkCompleted = new List<bool>() { false };
         public bool IsChecked = false;
         public int runtime = -1;
-        public Enum currentGk;
+        public Gk currentGk=Gk.None;
         public XfbInfo(int ketid)
         {
             KeyId = ketid;

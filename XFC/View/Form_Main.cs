@@ -23,6 +23,7 @@ using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
 using Microsoft.Office.Interop.Excel;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace XFC.View
 {
@@ -31,7 +32,10 @@ namespace XFC.View
 
 
         private MainWindowViewModel viewModel;
-        private static Form_Main instance;   
+        private static Form_Main instance;
+        private List<TextBox> DNcontrols1;
+        private List<TextBox> DNcontrols2;
+        GridPrinter gridPrinter;
 
         public static Form_Main getInstance()
         {
@@ -43,7 +47,7 @@ namespace XFC.View
             else
                 return instance;
         }
-
+        
         public Form_Main()
         {
             InitializeComponent();
@@ -75,7 +79,10 @@ namespace XFC.View
             cmb_StopBits.DataSource = new List<string> { "1","2"};
             cmb_PortNames.DataSource = SerialPort.GetPortNames();
             var textBoxes = this.Controls.OfType<System.Windows.Forms.TextBox>();
-           
+            DNcontrols1 = new List<TextBox>() { DN50Flow1, DN50Value1, DN100Flow1, DN100Value1, DN200Flow1, DN200Value1, DN300Flow1, DN300Value1 };
+            DNcontrols2 = new List<TextBox>() { DN50Flow2, DN50Value2, DN100Flow2, DN100Value2, DN200Flow2, DN200Value2, DN300Flow2, DN300Value2 };
+
+
 
 
         }
@@ -142,20 +149,112 @@ namespace XFC.View
             
             this.Invoke(new System.Action(() => {
 
-                if (ConstantValue.xfcInfos[0].IsChecked)
-                {
+                Task.Run(() => DataShow(0, ConstantValue.EquipemntList[0]));
+                Task.Run(() => DataShow(1, ConstantValue.EquipemntList[1]));             
+                DateTime time = DateTime.Now;
+             
+            }));
+
+            
+            Console.WriteLine("定时器触发的事件在 {0:HH:mm:ss.fff} 执行", e.SignalTime);
+        }
+
+        /// <summary>
+        /// 显示设备的实时数据
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="eq"></param>
+        private void DataShow(int i , Equipment eq)
+        {
+            if (eq == Equipment.Car && ConstantValue.xfcInfos[i].currentGk!=Gk.None)
+            {
+                DataShow_xfc(i);
+            }
+            else if (eq == Equipment.Pump && ConstantValue.xfcInfos[i].currentGk != Gk.None)
+            {
+                DataShow_xfb(i);
+            }
+           
+                return;
+
+        }
+        /// <summary>
+        ///显示消防车的实时数据
+        /// </summary>
+        /// <param name="i"></param>
+        private void DataShow_xfc(int i)
+        {
+            Gk gk = ConstantValue.xfcInfos[i].currentGk;
+            switch (i) { 
+                case 0:
+                    Vacuum1.Text=tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();
+                    LPress1.Text= tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();
+                    HPress1.Text=tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();
+                    tb_CarPumpSpeed1.Text = NModubs4Helper.Instance.GetValue16(1, 3).ToString();
+                    InTemp1.Text=tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();
+                    OutTemp1.Text=tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
+                    DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                    DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                    DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                    DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+
+                    chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
+                    chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
+                    break;
+                case 1:
+                    tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
+                    tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
+                    tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
+                    tb_CarPumpSpeed2.Text = NModubs4Helper.Instance.GetValue16(4, 3).ToString();
+                    tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();
+                    tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();               
+                    chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
+                    chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
+                    DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                    DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                    DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                    DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                  
+                    break;
+            }
+
+        }
+        /// <summary>
+        ///显示消防泵的实时数据
+        /// </summary>
+        /// <param name="i"></param>
+        private void DataShow_xfb(int i)
+        {
+            switch (i)
+            {
+                case 0:
                     tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();
                     tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();
                     tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();
                     tb_CarPumpSpeed1.Text = NModubs4Helper.Instance.GetValue16(1, 3).ToString();
                     tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();
                     tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
-                    
                     chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
                     chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
-                }
-                if (ConstantValue.xfcInfos[1].IsChecked)
-                {
+                    DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                    DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                    DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                    DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+
+                    break;
+                case 1:
                     tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
                     tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
                     tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
@@ -164,16 +263,22 @@ namespace XFC.View
                     tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();
                     chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
                     chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
-                }
-
-                
-                DateTime time = DateTime.Now;
-             
-            }));
-
-            
-            Console.WriteLine("定时器触发的事件在 {0:HH:mm:ss.fff} 执行", e.SignalTime);
+                    DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                    DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                    DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                    DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    break;
+            }
         }
+        /// <summary>
+        ///倒计时事件
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnTimedCountdown(Object source, ElapsedEventArgs e)
         {
             if (ConstantValue.xfcInfos[0].IsChecked || ConstantValue.runtime1 > 0)
@@ -209,7 +314,9 @@ namespace XFC.View
 
 
         }
-        
+        /// <summary>
+        /// 初始化工况运行的定时器
+        /// </summary>
         private void initDataTimer()
         {
            
@@ -222,12 +329,17 @@ namespace XFC.View
             ConstantValue.gkStatus = GkStatus.Run;
         }
 
-        
 
+        /// <summary>
+        /// 停止工况运行的定时器
+        /// </summary>
         private void stopDataTimer()
         {
              ConstantValue.DataShowTimer.Stop();
         }
+        /// <summary>
+        /// 关闭工况运行的定时器
+        /// </summary>
         private void uninitDataTimer()
         {
             
@@ -286,7 +398,108 @@ namespace XFC.View
             chart2.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Seconds;
         }
 
+        private void btn_Query_Click(object sender, EventArgs e)
+        {
+            dataTimeSpanQuery(1, dataGridView1, time_start1, time_end1);
 
+        }
+       
+
+        private void btn_Query2_Click(object sender, EventArgs e)
+        {
+            dataTimeSpanQuery(2, dataGridView2, time_start2, time_end2);
+        }
+        private void dataTimeSpanQuery(int index, DataGridView dataGridView, DateTimePicker starttime, DateTimePicker endtime)
+        {
+            if (ConstantValue.gkStatus != GkStatus.Run)
+            {
+
+                MessageBox.Show("设备1未有运行工况");
+                return;
+            }
+            if (ConstantValue.EquipemntList[index] == Equipment.None)
+            {
+                MessageBox.Show("设备1未有运行工况");
+                return;
+            }
+            string start = starttime.Text;
+            string end = endtime.Text;
+            using (OledbHelper helper = new OledbHelper())
+            {
+                string tablename = ConstantValue.EquipemntList[0] == Equipment.Car ? "ConditionRecord" : "PumpConditionRecord";
+
+                helper.sqlstring = string.Format("select [ConditonID],[CollectTime],[L_Press],[L_Flow],[H_Press],[H_Flow],[VacuumDegree],[Speed],[InTemp],[OutTemp] from {0} where [CollectTime] >= #{1}# and [CollectTime] <= #{2}# ", tablename, start, end);
+                DataSet ds = helper.GetDataSet();
+
+                dataGridView.DataSource = ds.Tables[0];
+                //设置数据表格上显示的列标题
+                dataGridView.Columns[0].HeaderText = "工况实验ID";
+                dataGridView.Columns[1].HeaderText = "采集时间";
+                dataGridView.Columns[2].HeaderText = "低压压力";
+                dataGridView.Columns[3].HeaderText = "低压流量";
+                dataGridView.Columns[4].HeaderText = "中高压压力";
+                dataGridView.Columns[5].HeaderText = "中高压流量";
+                dataGridView.Columns[6].HeaderText = "真空度";
+                dataGridView.Columns[7].HeaderText = "消防泵转速";
+                dataGridView.Columns[8].HeaderText = "输入轴温度";
+                dataGridView.Columns[9].HeaderText = "输出轴温度";
+
+            }
+        }
+
+        private void btn_Export1_Click(object sender, EventArgs e)
+        {
+            Util.ExportExcel("",dataGridView1);
+        }
+
+        private void btn_Export2_Click(object sender, EventArgs e)
+        {
+            Util.ExportExcel("", dataGridView2);
+        }
+        private bool InitializePrinting(DataGridView dataGridView , PrintDocument printDocument )
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() != DialogResult.OK)
+                return false;
+            printDocument.DocumentName = "实时数据";
+            printDocument.PrinterSettings = printDialog.PrinterSettings;
+            printDocument.DefaultPageSettings = printDialog.PrinterSettings.DefaultPageSettings;
+            printDocument.DefaultPageSettings.Margins = new System.Drawing.Printing.Margins(40, 40, 40, 40);
+            gridPrinter = new GridPrinter(dataGridView, printDocument, true, true, "实时数据", new System.Drawing.Font("黑体", 18, FontStyle.Bold, GraphicsUnit.Point), Color.Blue, true);
+            return true;
+        }
+
+        private void btn_Print2_Click(object sender, EventArgs e)
+        {
+            if (InitializePrinting(dataGridView2, printDocument2))
+            {
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                printPreviewDialog.Document = printDocument2;
+                printPreviewDialog.ShowDialog();
+            }
+        }
+
+        private void btn_Print1_Click(object sender, EventArgs e)
+        {
+            if (InitializePrinting(dataGridView1, printDocument1))
+            {
+                PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                printPreviewDialog.Document = printDocument1;
+                printPreviewDialog.ShowDialog();
+            }
+        }
+        private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+            bool more = gridPrinter.DrawDataGridView(e.Graphics);
+            if (more == true)
+                e.HasMorePages = true;
+        }
+        private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            bool more = gridPrinter.DrawDataGridView(e.Graphics);
+            if (more == true)
+                e.HasMorePages = true;
+        }
     }
 }
 

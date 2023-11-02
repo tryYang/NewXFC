@@ -30,7 +30,7 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_CarName = new System.Windows.Forms.TextBox();
             this.btn_select = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -47,10 +47,10 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.tb_CarName);
             this.panel3.Controls.Add(this.btn_select);
             this.panel3.Location = new System.Drawing.Point(9, 10);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(250, 64);
             this.panel3.TabIndex = 5;
@@ -66,26 +66,26 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "车辆名称";
             // 
-            // textBox1
+            // tb_CarName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 22);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 21);
-            this.textBox1.TabIndex = 4;
+            this.tb_CarName.Location = new System.Drawing.Point(12, 22);
+            this.tb_CarName.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_CarName.Name = "tb_CarName";
+            this.tb_CarName.Size = new System.Drawing.Size(131, 21);
+            this.tb_CarName.TabIndex = 4;
             // 
             // btn_select
             // 
             this.btn_select.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_select.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_select.Location = new System.Drawing.Point(172, 13);
-            this.btn_select.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_select.Margin = new System.Windows.Forms.Padding(2);
             this.btn_select.Name = "btn_select";
             this.btn_select.Size = new System.Drawing.Size(56, 29);
             this.btn_select.TabIndex = 3;
             this.btn_select.Text = "查询";
             this.btn_select.UseVisualStyleBackColor = false;
-
+            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
             // panel2
             // 
@@ -94,7 +94,7 @@
             this.panel2.Controls.Add(this.btn_updata);
             this.panel2.Controls.Add(this.btn_add);
             this.panel2.Location = new System.Drawing.Point(408, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(385, 64);
             this.panel2.TabIndex = 6;
@@ -105,7 +105,7 @@
             this.btn_delete.Cursor = System.Windows.Forms.Cursors.Default;
             this.btn_delete.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_delete.Location = new System.Drawing.Point(262, 14);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(56, 29);
             this.btn_delete.TabIndex = 2;
@@ -117,26 +117,25 @@
             this.btn_updata.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_updata.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_updata.Location = new System.Drawing.Point(151, 14);
-            this.btn_updata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_updata.Margin = new System.Windows.Forms.Padding(2);
             this.btn_updata.Name = "btn_updata";
             this.btn_updata.Size = new System.Drawing.Size(56, 29);
             this.btn_updata.TabIndex = 1;
             this.btn_updata.Text = "修改";
             this.btn_updata.UseVisualStyleBackColor = false;
-
             // 
             // btn_add
             // 
             this.btn_add.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_add.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_add.Location = new System.Drawing.Point(32, 14);
-            this.btn_add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(56, 29);
             this.btn_add.TabIndex = 0;
             this.btn_add.Text = "添加";
             this.btn_add.UseVisualStyleBackColor = false;
-
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // label1
             // 
@@ -153,13 +152,12 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(2, 106);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(797, 382);
             this.dataGridView1.TabIndex = 8;
-
             // 
             // Form_ChanPin
             // 
@@ -171,10 +169,10 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_ChanPin";
             this.Text = "产品信息";
-
+            this.Load += new System.EventHandler(this.Form_ChanPin_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -188,7 +186,7 @@
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_CarName;
         private System.Windows.Forms.Button btn_select;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_delete;

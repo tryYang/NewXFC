@@ -12,7 +12,6 @@ namespace XFC.View.Dialog.Product
         //弹出修改信息窗口)
         {
             InitializeComponent();
-          
 
         }
 

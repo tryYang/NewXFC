@@ -1,5 +1,4 @@
-﻿namespace XFC3._0
-{
+﻿namespace XFC.View.Dialog.Product { 
     partial class Form_ChanPinTianJia
     {
         /// <summary>
@@ -61,7 +60,6 @@
             this.label1.Size = new System.Drawing.Size(92, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "车辆名称：";
-
             // 
             // label2
             // 
@@ -77,7 +75,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(146, 19);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(113, 21);
             this.textBox1.TabIndex = 8;
@@ -85,7 +83,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(146, 72);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(113, 21);
             this.textBox2.TabIndex = 9;
@@ -104,7 +102,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(146, 124);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(113, 21);
             this.textBox3.TabIndex = 11;
@@ -112,7 +110,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(146, 174);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(113, 21);
             this.textBox4.TabIndex = 12;
@@ -120,7 +118,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(417, 19);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(113, 21);
             this.textBox5.TabIndex = 13;
@@ -128,7 +126,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(417, 72);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(113, 21);
             this.textBox6.TabIndex = 14;
@@ -136,7 +134,7 @@
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(417, 123);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(113, 21);
             this.textBox7.TabIndex = 15;
@@ -144,7 +142,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(417, 174);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(113, 21);
             this.textBox8.TabIndex = 16;
@@ -219,24 +217,25 @@
             this.btn_affirm.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_affirm.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_affirm.Location = new System.Drawing.Point(201, 268);
-            this.btn_affirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_affirm.Margin = new System.Windows.Forms.Padding(2);
             this.btn_affirm.Name = "btn_affirm";
             this.btn_affirm.Size = new System.Drawing.Size(56, 31);
             this.btn_affirm.TabIndex = 24;
             this.btn_affirm.Text = "确认";
             this.btn_affirm.UseVisualStyleBackColor = false;
-
+            this.btn_affirm.Click += new System.EventHandler(this.btn_affirm_Click);
             // 
             // btn_cancel
             // 
             this.btn_cancel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_cancel.Location = new System.Drawing.Point(354, 268);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(56, 31);
             this.btn_cancel.TabIndex = 25;
             this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // label10
             // 
@@ -248,7 +247,6 @@
             this.label10.Size = new System.Drawing.Size(76, 16);
             this.label10.TabIndex = 26;
             this.label10.Text = "车辆ID：";
-
             // 
             // textBox9
             // 
@@ -286,7 +284,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_ChanPinTianJia";
             this.Text = "产品添加";
             this.ResumeLayout(false);

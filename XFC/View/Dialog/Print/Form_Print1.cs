@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XFC.Helper;
+using XFC.Model;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -63,6 +64,13 @@ namespace XFC.View.Dialog.Print
 
             using (OledbHelper helper = new OledbHelper())
             {
+                if (ConstantValue.EquipemntList[0]==Equipment.Car)
+                {
+                    if (ConstantValue.PumpTypeList[0] == PumpType.DiYaPump)
+                    {
+
+                    }
+                }
                 if (textBox1.Text == "消防车")
                 {
                     if (textBox2.Text == "低压泵")

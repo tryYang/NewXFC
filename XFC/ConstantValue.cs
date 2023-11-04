@@ -34,6 +34,7 @@ namespace XFC
         public static int runtime2 = 0;
 
         public static List<Equipment> EquipemntList = new List<Equipment>() { Equipment.None, Equipment.None};
+        public static List<PumpType>PumpTypeList = new List<PumpType>() { PumpType.None,PumpType.None};//怎么把水泵类型信息传过来呢
 
 
 

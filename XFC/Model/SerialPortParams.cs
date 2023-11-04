@@ -43,4 +43,14 @@ namespace XFC.Model
        None
 
     }
+    public enum PumpType
+    {
+        DiYaPump,
+        GaoYaPump,
+        ZhongYaPump,
+        GaoDiYaPump,
+        ZhongDiYaPump,
+        None
+
+    }
 }

@@ -58,7 +58,7 @@ namespace XFC.View
 
         private void GkSelect(int i, Equipment eq)
         {
-            Control control_runtime = i == 1 ? tb_runtime1 : tb_runtime2;
+            Control control_runtime = i == 0 ? tb_runtime1 : tb_runtime2;
             if (eq == Equipment.Car)
             {
                
@@ -66,7 +66,7 @@ namespace XFC.View
                 if (int.TryParse(control_runtime.Text, out int result))
                 {
                     ConstantValue.xfcInfos[i].runtime = result;
-                    if(i == 1)
+                    if(i == 0)
                         ConstantValue.runtime1 = result * 60 * 1000;
                     else
                         ConstantValue.runtime2 = result * 60 * 1000;

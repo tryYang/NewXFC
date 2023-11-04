@@ -245,11 +245,11 @@ namespace XFC.View
         private void Form_ShiYanCanShu_Load(object sender, EventArgs e)
         {
             Dictionary<string, Control> dic = new Dictionary<string, Control>();
-            dic.Add("select distinct CutomerDepart from	CarLab",cbx_CustomerDepart);  //送检单位
             dic.Add("select distinct CarName from CarBasicInfo",cbx_CarName);    //车辆名称
             dic.Add("select distinct CarFac from CarBasicInfo",cbx_carfac);  //车辆厂家
             dic.Add("select distinct UnderpanFac from CarBasicInfo",cbx_underfac); //底盘厂家
             dic.Add("select distinct PumpFac from CarBasicInfo",cbx_pumpfac); //水泵厂家
+            dic.Add("select distinct CustomerDepart from CarLab", cbx_CustomerDepart);  //送检单位
             //dic.Add("select distinct CarProduceTime	from CarBasicInfo",dateTimePicker2);  //生产日期
             //dic.Add("select distinct PumpType from CarBasicInfo",waterpumptype);  //水泵类型
             dic.Add("select distinct CarModel from CarBasicInfo",cbx_cartype);  //车辆型号

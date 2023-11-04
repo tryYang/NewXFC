@@ -224,7 +224,7 @@ namespace XFC.View
         private void Form_ShiYanCanShu_Load(object sender, EventArgs e)
         {
             Dictionary<string, Control> dic = new Dictionary<string, Control>();
-            dic.Add("select distinct CutomerDepart from	PumpLab", cbx_CustomerDepart);  //送检单位
+            dic.Add("select distinct CustomerDepart from	PumpLab", cbx_CustomerDepart);  //送检单位
             dic.Add("select distinct PumpName from PumpBasicInfo", cbx_PumpName);    //水泵名称
             dic.Add("select distinct PumpFac from PumpBasicInfo", cbx_pumpfac);  //水泵厂家            
             dic.Add("select distinct Speed  from PumpBasicInfo", tb_Speed);  //额定转速     

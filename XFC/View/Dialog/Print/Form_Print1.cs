@@ -1,7 +1,9 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
@@ -46,6 +48,23 @@ namespace XFC.View.Dialog.Print
                 this.reportViewer1.RefreshReport();
             }
         }
+        public void ShuJuYuan(string sqlDi, List<string> print)
+        {
+            using (OledbHelper helper = new OledbHelper())
+            {
+                helper.sqlstring = sqlDi;
+                System.Data.DataSet ds1 = helper.GetDataSet();
+                ReportDataSource rds = new ReportDataSource();
+                // rds.Name = "车载泵低压泵1";
+                rds.Name = print[0];
+                rds.Value = ds1.Tables[0];
+                // this.reportViewer1.LocalReport.ReportPath = "Report_Car_DiYa.rdlc";
+                this.reportViewer1.LocalReport.ReportPath = print[1];
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                this.reportViewer1.LocalReport.DataSources.Add(rds);
+                this.reportViewer1.RefreshReport();
+            }
+        }
 
         /// <summary>
         /// flag1=低压工况；flag2=一点三工况；flag3=超负荷工况；flag4=半流量工况；flag5=高压工况；flag6=中高压工况
@@ -54,211 +73,93 @@ namespace XFC.View.Dialog.Print
         /// <param name="e"></param>
         private void Form_Print1_Load(object sender, EventArgs e)
         {
-            bool flag1 = true;// flag1=低压工况；
-            bool flag2 = true;//flag2=一点三工况；
-            bool flag3 = true;//flag3=超负荷工况；
-            bool flag4 = true;//flag4=半流量工况；
-            bool flag5 = true;//flag5=高压工况；
-            bool flag6 = true;//flag6=中压工况
+            Printload(0);
+        }
+
+        private void Printload( int index)
+        {
             
+            List<List<string>> PrintList_car = new List<List<string>>();
+            PrintList_car.Add(new List<string>() { "车载泵低压泵1", "Report_Car_DiYa.rdlc" });
+            PrintList_car.Add(new List<string>() { "车载泵高压泵和中压泵1", "Report_Car_GaoAndZhongYa.rdlc" });
+            PrintList_car.Add(new List<string>() { "车载泵高低压泵1", "Report_Car_GaoDiYa.rdlc" });
+            PrintList_car.Add(new List<string>() { "车载泵中低压泵1", "Report_Car_zhongDiYa.rdlc" });
+            List<List<string>> PrintList_pump = new List<List<string>>();
+            PrintList_pump.Add(new List<string>() { "消防泵低压泵1", "Report_Pump_DiYa.rdlc" });
+            PrintList_pump.Add(new List<string>() { "消防泵高压泵和中压泵1", "Report_Pump_DiYa.rdlc" });
+            PrintList_pump.Add(new List<string>() { "消防泵高低压泵1", "Report_Pump_GaoDiYa.rdlc" });
+            PrintList_pump.Add(new List<string>() { "消防泵中低压泵1", "Report_Car_zhongDiYa.rdlc" });
 
             using (OledbHelper helper = new OledbHelper())
             {
-                if (ConstantValue.EquipemntList[0]==Equipment.Car)
-                {
-                    if (ConstantValue.PumpTypeList[0] == PumpType.DiYaPump)
+                if (ConstantValue.EquipemntList[index] == Equipment.Car)
+                {   List<int> gklist = new List<int>(6);
+                    for(int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
                     {
-                        //怎么判断具体泵类型
+                        if (ConstantValue.xfcInfos[index].IsGkCompleted[i])
+                        {
+                            gklist[i] = 1;
+                        }
+                        else
+                        {
+                            gklist[i] = 0;
+                        }
+                    }
+                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist);
+
+                    switch (ConstantValue.PumpTypeList[index])
+                    {
+                        case PumpType.DiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[0]);
+                            break;
+                        case PumpType.ZhongYaPump:
+                        case PumpType.GaoYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[1]);
+                            break;
+                        case PumpType.ZhongDiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[2]);
+                            break;
+                        case PumpType.GaoDiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[3]);
+                            break;
 
                     }
                 }
-                if (textBox1.Text == "消防车")
+                else if (ConstantValue.EquipemntList[index] == Equipment.Pump)
                 {
-                    if (textBox2.Text == "低压泵")
+                    List<int> gklist = new List<int>(6);
+                    for (int i = 0; i < ConstantValue.xfbInfos[index].IsGkCompleted.Count; i++)
                     {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
+                        if (ConstantValue.xfbInfos[index].IsGkCompleted[i])
                         {
-                            gkList.Add(1);
+                            gklist[i] = 1;
                         }
-                        if (flag2 == true)
+                        else
                         {
-                            gkList.Add(2);
+                            gklist[i] = 0;
                         }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                       // MessageBox.Show(helper1.Generate());
-                        ShuJuYuan(helper1.Generate(), "车载泵低压泵1", "Report_Car_DiYa.rdlc");
                     }
-                    else if (textBox2.Text == "高压泵" || textBox2.Text == "中压泵")
+                    PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gklist);
+                    switch (ConstantValue.PumpTypeList[index])
                     {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                        ShuJuYuan(helper1.Generate(), "车载泵高压泵和中压泵1", "Report_Car_GaoAndZhongYa.rdlc");
-                    }
-                    else if (textBox2.Text == "高低压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag5 == true)
-                        {
-                            gkList.Add(5);
-                        }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                        ShuJuYuan(helper1.Generate(), "车载泵高低压泵1", "Report_Car_GaoDiYa.rdlc");
-                    }
-                    else if (textBox2.Text == "中低压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag6 == true)
-                        {
-                            gkList.Add(6);
-                        }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gkList);
-                        //ShuJuYuan(helper1.Generate(), "车载泵中低压泵1", "Report_Car_zhongDiYa.rdlc");
-                    }
-                    else if (textBox2.Text == "")
-                    {
-                        MessageBox.Show("未选择具体工况，请选择工况！");
-                    }
+                        case PumpType.DiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[0]);
+                            break;
+                        case PumpType.ZhongYaPump:
+                        case PumpType.GaoYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[1]);
+                            break;
+                        case PumpType.ZhongDiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[2]);
+                            break;
+                        case PumpType.GaoDiYaPump:
+                            ShuJuYuan(helper1.Generate(), PrintList_car[3]);
+                            break;
 
+
+                    }
                 }
-                else if (textBox1.Text == "消防泵")
-                {
-                    if (textBox2.Text == "低压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag2 == true)
-                        {
-                            gkList.Add(2);
-                        }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gkList);
-                        //MessageBox.Show(helper1.Generate());
-                        ShuJuYuan(helper1.Generate(), "消防泵低压泵1", "Report_Pump_DiYa.rdlc");
-                    }
-                    else if (textBox2.Text == "高压泵" || textBox2.Text == "中压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gkList);
-                        ShuJuYuan(helper1.Generate(), "消防泵高压泵和中压泵1", "Report_Pump_GaoAndZhongYa.rdlc");
-                    }
-                    else if (textBox2.Text == "高低压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag5 == true)
-                        {
-                            gkList.Add(5);
-                        }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gkList);
-                        ShuJuYuan(helper1.Generate(), "消防泵高低压泵1", "Report_Pump_GaoDiYa.rdlc");
-                    }
-                    else if (textBox2.Text == "中低压泵")
-                    {
-                        List<int> gkList = new List<int>();
-                        if (flag1 == true)// flag1=低压工况；运行了低压工况
-                        {
-                            gkList.Add(1);
-                        }
-                        if (flag6 == true)
-                        {
-                            gkList.Add(6);
-                        }
-                        if (flag3 == true)
-                        {
-                            gkList.Add(3);
-                        }
-                        if (flag4 == true)
-                        {
-                            gkList.Add(4);
-                        }
-                        PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gkList);
-                        ShuJuYuan(helper1.Generate(), "消防泵中低压泵1", "Report_Pump_zhongDiYa.rdlc");
-                    }
-                    else if (textBox2.Text == "")
-                    {
-                        MessageBox.Show("未选择具体工况，请选择工况！");
-                    }
-
-                }
-                else if (textBox1.Text == "")
-                {
-                     MessageBox.Show("当前无实验进行，请新建实验！");
-
-                }
-
             }
         }
-
-
     }
 }

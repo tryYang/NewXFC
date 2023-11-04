@@ -133,6 +133,25 @@ namespace XFC.View
             ConstantValue.xfbInfos[index].IsChecked = true;
             ConstantValue.gkStatus = GkStatus.Checked;
             ConstantValue.EquipemntList[index] = Equipment.Pump;
+            switch (waterpumptype.SelectedIndex)
+            {
+                case 0:
+                    ConstantValue.PumpTypeList[index] = PumpType.DiYaPump;
+                    break;
+                case 1:
+                    ConstantValue.PumpTypeList[index] = PumpType.ZhongYaPump;
+                    break;
+                case 2:
+                    ConstantValue.PumpTypeList[index] = PumpType.GaoYaPump;
+                    break;
+                case 3:
+                    ConstantValue.PumpTypeList[index] = PumpType.ZhongDiYaPump;
+                    break;
+                case 4:
+                    ConstantValue.PumpTypeList[index] = PumpType.GaoDiYaPump;
+                    break;
+
+            }
             SetMainWindowValue();
            
             this.Close();

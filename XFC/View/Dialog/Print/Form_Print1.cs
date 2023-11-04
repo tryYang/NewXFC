@@ -68,6 +68,7 @@ namespace XFC.View.Dialog.Print
                 {
                     if (ConstantValue.PumpTypeList[0] == PumpType.DiYaPump)
                     {
+                        //怎么判断具体泵类型
 
                     }
                 }

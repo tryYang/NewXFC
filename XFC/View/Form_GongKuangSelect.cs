@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace XFC.View
         public Form_GongKuangSelect()
         {
             InitializeComponent();
-            Update();
+            
         }
 
         private void btn_confirm_Click(object sender, EventArgs e)
@@ -103,13 +104,139 @@ namespace XFC.View
 
         public void Update()
         {
-            rb_standard1.Select();
-            rb_standard2.Select();
-            
+
+            switch (ConstantValue.EquipemntList[0]) {
+                case Equipment.Car:
+                    lb_Equipment1.Text = "消防车";
+                    break;
+                case Equipment.Pump:
+                    lb_Equipment1.Text = "消防泵";
+                    break;
+                case Equipment.None:
+                    lb_Equipment1.Text = "无";
+                    break;
+            }
+            switch (ConstantValue.EquipemntList[1])
+            {
+                case Equipment.Car:
+                    lb_Equipment2.Text = "消防车";
+                    break;
+                case Equipment.Pump:
+                    lb_Equipment2.Text = "消防泵";
+                    break;
+                case Equipment.None:
+                    lb_Equipment2.Text = "无";
+                    break;
+            }
+
             //试验状态更新
             CarStatusUpdate();
             //工况状态更新
             GkStatusUpdate();
+            SelectUpdate();
+
+        }
+
+        private void SelectUpdate()
+        {
+            List<System.Windows.Forms.RadioButton> RadioButtons1=new List<System.Windows.Forms.RadioButton>() {
+                rb_standard1,
+                rb_13_1,
+                rb_super1,
+                rb_half1,
+                rb_high1,
+                rb_mid1
+            };
+            List<System.Windows.Forms.RadioButton> RadioButtons2 = new List<System.Windows.Forms.RadioButton>() {
+                rb_standard2,
+                rb_13_2,
+                rb_super2,
+                rb_half2,
+                rb_high2,
+                rb_mid2
+            };
+            List<bool> selectindex1 = new List<bool>() { false, false, false, false, false, false };
+            List<bool> selectindex2 = new List<bool>() { false, false, false, false, false, false };
+            
+
+            switch (ConstantValue.PumpTypeList[0])
+            {
+                case PumpType.DiYaPump:
+                    selectindex1[0]=true; selectindex1[1] = true; selectindex1[2] = true; selectindex1[3] = true;
+                    break;
+                case PumpType.GaoYaPump:
+                    selectindex1[0] = true;  selectindex1[3] = true;
+
+                    break;
+                case PumpType.ZhongYaPump:
+                    selectindex1[0] = true; selectindex1[3] = true;
+
+                    break;
+                case PumpType.GaoDiYaPump:
+                    selectindex1[0] = true; selectindex1[5] = true; selectindex1[2] = true; selectindex1[3] = true;
+
+                    break;
+                case PumpType.ZhongDiYaPump :
+                    selectindex1[0] = true; selectindex1[6] = true; selectindex1[2] = true; selectindex1[3] = true;
+
+                    break;
+               
+            }
+            switch (ConstantValue.PumpTypeList[1])
+            {
+                case PumpType.DiYaPump:
+                    selectindex2[0] = true; selectindex2[1] = true; selectindex2[2] = true; selectindex2[3] = true;
+                    break;
+                case PumpType.GaoYaPump:
+                    selectindex2[0] = true; selectindex2[3] = true;
+
+                    break;
+                case PumpType.ZhongYaPump:
+                    selectindex2[0] = true; selectindex2[3] = true;
+
+                    break;
+                case PumpType.GaoDiYaPump:
+                    selectindex2[0] = true; selectindex2[5] = true; selectindex2[2] = true; selectindex2[3] = true;
+
+                    break;
+                case PumpType.ZhongDiYaPump:
+                    selectindex2[0] = true; selectindex2[6] = true; selectindex2[2] = true; selectindex2[3] = true;
+
+                    break;
+
+            }
+            for(int i = 0; i < selectindex1.Count; i++)
+            {
+                if (selectindex1[i]) {
+                    RadioButtons1[i].Show();
+                }
+                else
+                {
+                    RadioButtons1[i].Hide();
+                }
+                
+            }
+            for (int i = 0; i < selectindex2.Count; i++)
+            {
+                if (selectindex2[i])
+                {
+                    RadioButtons2[i].Show();
+                }
+                else
+                {
+                    RadioButtons2[i].Hide();
+                }
+
+            }
+            //Dictionary<PumpType, List<System.Windows.Forms.RadioButton> >  dic=null;
+            //List<System.Windows.Forms.RadioButton> DiyaRadioButtons = new List<System.Windows.Forms.RadioButton>() { };
+            //List<System.Windows.Forms.RadioButton> GaoyaRadioButtons = new List<System.Windows.Forms.RadioButton>();
+            //List<System.Windows.Forms.RadioButton> ZhongyaRadioButtons = new List<System.Windows.Forms.RadioButton>();
+            //List<System.Windows.Forms.RadioButton> DaodiyaRadioButtons = new List<System.Windows.Forms.RadioButton>();
+            //List<System.Windows.Forms.RadioButton> ZhogndiyaRadioButtons = new List<System.Windows.Forms.RadioButton>();
+
+
+            //dic.Add(PumpType.DiYaPump, );
 
 
         }
@@ -119,34 +246,42 @@ namespace XFC.View
             int k = i - 1;
             if (i == 1)
             {
-                
-                if (rb_13_1.Checked)
+
+                if (rb_13_1.Checked|| !rb_13_1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
-                else if (rb_standard1.Checked)
+                else if (rb_standard1.Checked || !rb_standard1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                else if (rb_high1.Checked)
+                else if (rb_high1.Checked || !rb_high1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid1.Checked)
+                else if (rb_mid1.Checked || !rb_mid1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                else if (rb_half1.Checked)
+                else if (rb_half1.Checked || !rb_half1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super1.Checked)
+                else if (rb_super1.Checked || !rb_super1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
+                else
+                {
+                    MessageBox.Show("未选择具体工况");
+                }
             }
             else if (i == 2)
             {
-                if (rb_13_2.Checked)
+                if (rb_13_2.Checked || !rb_13_1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
-                else if (rb_standard2.Checked)
+                else if (rb_standard2.Checked || !rb_standard2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                else if (rb_high2.Checked)
+                else if (rb_high2.Checked || !rb_high2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid2.Checked)
+                else if (rb_mid2.Checked || !rb_mid2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                else if (rb_half2.Checked)
+                else if (rb_half2.Checked || !rb_half2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super2.Checked)
+                else if (rb_super2.Checked || !rb_super2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
+                else
+                {
+                    MessageBox.Show("未选择具体工况");
+                }
             }
 
         }

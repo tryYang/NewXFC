@@ -18,9 +18,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace XFC.View.Dialog.Print
 {
-    public partial class Form_Print1 : Form
+    public partial class Form_Print2 : Form
     {
-        public Form_Print1()
+        public Form_Print2()
         {
             InitializeComponent();
         }
@@ -75,7 +75,7 @@ namespace XFC.View.Dialog.Print
         {
             Printload(0);
         }
-        
+
         private void Printload( int index)
         {
             

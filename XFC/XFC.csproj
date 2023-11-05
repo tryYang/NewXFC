@@ -205,6 +205,12 @@
     <Compile Include="View\Dialog\Form_YuZhiSheZhi.Designer.cs">
       <DependentUpon>Form_YuZhiSheZhi.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\Print\Form_Print2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\Print\Form_Print2.Designer.cs">
+      <DependentUpon>Form_Print2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\Print\Form_Print1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,9 @@
     <EmbeddedResource Include="Report\Report_Car_GaoDiYa.rdlc" />
     <EmbeddedResource Include="View\Dialog\Form_YuZhiSheZhi.resx">
       <DependentUpon>Form_YuZhiSheZhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\Print\Form_Print2.resx">
+      <DependentUpon>Form_Print2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\Print\Form_Print1.resx">
       <DependentUpon>Form_Print1.cs</DependentUpon>

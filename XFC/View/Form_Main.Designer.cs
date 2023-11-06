@@ -551,6 +551,7 @@
             this.tb_OutTemp2.Location = new System.Drawing.Point(140, 232);
             this.tb_OutTemp2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_OutTemp2.Name = "tb_OutTemp2";
+            this.tb_OutTemp2.ReadOnly = true;
             this.tb_OutTemp2.Size = new System.Drawing.Size(74, 24);
             this.tb_OutTemp2.TabIndex = 72;
             // 
@@ -559,6 +560,7 @@
             this.tb_HPress2.Location = new System.Drawing.Point(140, 96);
             this.tb_HPress2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_HPress2.Name = "tb_HPress2";
+            this.tb_HPress2.ReadOnly = true;
             this.tb_HPress2.Size = new System.Drawing.Size(74, 24);
             this.tb_HPress2.TabIndex = 71;
             // 
@@ -590,6 +592,7 @@
             this.tb_CarPumpSpeed2.Location = new System.Drawing.Point(140, 178);
             this.tb_CarPumpSpeed2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_CarPumpSpeed2.Name = "tb_CarPumpSpeed2";
+            this.tb_CarPumpSpeed2.ReadOnly = true;
             this.tb_CarPumpSpeed2.Size = new System.Drawing.Size(74, 24);
             this.tb_CarPumpSpeed2.TabIndex = 68;
             // 
@@ -598,6 +601,7 @@
             this.tb_Vacuum2.Location = new System.Drawing.Point(140, 150);
             this.tb_Vacuum2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Vacuum2.Name = "tb_Vacuum2";
+            this.tb_Vacuum2.ReadOnly = true;
             this.tb_Vacuum2.Size = new System.Drawing.Size(74, 24);
             this.tb_Vacuum2.TabIndex = 67;
             // 
@@ -606,6 +610,7 @@
             this.tb_HFlow2.Location = new System.Drawing.Point(140, 123);
             this.tb_HFlow2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_HFlow2.Name = "tb_HFlow2";
+            this.tb_HFlow2.ReadOnly = true;
             this.tb_HFlow2.Size = new System.Drawing.Size(74, 24);
             this.tb_HFlow2.TabIndex = 66;
             // 
@@ -614,6 +619,7 @@
             this.tb_InTemp2.Location = new System.Drawing.Point(140, 205);
             this.tb_InTemp2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_InTemp2.Name = "tb_InTemp2";
+            this.tb_InTemp2.ReadOnly = true;
             this.tb_InTemp2.Size = new System.Drawing.Size(74, 24);
             this.tb_InTemp2.TabIndex = 65;
             // 
@@ -622,6 +628,7 @@
             this.tb_LFlow2.Location = new System.Drawing.Point(140, 69);
             this.tb_LFlow2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_LFlow2.Name = "tb_LFlow2";
+            this.tb_LFlow2.ReadOnly = true;
             this.tb_LFlow2.Size = new System.Drawing.Size(74, 24);
             this.tb_LFlow2.TabIndex = 64;
             // 
@@ -630,6 +637,7 @@
             this.tb_LPress2.Location = new System.Drawing.Point(140, 42);
             this.tb_LPress2.Margin = new System.Windows.Forms.Padding(2);
             this.tb_LPress2.Name = "tb_LPress2";
+            this.tb_LPress2.ReadOnly = true;
             this.tb_LPress2.Size = new System.Drawing.Size(74, 24);
             this.tb_LPress2.TabIndex = 63;
             // 
@@ -743,6 +751,7 @@
             this.tb_LPress1.Location = new System.Drawing.Point(143, 42);
             this.tb_LPress1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_LPress1.Name = "tb_LPress1";
+            this.tb_LPress1.ReadOnly = true;
             this.tb_LPress1.Size = new System.Drawing.Size(75, 24);
             this.tb_LPress1.TabIndex = 58;
             // 
@@ -751,6 +760,7 @@
             this.tb_OutTemp1.Location = new System.Drawing.Point(143, 232);
             this.tb_OutTemp1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_OutTemp1.Name = "tb_OutTemp1";
+            this.tb_OutTemp1.ReadOnly = true;
             this.tb_OutTemp1.Size = new System.Drawing.Size(75, 24);
             this.tb_OutTemp1.TabIndex = 67;
             // 
@@ -759,6 +769,7 @@
             this.tb_InTemp1.Location = new System.Drawing.Point(143, 205);
             this.tb_InTemp1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_InTemp1.Name = "tb_InTemp1";
+            this.tb_InTemp1.ReadOnly = true;
             this.tb_InTemp1.Size = new System.Drawing.Size(75, 24);
             this.tb_InTemp1.TabIndex = 66;
             // 
@@ -790,6 +801,7 @@
             this.tb_CarPumpSpeed1.Location = new System.Drawing.Point(143, 178);
             this.tb_CarPumpSpeed1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_CarPumpSpeed1.Name = "tb_CarPumpSpeed1";
+            this.tb_CarPumpSpeed1.ReadOnly = true;
             this.tb_CarPumpSpeed1.Size = new System.Drawing.Size(75, 24);
             this.tb_CarPumpSpeed1.TabIndex = 63;
             // 
@@ -798,6 +810,7 @@
             this.tb_Vacuum1.Location = new System.Drawing.Point(143, 150);
             this.tb_Vacuum1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Vacuum1.Name = "tb_Vacuum1";
+            this.tb_Vacuum1.ReadOnly = true;
             this.tb_Vacuum1.Size = new System.Drawing.Size(75, 24);
             this.tb_Vacuum1.TabIndex = 62;
             // 
@@ -806,6 +819,7 @@
             this.tb_HFlow1.Location = new System.Drawing.Point(143, 123);
             this.tb_HFlow1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_HFlow1.Name = "tb_HFlow1";
+            this.tb_HFlow1.ReadOnly = true;
             this.tb_HFlow1.Size = new System.Drawing.Size(75, 24);
             this.tb_HFlow1.TabIndex = 61;
             // 
@@ -814,6 +828,7 @@
             this.tb_HPress1.Location = new System.Drawing.Point(143, 96);
             this.tb_HPress1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_HPress1.Name = "tb_HPress1";
+            this.tb_HPress1.ReadOnly = true;
             this.tb_HPress1.Size = new System.Drawing.Size(75, 24);
             this.tb_HPress1.TabIndex = 60;
             // 
@@ -822,6 +837,7 @@
             this.tb_LFlow1.Location = new System.Drawing.Point(143, 69);
             this.tb_LFlow1.Margin = new System.Windows.Forms.Padding(2);
             this.tb_LFlow1.Name = "tb_LFlow1";
+            this.tb_LFlow1.ReadOnly = true;
             this.tb_LFlow1.Size = new System.Drawing.Size(75, 24);
             this.tb_LFlow1.TabIndex = 59;
             // 
@@ -986,6 +1002,7 @@
             // 
             // cmb_Baudrate
             // 
+            this.cmb_Baudrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Baudrate.FormattingEnabled = true;
             this.cmb_Baudrate.Location = new System.Drawing.Point(118, 77);
             this.cmb_Baudrate.Name = "cmb_Baudrate";
@@ -994,6 +1011,7 @@
             // 
             // cmb_Parity
             // 
+            this.cmb_Parity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Parity.FormattingEnabled = true;
             this.cmb_Parity.Location = new System.Drawing.Point(118, 143);
             this.cmb_Parity.Name = "cmb_Parity";
@@ -1029,6 +1047,7 @@
             // 
             // cmb_StopBits
             // 
+            this.cmb_StopBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_StopBits.FormattingEnabled = true;
             this.cmb_StopBits.Location = new System.Drawing.Point(118, 110);
             this.cmb_StopBits.Name = "cmb_StopBits";
@@ -1127,7 +1146,7 @@
             this.toolStripTextBox17});
             this.toolStripMenuItem8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem8.Text = "新建试验";
             // 
             // tp_xfc_test
@@ -1159,7 +1178,7 @@
             this.toolStripTextBox20});
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem9.Text = "打开试验";
             // 
             // toolStripTextBox18
@@ -1206,7 +1225,7 @@
             // 
             this.tp_gkchoose.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkchoose.Name = "tp_gkchoose";
-            this.tp_gkchoose.Size = new System.Drawing.Size(180, 22);
+            this.tp_gkchoose.Size = new System.Drawing.Size(160, 22);
             this.tp_gkchoose.Text = "选择工况";
             // 
             // tp_gkzhanting
@@ -1247,7 +1266,7 @@
             this.tp_printtable3});
             this.toolStripTextBox8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripTextBox8.Name = "toolStripTextBox8";
-            this.toolStripTextBox8.Size = new System.Drawing.Size(180, 22);
+            this.toolStripTextBox8.Size = new System.Drawing.Size(161, 22);
             this.toolStripTextBox8.Text = "生成报表（高）";
             // 
             // tp_printtable1
@@ -1295,7 +1314,7 @@
             this.tp_xfbproduct});
             this.toolStripMenuItem11.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem11.Text = "产品信息管理";
             // 
             // tp_xfcproduct
@@ -2259,6 +2278,7 @@
             // 
             this.High_7m.Location = new System.Drawing.Point(223, 313);
             this.High_7m.Name = "High_7m";
+            this.High_7m.ReadOnly = true;
             this.High_7m.Size = new System.Drawing.Size(100, 25);
             this.High_7m.TabIndex = 62;
             // 
@@ -2284,6 +2304,7 @@
             // 
             this.Depth_3m.Location = new System.Drawing.Point(223, 220);
             this.Depth_3m.Name = "Depth_3m";
+            this.Depth_3m.ReadOnly = true;
             this.Depth_3m.Size = new System.Drawing.Size(100, 25);
             this.Depth_3m.TabIndex = 59;
             // 
@@ -2291,6 +2312,7 @@
             // 
             this.Depth_7m.Location = new System.Drawing.Point(223, 361);
             this.Depth_7m.Name = "Depth_7m";
+            this.Depth_7m.ReadOnly = true;
             this.Depth_7m.Size = new System.Drawing.Size(100, 25);
             this.Depth_7m.TabIndex = 58;
             // 
@@ -2298,6 +2320,7 @@
             // 
             this.Temp_7m.Location = new System.Drawing.Point(223, 266);
             this.Temp_7m.Name = "Temp_7m";
+            this.Temp_7m.ReadOnly = true;
             this.Temp_7m.Size = new System.Drawing.Size(100, 25);
             this.Temp_7m.TabIndex = 57;
             // 
@@ -2323,6 +2346,7 @@
             // 
             this.Temp.Location = new System.Drawing.Point(223, 38);
             this.Temp.Name = "Temp";
+            this.Temp.ReadOnly = true;
             this.Temp.Size = new System.Drawing.Size(100, 25);
             this.Temp.TabIndex = 54;
             // 
@@ -2348,6 +2372,7 @@
             // 
             this.Pressure.Location = new System.Drawing.Point(223, 83);
             this.Pressure.Name = "Pressure";
+            this.Pressure.ReadOnly = true;
             this.Pressure.Size = new System.Drawing.Size(100, 25);
             this.Pressure.TabIndex = 51;
             // 
@@ -2366,6 +2391,7 @@
             // 
             this.Temp_3m.Location = new System.Drawing.Point(223, 129);
             this.Temp_3m.Name = "Temp_3m";
+            this.Temp_3m.ReadOnly = true;
             this.Temp_3m.Size = new System.Drawing.Size(100, 25);
             this.Temp_3m.TabIndex = 21;
             // 
@@ -2391,6 +2417,7 @@
             // 
             this.High_3m.Location = new System.Drawing.Point(223, 174);
             this.High_3m.Name = "High_3m";
+            this.High_3m.ReadOnly = true;
             this.High_3m.Size = new System.Drawing.Size(100, 25);
             this.High_3m.TabIndex = 1;
             // 
@@ -2439,6 +2466,7 @@
             // 
             this.Speed110kw2.Location = new System.Drawing.Point(223, 470);
             this.Speed110kw2.Name = "Speed110kw2";
+            this.Speed110kw2.ReadOnly = true;
             this.Speed110kw2.Size = new System.Drawing.Size(100, 25);
             this.Speed110kw2.TabIndex = 62;
             // 
@@ -2446,6 +2474,7 @@
             // 
             this.Troque110kw2.Location = new System.Drawing.Point(223, 502);
             this.Troque110kw2.Name = "Troque110kw2";
+            this.Troque110kw2.ReadOnly = true;
             this.Troque110kw2.Size = new System.Drawing.Size(100, 25);
             this.Troque110kw2.TabIndex = 61;
             // 
@@ -2471,6 +2500,7 @@
             // 
             this.DN300Flow2.Location = new System.Drawing.Point(223, 408);
             this.DN300Flow2.Name = "DN300Flow2";
+            this.DN300Flow2.ReadOnly = true;
             this.DN300Flow2.Size = new System.Drawing.Size(100, 25);
             this.DN300Flow2.TabIndex = 54;
             // 
@@ -2478,6 +2508,7 @@
             // 
             this.DN300Value2.Location = new System.Drawing.Point(223, 439);
             this.DN300Value2.Name = "DN300Value2";
+            this.DN300Value2.ReadOnly = true;
             this.DN300Value2.Size = new System.Drawing.Size(100, 25);
             this.DN300Value2.TabIndex = 53;
             // 
@@ -2514,6 +2545,7 @@
             // 
             this.CarPumpSpeed2.Location = new System.Drawing.Point(223, 34);
             this.CarPumpSpeed2.Name = "CarPumpSpeed2";
+            this.CarPumpSpeed2.ReadOnly = true;
             this.CarPumpSpeed2.Size = new System.Drawing.Size(100, 25);
             this.CarPumpSpeed2.TabIndex = 35;
             // 
@@ -2521,6 +2553,7 @@
             // 
             this.InTemp2.Location = new System.Drawing.Point(223, 65);
             this.InTemp2.Name = "InTemp2";
+            this.InTemp2.ReadOnly = true;
             this.InTemp2.Size = new System.Drawing.Size(100, 25);
             this.InTemp2.TabIndex = 34;
             // 
@@ -2528,6 +2561,7 @@
             // 
             this.OutTemp2.Location = new System.Drawing.Point(223, 96);
             this.OutTemp2.Name = "OutTemp2";
+            this.OutTemp2.ReadOnly = true;
             this.OutTemp2.Size = new System.Drawing.Size(100, 25);
             this.OutTemp2.TabIndex = 33;
             // 
@@ -2535,6 +2569,7 @@
             // 
             this.Vacuum2.Location = new System.Drawing.Point(223, 127);
             this.Vacuum2.Name = "Vacuum2";
+            this.Vacuum2.ReadOnly = true;
             this.Vacuum2.Size = new System.Drawing.Size(100, 25);
             this.Vacuum2.TabIndex = 30;
             // 
@@ -2542,6 +2577,7 @@
             // 
             this.HPress2.Location = new System.Drawing.Point(223, 158);
             this.HPress2.Name = "HPress2";
+            this.HPress2.ReadOnly = true;
             this.HPress2.Size = new System.Drawing.Size(100, 25);
             this.HPress2.TabIndex = 29;
             // 
@@ -2549,6 +2585,7 @@
             // 
             this.LPress2.Location = new System.Drawing.Point(223, 190);
             this.LPress2.Name = "LPress2";
+            this.LPress2.ReadOnly = true;
             this.LPress2.Size = new System.Drawing.Size(100, 25);
             this.LPress2.TabIndex = 28;
             // 
@@ -2556,6 +2593,7 @@
             // 
             this.DN50Flow2.Location = new System.Drawing.Point(223, 221);
             this.DN50Flow2.Name = "DN50Flow2";
+            this.DN50Flow2.ReadOnly = true;
             this.DN50Flow2.Size = new System.Drawing.Size(100, 25);
             this.DN50Flow2.TabIndex = 27;
             // 
@@ -2563,6 +2601,7 @@
             // 
             this.DN50Value2.Location = new System.Drawing.Point(223, 252);
             this.DN50Value2.Name = "DN50Value2";
+            this.DN50Value2.ReadOnly = true;
             this.DN50Value2.Size = new System.Drawing.Size(100, 25);
             this.DN50Value2.TabIndex = 26;
             // 
@@ -2570,6 +2609,7 @@
             // 
             this.DN100Flow2.Location = new System.Drawing.Point(223, 283);
             this.DN100Flow2.Name = "DN100Flow2";
+            this.DN100Flow2.ReadOnly = true;
             this.DN100Flow2.Size = new System.Drawing.Size(100, 25);
             this.DN100Flow2.TabIndex = 25;
             // 
@@ -2577,6 +2617,7 @@
             // 
             this.DN100Value2.Location = new System.Drawing.Point(223, 314);
             this.DN100Value2.Name = "DN100Value2";
+            this.DN100Value2.ReadOnly = true;
             this.DN100Value2.Size = new System.Drawing.Size(100, 25);
             this.DN100Value2.TabIndex = 24;
             // 
@@ -2584,6 +2625,7 @@
             // 
             this.DN200Flow2.Location = new System.Drawing.Point(223, 346);
             this.DN200Flow2.Name = "DN200Flow2";
+            this.DN200Flow2.ReadOnly = true;
             this.DN200Flow2.Size = new System.Drawing.Size(100, 25);
             this.DN200Flow2.TabIndex = 23;
             // 
@@ -2591,6 +2633,7 @@
             // 
             this.DN200Value2.Location = new System.Drawing.Point(223, 377);
             this.DN200Value2.Name = "DN200Value2";
+            this.DN200Value2.ReadOnly = true;
             this.DN200Value2.Size = new System.Drawing.Size(100, 25);
             this.DN200Value2.TabIndex = 22;
             // 
@@ -2747,6 +2790,7 @@
             // 
             this.Speed110kw1.Location = new System.Drawing.Point(224, 470);
             this.Speed110kw1.Name = "Speed110kw1";
+            this.Speed110kw1.ReadOnly = true;
             this.Speed110kw1.Size = new System.Drawing.Size(100, 25);
             this.Speed110kw1.TabIndex = 58;
             // 
@@ -2754,6 +2798,7 @@
             // 
             this.Troque110kw1.Location = new System.Drawing.Point(224, 502);
             this.Troque110kw1.Name = "Troque110kw1";
+            this.Troque110kw1.ReadOnly = true;
             this.Troque110kw1.Size = new System.Drawing.Size(100, 25);
             this.Troque110kw1.TabIndex = 57;
             // 
@@ -2779,6 +2824,7 @@
             // 
             this.DN300Flow1.Location = new System.Drawing.Point(224, 408);
             this.DN300Flow1.Name = "DN300Flow1";
+            this.DN300Flow1.ReadOnly = true;
             this.DN300Flow1.Size = new System.Drawing.Size(100, 25);
             this.DN300Flow1.TabIndex = 54;
             // 
@@ -2786,6 +2832,7 @@
             // 
             this.DN300Value1.Location = new System.Drawing.Point(224, 439);
             this.DN300Value1.Name = "DN300Value1";
+            this.DN300Value1.ReadOnly = true;
             this.DN300Value1.Size = new System.Drawing.Size(100, 25);
             this.DN300Value1.TabIndex = 53;
             // 
@@ -2822,6 +2869,7 @@
             // 
             this.CarPumpSpeed1.Location = new System.Drawing.Point(224, 34);
             this.CarPumpSpeed1.Name = "CarPumpSpeed1";
+            this.CarPumpSpeed1.ReadOnly = true;
             this.CarPumpSpeed1.Size = new System.Drawing.Size(100, 25);
             this.CarPumpSpeed1.TabIndex = 35;
             // 
@@ -2829,6 +2877,7 @@
             // 
             this.InTemp1.Location = new System.Drawing.Point(224, 65);
             this.InTemp1.Name = "InTemp1";
+            this.InTemp1.ReadOnly = true;
             this.InTemp1.Size = new System.Drawing.Size(100, 25);
             this.InTemp1.TabIndex = 34;
             // 
@@ -2836,6 +2885,7 @@
             // 
             this.OutTemp1.Location = new System.Drawing.Point(224, 96);
             this.OutTemp1.Name = "OutTemp1";
+            this.OutTemp1.ReadOnly = true;
             this.OutTemp1.Size = new System.Drawing.Size(100, 25);
             this.OutTemp1.TabIndex = 33;
             // 
@@ -2843,6 +2893,7 @@
             // 
             this.Vacuum1.Location = new System.Drawing.Point(224, 127);
             this.Vacuum1.Name = "Vacuum1";
+            this.Vacuum1.ReadOnly = true;
             this.Vacuum1.Size = new System.Drawing.Size(100, 25);
             this.Vacuum1.TabIndex = 30;
             // 
@@ -2850,6 +2901,7 @@
             // 
             this.HPress1.Location = new System.Drawing.Point(224, 158);
             this.HPress1.Name = "HPress1";
+            this.HPress1.ReadOnly = true;
             this.HPress1.Size = new System.Drawing.Size(100, 25);
             this.HPress1.TabIndex = 29;
             // 
@@ -2857,6 +2909,7 @@
             // 
             this.LPress1.Location = new System.Drawing.Point(224, 190);
             this.LPress1.Name = "LPress1";
+            this.LPress1.ReadOnly = true;
             this.LPress1.Size = new System.Drawing.Size(100, 25);
             this.LPress1.TabIndex = 28;
             // 
@@ -2864,6 +2917,7 @@
             // 
             this.DN50Flow1.Location = new System.Drawing.Point(224, 221);
             this.DN50Flow1.Name = "DN50Flow1";
+            this.DN50Flow1.ReadOnly = true;
             this.DN50Flow1.Size = new System.Drawing.Size(100, 25);
             this.DN50Flow1.TabIndex = 27;
             // 
@@ -2871,6 +2925,7 @@
             // 
             this.DN50Value1.Location = new System.Drawing.Point(224, 252);
             this.DN50Value1.Name = "DN50Value1";
+            this.DN50Value1.ReadOnly = true;
             this.DN50Value1.Size = new System.Drawing.Size(100, 25);
             this.DN50Value1.TabIndex = 26;
             // 
@@ -2878,6 +2933,7 @@
             // 
             this.DN100Flow1.Location = new System.Drawing.Point(224, 283);
             this.DN100Flow1.Name = "DN100Flow1";
+            this.DN100Flow1.ReadOnly = true;
             this.DN100Flow1.Size = new System.Drawing.Size(100, 25);
             this.DN100Flow1.TabIndex = 25;
             // 
@@ -2885,6 +2941,7 @@
             // 
             this.DN100Value1.Location = new System.Drawing.Point(224, 314);
             this.DN100Value1.Name = "DN100Value1";
+            this.DN100Value1.ReadOnly = true;
             this.DN100Value1.Size = new System.Drawing.Size(100, 25);
             this.DN100Value1.TabIndex = 24;
             // 
@@ -2892,6 +2949,7 @@
             // 
             this.DN200Flow1.Location = new System.Drawing.Point(224, 346);
             this.DN200Flow1.Name = "DN200Flow1";
+            this.DN200Flow1.ReadOnly = true;
             this.DN200Flow1.Size = new System.Drawing.Size(100, 25);
             this.DN200Flow1.TabIndex = 23;
             // 
@@ -2899,6 +2957,7 @@
             // 
             this.DN200Value1.Location = new System.Drawing.Point(224, 377);
             this.DN200Value1.Name = "DN200Value1";
+            this.DN200Value1.ReadOnly = true;
             this.DN200Value1.Size = new System.Drawing.Size(100, 25);
             this.DN200Value1.TabIndex = 22;
             // 

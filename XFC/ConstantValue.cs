@@ -69,8 +69,16 @@ namespace XFC
             new Dictionary<int, FlowType>() {
             { 0, FlowType.None },
             { 1, FlowType.None }
-        }
-    };
+            }
+        };
+        //报表该打印的车辆ID 或 水泵Id
+        public static List<KeyValuePair<Equipment, int>> Print = new List<KeyValuePair<Equipment, int>>() {
+             new KeyValuePair<Equipment, int>(Equipment.None, -1),
+             new KeyValuePair<Equipment, int>(Equipment.None, -1),
+
+        };
+
+        
 
     }
 }

@@ -177,7 +177,7 @@ namespace XFC.View
                 //Task.Run(() => DataShow(0, ConstantValue.EquipemntList[0]));
                 //Task.Run(() => DataShow(1, ConstantValue.EquipemntList[1]));
                 DataShow(0, ConstantValue.EquipemntList[0]);
-                DataShow(0, ConstantValue.EquipemntList[1]);
+                DataShow(1, ConstantValue.EquipemntList[1]);
                 DateTime time = DateTime.Now;
              
             }));
@@ -613,7 +613,7 @@ namespace XFC.View
                    
                     uninitDataTimer();
                     NModubs4Helper.Instance.Close();
-                    
+                    EndHandle();
                     MessageBox.Show("工况结束");
                 }
                 catch (Exception ex){ 
@@ -627,6 +627,13 @@ namespace XFC.View
                 MessageBox.Show("暂无工况在运行");
             }
                 
+        }
+        /// <summary>
+        /// 工况运行结束后的处理
+        /// </summary>
+        private void EndHandle()
+        {
+            
         }
         private void OnTimedChartShow(object sender, ElapsedEventArgs e)
         {

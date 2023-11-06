@@ -106,7 +106,7 @@ namespace XFC.View.Dialog.Product
         {
             //获取DataGridView控件中的值
             
-            //int ProductID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());         
+           // int ProductID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());         
             string Productname = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();            
             string truckNo = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();           
             string manufactureORG = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();           

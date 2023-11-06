@@ -33,7 +33,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_UserName = new System.Windows.Forms.TextBox();
             this.btn_select = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_updata = new System.Windows.Forms.Button();
@@ -54,7 +54,6 @@
             this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户信息浏览";
-
             // 
             // panel1
             // 
@@ -75,13 +74,12 @@
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(870, 540);
             this.dataGridView1.TabIndex = 0;
-
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.tb_UserName);
             this.panel3.Controls.Add(this.btn_select);
             this.panel3.Location = new System.Drawing.Point(15, 12);
             this.panel3.Name = "panel3";
@@ -98,12 +96,12 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "用户名";
             // 
-            // textBox1
+            // tb_UserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 25);
-            this.textBox1.TabIndex = 4;
+            this.tb_UserName.Location = new System.Drawing.Point(16, 27);
+            this.tb_UserName.Name = "tb_UserName";
+            this.tb_UserName.Size = new System.Drawing.Size(173, 25);
+            this.tb_UserName.TabIndex = 4;
             // 
             // btn_select
             // 
@@ -115,7 +113,7 @@
             this.btn_select.TabIndex = 3;
             this.btn_select.Text = "查询";
             this.btn_select.UseVisualStyleBackColor = false;
-
+            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
             // btn_delete
             // 
@@ -128,7 +126,7 @@
             this.btn_delete.TabIndex = 2;
             this.btn_delete.Text = "删除";
             this.btn_delete.UseVisualStyleBackColor = false;
-
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_updata
             // 
@@ -140,7 +138,7 @@
             this.btn_updata.TabIndex = 1;
             this.btn_updata.Text = "修改";
             this.btn_updata.UseVisualStyleBackColor = false;
-
+            this.btn_updata.Click += new System.EventHandler(this.btn_updata_Click);
             // 
             // btn_add
             // 
@@ -152,7 +150,7 @@
             this.btn_add.TabIndex = 0;
             this.btn_add.Text = "添加";
             this.btn_add.UseVisualStyleBackColor = false;
-
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
@@ -177,7 +175,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form_Userinfo";
             this.Text = "用户信息管理";
-
+            this.Load += new System.EventHandler(this.Form_Userinfo_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -198,7 +196,7 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_select;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_UserName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
     }

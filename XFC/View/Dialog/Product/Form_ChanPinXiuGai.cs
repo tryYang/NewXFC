@@ -8,10 +8,10 @@ namespace XFC.View.Dialog.Product
 {
     public partial class Form_ChanPinXiuGai : Form
     {
-        public Form_ChanPinXiuGai(string Productname, string truckNo, string manufactureORG, string dipanORG, string dipanClass, string PumperORG, string PumperClass, string PumperType)
+        public Form_ChanPinXiuGai( string Productname, string truckNo, string manufactureORG, string dipanORG, string dipanClass, string PumperORG, string PumperClass, string PumperType)
         {
             InitializeComponent();
-           // textBox1.Text = ProductID.ToString();
+          // textBox1.Text = ProductID.ToString();
             textBox2.Text = Productname;
             textBox3.Text = truckNo;
             textBox4.Text = manufactureORG;

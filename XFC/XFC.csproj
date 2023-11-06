@@ -195,10 +195,10 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\XfcTestViewModel.cs" />
-    <Compile Include="View\Dialog\Form_Userinfo.cs">
+    <Compile Include="View\Dialog\User\Form_Userinfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Dialog\Form_Userinfo.Designer.cs">
+    <Compile Include="View\Dialog\User\Form_Userinfo.Designer.cs">
       <DependentUpon>Form_Userinfo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Dialog\Form_YuZhiSheZhi.cs">
@@ -254,6 +254,18 @@
     </Compile>
     <Compile Include="View\Dialog\SongJianDanWei\Form_SongJianXiuGai.Designer.cs">
       <DependentUpon>Form_SongJianXiuGai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\User\Form_UserTianJia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\User\Form_UserTianJia.Designer.cs">
+      <DependentUpon>Form_UserTianJia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\User\Form_UserXiuGai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\User\Form_UserXiuGai.Designer.cs">
+      <DependentUpon>Form_UserXiuGai.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_GongKuangSelect.cs">
       <SubType>Form</SubType>
@@ -329,6 +341,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\SongJianDanWei\Form_SongJianXiuGai.resx">
       <DependentUpon>Form_SongJianXiuGai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\User\Form_Userinfo.resx">
+      <DependentUpon>Form_Userinfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\User\Form_UserTianJia.resx">
+      <DependentUpon>Form_UserTianJia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\User\Form_UserXiuGai.resx">
+      <DependentUpon>Form_UserXiuGai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_GongKuangSelect.resx">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>

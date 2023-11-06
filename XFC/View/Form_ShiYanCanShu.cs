@@ -162,28 +162,37 @@ namespace XFC.View
                 if (cbx_Diya.Text == "DN100")
                 {
                     ConstantValue.xfcInfos[index].dic_Flowtype[FlowType.DN100] = true;
+                    ConstantValue.liuliangjiAndFlowtype[index][0] = FlowType.DN100;
+
                 }
                 else if (cbx_Diya.Text == "DN200")
                 {
                     ConstantValue.xfcInfos[index].dic_Flowtype[FlowType.DN200] = true;
+                    ConstantValue.liuliangjiAndFlowtype[index][0] = FlowType.DN200;
+
                 }
                 else if (cbx_Diya.Text == "DN300")
                 {
                     ConstantValue.xfcInfos[index].dic_Flowtype[FlowType.DN300] = true;
+                    ConstantValue.liuliangjiAndFlowtype[index][0] =FlowType.DN300;
                 }
 
             }
-            if (cbx_Diya.Visible)
+            if (cbx_Gaoya.Visible)
             {
                 if (cbx_Diya.Text == "DN100")
                 {
                     ConstantValue.xfcInfos[index].dic_Flowtype[FlowType.DN100] = true;
+                    ConstantValue.liuliangjiAndFlowtype[index][1] = FlowType.DN100;
+
                 }
                 else if (cbx_Diya.Text == "DN50")
                 {
                     ConstantValue.xfcInfos[index].dic_Flowtype[FlowType.DN50] = true;
+                    ConstantValue.liuliangjiAndFlowtype[index][1] = FlowType.DN50;
+
                 }
-               
+
             }
             
             SetMainWindowValue();

@@ -98,8 +98,7 @@ namespace XFC.View
             {
                 if (ConstantValue.gkStatus == GkStatus.Stop)
                 {
-                    Save2Table(0);
-                    Save2Table(1);
+                   
                     ConstantValue.DataShowTimer.Start();
                     ConstantValue.gkStatus = GkStatus.Run;
                 }
@@ -114,7 +113,9 @@ namespace XFC.View
             InitSerialPort();
             if (NModubs4Helper.Instance.Open())
             {
-               
+
+                Save2Table(0);
+                Save2Table(1);
                 initDataTimer();
                 initChart();
                 
@@ -130,13 +131,20 @@ namespace XFC.View
             }
             else if (ConstantValue.EquipemntList[i] == Equipment.Car)
             {
-                OledbHelper.InsertData(ConstantValue.xfcInfos[i].carBasicInfo);
-                OledbHelper.InsertData(ConstantValue.xfcInfos[i].carLab);
+                using(OledbHelper helper=new OledbHelper())
+                {
+                    helper.InsertData(ConstantValue.xfcInfos[i].carBasicInfo);
+                    helper.InsertData(ConstantValue.xfcInfos[i].carLab);
+                }
+               
             }
             else if (ConstantValue.EquipemntList[i] == Equipment.Pump)
             {
-                OledbHelper.InsertData(ConstantValue.xfbInfos[i].pumpBasicInfo);
-                OledbHelper.InsertData(ConstantValue.xfbInfos[i].pumpLab);
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.InsertData(ConstantValue.xfbInfos[i].pumpBasicInfo);
+                    helper.InsertData(ConstantValue.xfbInfos[i].pumpLab);
+                }
             }
         }
 
@@ -271,38 +279,133 @@ namespace XFC.View
                                                     
                     break;
             }
-            if (ConstantValue.Tick_Num % 60==0)
+            if (ConstantValue.Tick_Num % 10==0)
             {
+                bool flag_L = false;
+                bool flag_H = false;
                 ConditionRecord temp = new ConditionRecord();
                 temp.LabID = ConstantValue.IdList[i][1];
                 temp.ConditionNum =(int) ConstantValue.xfcInfos[i].currentGk;
+                temp.SpecificCollectTime = DateTime.Now;
+
                 if (i == 0)
                 {
-                    temp.CollectTime = ConstantValue.runtime1;
-                    temp.L_Press = double.Parse(tb_LPress1.Text);
-                    temp.H_Press = double.Parse(tb_HPress1.Text);
+                    
+
+                    temp.CollectTime = ConstantValue.runtime1/1000/60;
+                    if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.L_Press = double.Parse(tb_LPress1.Text);
+                        flag_L = true;
+                    }
+                        
+                    if (ConstantValue.PumpTypeList[i] != PumpType.DiYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.H_Press = double.Parse(tb_HPress1.Text);
+                        flag_H = true;
+
+                    }
                     temp.VacuumDegree = double.Parse(Vacuum1.Text);
                     temp.Speed= double.Parse(tb_CarPumpSpeed1.Text);
                     temp.InTemp = double.Parse(InTemp1.Text);
                     temp.OutTemp = double.Parse(OutTemp1.Text);
-                    
+                    if (flag_L)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][0])
+                        {
+                            
+                            case FlowType.DN100:
+                                temp.L_Flow = double.Parse(DN100Flow1.Text);
+                                break;
+                            case FlowType.DN200:
+                                temp.L_Flow = double.Parse(DN200Flow1.Text);
+                                break;
+                            case FlowType.DN300:
+                                temp.L_Flow = double.Parse(DN300Flow1.Text);
+                                break;
+
+                        }
+                    }
+                    if (flag_H)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][1])
+                        {
+                            case FlowType.DN50:
+                                temp.H_Flow = double.Parse(DN50Flow1.Text);
+                                break;
+                            case FlowType.DN100:
+                                temp.H_Flow = double.Parse(DN100Flow1.Text);
+                                break;
+                           
+                        }
+                    }
+
+
                     //流量添加
 
                 }
                 else if(i == 1)
                 {
-                    temp.CollectTime = ConstantValue.runtime2;
-                    temp.L_Press = double.Parse(tb_LPress2.Text);
-                    temp.H_Press = double.Parse(tb_HPress2.Text);
+                    temp.CollectTime = ConstantValue.runtime2/60/1000;
+                    if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.L_Press = double.Parse(tb_LPress2.Text);
+                        flag_L = true;
+                    }
+
+                    if (ConstantValue.PumpTypeList[i] != PumpType.DiYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.H_Press = double.Parse(tb_HPress2.Text);
+                        flag_H = true;
+
+                    }
                     temp.VacuumDegree = double.Parse(Vacuum2.Text);
                     temp.Speed = double.Parse(tb_CarPumpSpeed2.Text);
                     temp.InTemp = double.Parse(InTemp2.Text);
                     temp.OutTemp = double.Parse(OutTemp2.Text);
                     //流量添加
+                    if (flag_L)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][0])
+                        {
+
+                            case FlowType.DN100:
+                                temp.L_Flow = double.Parse(DN100Flow2.Text);
+                                break;
+                            case FlowType.DN200:
+                                temp.L_Flow = double.Parse(DN200Flow2.Text);
+                                break;
+                            case FlowType.DN300:
+                                temp.L_Flow = double.Parse(DN300Flow2.Text);
+                                break;
+
+                        }
+                    }
+                    if (flag_H)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][1])
+                        {
+                            case FlowType.DN50:
+                                temp.H_Flow = double.Parse(DN50Flow2.Text);
+                                break;
+                            case FlowType.DN100:
+                                temp.H_Flow = double.Parse(DN100Flow2.Text);
+                                break;
+
+                        }
+                    }
+                    
+                }
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.InsertData(temp);
+
                 }
 
-               
+
             }
+            ConstantValue.Tick_Num++;
+
 
         }
         /// <summary>

@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using System.Xml.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace XFC.Helper
 {
@@ -21,9 +22,9 @@ namespace XFC.Helper
     {
        
         // 将 JSON 字符串解析为 JObject
-        static string connstr;
+         string connstr;
         static OleDbCommand command;
-        public static OleDbConnection connection;
+        public  OleDbConnection connection;
         public  string sqlstring;
         public OledbHelper()
         {
@@ -55,7 +56,7 @@ namespace XFC.Helper
 
         }
         public int ExecuteCommand() {
-
+            
             using (OleDbCommand cmd = new OleDbCommand(sqlstring, connection))
             {
                 int result = cmd.ExecuteNonQuery();
@@ -65,31 +66,26 @@ namespace XFC.Helper
                 
        }
 
-        public static void InsertData<T>(T data)
+        public  void InsertData<T>(T data)
         {
             try
             {
                 Type type = typeof(T);
                 string tableName = type.Name;
-                string columnNames = string.Join(", ", type.GetFields().Select(prop => '[' + prop.Name + ']'));
-                string paramNames = string.Join(", ", type.GetFields().Select(prop => '?'));
+                string columnNames = string.Join(", ", type.GetProperties().Select(prop => '[' + prop.Name + ']'));
+                string paramNames = string.Join(", ", type.GetProperties().Select(prop =>"'"+ prop.GetValue(data)+"'"));
 
-                string insertQuery = $"INSERT INTO {tableName} ({columnNames}) VALUES ({paramNames})";
-
-                MessageBox.Show(insertQuery);
-                using (OleDbCommand command = new OleDbCommand(insertQuery, connection))
+                string sqlstring = $"INSERT INTO {tableName} ({columnNames}) VALUES ({paramNames})";
+                
+                using (OleDbCommand command = new OleDbCommand(sqlstring, connection))
                 {
-                    foreach (var fields in type.GetFields())
-                    {
-
-                        command.Parameters.AddWithValue("?", fields.GetValue(data));
-                    }
+                    
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-
+                Debug.WriteLine("插入数据失败");
             }
                 
                 

@@ -31,7 +31,7 @@ namespace XFC.View.Dialog.SongJianDanWei
         {
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "select CustomerDepartment,ContactPeople,PhoneNum,Address from CustomerInfo";
+                helper.sqlstring = "select CustomerDepart,ContactPeople,PhoneNum,Address from CustomerInfo";
                 DataSet ds = helper.GetDataSet();
                 //设置表格控件的DataSource属性
                 dataGridView1.DataSource = ds.Tables[0];
@@ -55,7 +55,7 @@ namespace XFC.View.Dialog.SongJianDanWei
             {
                 using (OledbHelper helper = new OledbHelper())
                 {
-                    helper.sqlstring = "select CustomerDepartment,ContactPeople,PhoneNum,Address from CarBasicInfo where CustomerInfo like '%{0}%'";
+                    helper.sqlstring = "select CustomerDepart,ContactPeople,PhoneNum,Address from CustomerInfo where CustomerDepart like '%{0}%'";
                     //填充占位符
                     helper.sqlstring = string.Format(helper.sqlstring, tb_CustomerName.Text);
                     DataSet ds = helper.GetDataSet();
@@ -71,16 +71,16 @@ namespace XFC.View.Dialog.SongJianDanWei
         private void btn_add_Click(object sender, EventArgs e)
         {   
             // int ProductID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-            string CustomerDepartment = "";
+            string CustomerDepart = "";
             string ContactPeople = "";
             string PhoneNum = "";
             string Address = "";
 
             //创建updateForm类的对象，并将课程信息传递给修改界面
-            Form_SongJianTianJia form_ChanPinTianJia = new Form_SongJianTianJia(CustomerDepartment, ContactPeople, PhoneNum, Address);
+            Form_SongJianTianJia form_SongJianTianJia = new Form_SongJianTianJia(CustomerDepart, ContactPeople, PhoneNum, Address);
 
             ////弹出修改信息窗口
-            DialogResult dr = form_ChanPinTianJia.ShowDialog();
+            DialogResult dr = form_SongJianTianJia.ShowDialog();
             //判断是否单击确定按钮
             if (dr == DialogResult.OK)//()内的意义是？
             {
@@ -96,7 +96,21 @@ namespace XFC.View.Dialog.SongJianDanWei
         /// <param name="e"></param>
         private void btn_updata_Click(object sender, EventArgs e)
         {
-
+            string CustomerDepart = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            string ContactPeople = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            string PhoneNum = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            string Address = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+          
+            //创建updateForm类的对象，并将课程信息传递给修改界面
+            Form_SongJianXiuGai form_SongJianXiuGai = new Form_SongJianXiuGai(CustomerDepart, ContactPeople, PhoneNum, Address);
+            //弹出修改信息窗口
+            DialogResult dr = form_SongJianXiuGai.ShowDialog();
+            //判断是否单击确定按钮
+            if (dr == DialogResult.OK)//()内的意义是？
+            {
+                //调用查询全部课程方法
+                QueryAll();
+            }
         }
         /// <summary>
         /// 【删除】按钮
@@ -105,7 +119,22 @@ namespace XFC.View.Dialog.SongJianDanWei
         /// <param name="e"></param>
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            //获取DataGridView控件中选中行的编号列的值
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            using (OledbHelper helper = new OledbHelper())
+            {
+                helper.sqlstring = "delete from CustomerInfo where CustomerID ={0}";
+                //填充占位符
+                helper.sqlstring = string.Format(helper.sqlstring, id);
+                // 执行SQL语句
+                helper.ExecuteCommand();
+                //弹出消息提示删除成功
+                MessageBox.Show("删除成功!");
+                //调用查询全部的方法，刷新DataGridView控件中的数据
+                QueryAll();
+
+            }
         }
     }
  

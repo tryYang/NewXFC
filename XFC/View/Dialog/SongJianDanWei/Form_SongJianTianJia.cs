@@ -18,10 +18,10 @@ namespace XFC.View.Dialog.SongJianDanWei
 {
     public partial class Form_SongJianTianJia : Form
     {
-        public Form_SongJianTianJia(string CustomerDepartment,string  ContactPeople,string  PhoneNum,string Address)
+        public Form_SongJianTianJia(string CustomerDepart,string  ContactPeople,string  PhoneNum,string Address)
         {
             InitializeComponent();
-            textBox1.Text = CustomerDepartment;
+            textBox1.Text = CustomerDepart;
             textBox2.Text = ContactPeople;
             textBox3.Text = PhoneNum;
             textBox4.Text = Address;
@@ -42,7 +42,7 @@ namespace XFC.View.Dialog.SongJianDanWei
                 //string MaxID = cmd1.ToString();
 
 
-                helper.sqlstring = "insert into CustomerInfo (CustomerDepartment,ContactPeople,PhoneNum,Address) values ('{0}','{1}','{2}','{3}')";
+                helper.sqlstring = "insert into CustomerInfo (CustomerDepart,ContactPeople,PhoneNum,Address) values ('{0}','{1}','{2}','{3}')";
                 //填充占位符
                 helper.sqlstring = string.Format(helper.sqlstring, textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
                 //执行修改操作的SQL

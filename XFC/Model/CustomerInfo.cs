@@ -10,7 +10,7 @@ namespace XFC.Model
     public class CustomerInfo
     {
         public int CustomerID              { get; set; }       //	客户 ID
-        public string CustomerDepartment { get; set; } //	送检单位
+        public string CustomerDepart { get; set; } //	送检单位
         public string ContactPeople        { get; set; }    //	联系人
         public string PhoneNum             { get; set; }     //	联系电话   
         public string Address { get; set; }        //	联系地址

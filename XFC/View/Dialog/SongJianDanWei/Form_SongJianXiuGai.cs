@@ -18,10 +18,10 @@ namespace XFC.View.Dialog.SongJianDanWei
 {
     public partial class Form_SongJianXiuGai : Form
     {
-        public Form_SongJianXiuGai(string CustomerDepartment, string ContactPeople, string PhoneNum, string Address)
+        public Form_SongJianXiuGai(string CustomerDepart, string ContactPeople, string PhoneNum, string Address)
         {
             InitializeComponent();
-            textBox1.Text = CustomerDepartment;
+            textBox1.Text = CustomerDepart;
             textBox2.Text = ContactPeople;
             textBox3.Text = PhoneNum;
             textBox4.Text = Address;
@@ -35,7 +35,7 @@ namespace XFC.View.Dialog.SongJianDanWei
         {
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "update CustomerInfo set [CustomerDepartment]='{0}',[ContactPeople]='{1}',[PhoneNum]='{2}',[Address]='{3}' where CustomerID={4}";
+                helper.sqlstring = "update CustomerInfo set [CustomerDepart]='{0}',[ContactPeople]='{1}',[PhoneNum]='{2}',[Address]='{3}' where CustomerID={4}";
                 //填充占位符          
                 helper.sqlstring = string.Format(helper.sqlstring, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox1.Text);
                 // 执行SQL语句

@@ -304,6 +304,7 @@
             // 
             // waterpumptype
             // 
+            this.waterpumptype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.waterpumptype.FormattingEnabled = true;
             this.waterpumptype.Location = new System.Drawing.Point(530, 96);
             this.waterpumptype.Name = "waterpumptype";

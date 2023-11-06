@@ -9,7 +9,6 @@ namespace XFC.Model
     //工况记录表
     public  class ConditionRecord
     {
-        public int ConditonID      { get; set; }      //	工况ID
         public int LabID         { get; set; }  //	实验 ID
         public int ConditionNum   { get; set; }    //	工况序号
         public long  CollectTime  { get; set; } //	采集时间

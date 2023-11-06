@@ -57,8 +57,20 @@ namespace XFC
         {
             { Gk.Diya,0}
         };
+        
 
-
+        public static List<Dictionary<int, FlowType>> liuliangjiAndFlowtype = new List<Dictionary<int, FlowType>>
+        {
+            //0 低压流量计 1 高压流量计
+            new Dictionary<int, FlowType>() {
+            { 0, FlowType.None },
+            { 1, FlowType.None }
+            },
+            new Dictionary<int, FlowType>() {
+            { 0, FlowType.None },
+            { 1, FlowType.None }
+        }
+    };
 
     }
 }

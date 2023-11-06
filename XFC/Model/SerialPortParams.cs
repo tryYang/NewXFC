@@ -53,4 +53,13 @@ namespace XFC.Model
         None
 
     }
+    public enum FlowType
+    {
+        DN50,
+        DN100,
+        DN200,
+        DN300,
+        None
+
+    }
 }

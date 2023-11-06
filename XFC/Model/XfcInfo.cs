@@ -19,6 +19,13 @@ namespace XFC.Model
         public List<bool> IsGkCompleted = new List<bool>() { false, false, false, false, false, false  };
         public bool IsChecked = false;
         public int runtime = -1;
+        public Dictionary<FlowType, bool> dic_Flowtype = new Dictionary<FlowType, bool>() {
+            { FlowType.DN50, false },
+            { FlowType.DN100, false },
+            { FlowType.DN200, false },
+            { FlowType.DN300, false },
+
+        };
         public Gk currentGk=Gk.None ;
         public XfcInfo(int ketid)
         {

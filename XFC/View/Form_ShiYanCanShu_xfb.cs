@@ -48,6 +48,8 @@ namespace XFC.View
             // 将BindingSource与ViewModel绑定
             bindingSource.DataSource = viewModel;
             waterpumptype.DataSource = ConstantValue.WaterPumpType;
+            cbx_Diya.DataSource = ConstantValue.L_Flowmeter;
+            cbx_Gaoya.DataSource = ConstantValue.H_Flowmeter;
             btn_confirm.Click += (sender, e) => viewModel.ConfirmCommand.Execute(null);
             btn_cancel.Click += (sender, e) => viewModel.CancelCommand.Execute(null);
            
@@ -129,6 +131,42 @@ namespace XFC.View
             ConstantValue.xfbInfos[index].pumpLab.CarHeight = double.Parse(ud2.Value.ToString());
             ConstantValue.xfbInfos[index].pumpLab.Temp = double.Parse(ud9.Value.ToString());
             ConstantValue.xfbInfos[index].pumpLab.Pressure = double.Parse(ud1.Value.ToString());
+
+            ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN100] = false;
+            ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN200] = false;
+            ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN300] = false;
+            ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN50] = false;
+
+
+
+            if (cbx_Diya.Visible)
+            {
+                if (cbx_Diya.Text == "DN100")
+                {
+                    ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN100] = true;
+                }
+                else if (cbx_Diya.Text == "DN200")
+                {
+                    ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN200] = true;
+                }
+                else if (cbx_Diya.Text == "DN300")
+                {
+                    ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN300] = true;
+                }
+
+            }
+            if (cbx_Diya.Visible)
+            {
+                if (cbx_Diya.Text == "DN100")
+                {
+                    ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN100] = true;
+                }
+                else if (cbx_Diya.Text == "DN50")
+                {
+                    ConstantValue.xfbInfos[index].dic_Flowtype[FlowType.DN50] = true;
+                }
+                
+            }
 
             ConstantValue.xfbInfos[index].IsChecked = true;
             ConstantValue.gkStatus = GkStatus.Checked;

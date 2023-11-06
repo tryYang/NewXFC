@@ -263,3 +263,4 @@ src/MahApps.Metro/Styles/Themes/*.xaml
 
 # cake
 tools/
+testTool/Modbus Slave/mbslave.exe

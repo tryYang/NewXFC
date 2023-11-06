@@ -65,27 +65,34 @@ namespace XFC.Helper
                 
        }
 
-        public void InsertData<T>(T data)
+        public static void InsertData<T>(T data)
         {
-          
-
+            try
+            {
                 Type type = typeof(T);
-                string tableName = type.Name;          
-                string columnNames = string.Join(", ", type.GetFields().Select(prop => '['+prop.Name+']'));
+                string tableName = type.Name;
+                string columnNames = string.Join(", ", type.GetFields().Select(prop => '[' + prop.Name + ']'));
                 string paramNames = string.Join(", ", type.GetFields().Select(prop => '?'));
 
                 string insertQuery = $"INSERT INTO {tableName} ({columnNames}) VALUES ({paramNames})";
-                
+
                 MessageBox.Show(insertQuery);
                 using (OleDbCommand command = new OleDbCommand(insertQuery, connection))
                 {
                     foreach (var fields in type.GetFields())
                     {
-                       
+
                         command.Parameters.AddWithValue("?", fields.GetValue(data));
                     }
-                
+                    command.ExecuteNonQuery();
                 }
+            }
+            catch (Exception ex)
+            {
+
+            }
+                
+                
             
 
         }
@@ -102,6 +109,30 @@ namespace XFC.Helper
 
             
             OleDbCommand cmd= new OleDbCommand(query, connection);
+        }
+        public int GetMaxID()
+        {
+            int result =0;
+            try
+            {
+                OleDbCommand cmd = new OleDbCommand(sqlstring, connection);
+                using (OleDbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        result = 1;
+                    }
+                }
+            } catch (Exception exception)
+            {
+                
+            }
+            return result;
+          
         }
         public void Dispose() =>connection?.Dispose();
     }

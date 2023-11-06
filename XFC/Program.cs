@@ -19,8 +19,24 @@ namespace XFC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            init();
             Application.Run(new Form_Login());
             
+            
+        }
+        static void init()
+        {
+            using (OledbHelper helper = new OledbHelper())
+            {
+                helper.sqlstring = "select Max(CarID) from CarBasicInfo";
+                ConstantValue.LastCarID = helper.GetMaxID();
+                helper.sqlstring = "select Max(LabID) from CarLab";
+                ConstantValue.LastCarLabID = helper.GetMaxID();
+                helper.sqlstring = "select Max(PumpID) from PumpBasicInfo";
+                ConstantValue.LastPumpID = helper.GetMaxID();
+                helper.sqlstring = "select Max(PumpLabID) from PumpLab";
+                ConstantValue.LastPumpLabID = helper.GetMaxID();
+            }
         }
     }
 }

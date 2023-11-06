@@ -167,6 +167,8 @@
     <Compile Include="Helper\NModubs4Helper.cs" />
     <Compile Include="Helper\OledbHelper.cs" />
     <Compile Include="Helper\PrintHelper.cs" />
+    <Compile Include="Helper\PrintSqlGenerateHelper2.cs" />
+    <Compile Include="Helper\PrintSqlGenerateHelper_Pump2.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper_Pump.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper.cs" />
     <Compile Include="Helper\SettingManager.cs" />
@@ -315,6 +317,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\Product\Form_ChanPinTianJia.resx">
       <DependentUpon>Form_ChanPinTianJia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\Product\Form_ChanPinXiuGai.resx">
+      <DependentUpon>Form_ChanPinXiuGai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\SongJianDanWei\Form_SongJianDanWei.resx">
+      <DependentUpon>Form_SongJianDanWei.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\SongJianDanWei\Form_SongJianTianJia.resx">
+      <DependentUpon>Form_SongJianTianJia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\SongJianDanWei\Form_SongJianXiuGai.resx">
+      <DependentUpon>Form_SongJianXiuGai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_GongKuangSelect.resx">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>

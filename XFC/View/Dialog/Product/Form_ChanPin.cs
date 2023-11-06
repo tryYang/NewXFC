@@ -97,6 +97,60 @@ namespace XFC.View.Dialog.Product
                 QueryAll();
             }
         }
+        /// <summary>
+        /// 【修改】按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_updata_Click(object sender, EventArgs e)
+        {
+            //获取DataGridView控件中的值
+            
+            //int ProductID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());         
+            string Productname = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();            
+            string truckNo = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();           
+            string manufactureORG = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();           
+            string dipanORG = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();    
+            string dipanClass = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();  
+            string PumperORG = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            string PumperClass = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+            string PumperType = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
+            //创建updateForm类的对象，并将课程信息传递给修改界面
+            Form_ChanPinXiuGai form_ChanPinXiuGai = new Form_ChanPinXiuGai(Productname, truckNo, manufactureORG, dipanORG, dipanClass, PumperORG, PumperClass, PumperType);
+            //弹出修改信息窗口
+            DialogResult dr = form_ChanPinXiuGai.ShowDialog();
+            //判断是否单击确定按钮
+            if (dr == DialogResult.OK)//()内的意义是？
+            {
+                //调用查询全部课程方法
+                QueryAll();
+            }
+        }
+        /// <summary>
+        /// 【删除】按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            //获取DataGridView控件中选中行的编号列的值
+            int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            using (OledbHelper helper = new OledbHelper())
+            {
+                helper.sqlstring = "delete from CarBasicInfo where CarID ={0}";
+                //填充占位符
+                helper.sqlstring = string.Format(helper.sqlstring, id);
+                // 执行SQL语句
+                helper.ExecuteCommand();
+                //弹出消息提示删除成功
+                MessageBox.Show("删除成功!");
+                //调用查询全部的方法，刷新DataGridView控件中的数据
+                QueryAll();
+
+            }
+                 
+            
+        }
     }
 }

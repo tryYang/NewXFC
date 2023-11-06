@@ -93,7 +93,7 @@ namespace XFC.View.Dialog.Print
             using (OledbHelper helper = new OledbHelper())
             {
                 if (ConstantValue.EquipemntList[index] == Equipment.Car)
-                {   List<int> gklist = new List<int>(6);
+                {   List<int> gklist = new List<int>() { 0,0,0,0,0,0};
                     for(int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
                     {
                         if (ConstantValue.xfcInfos[index].IsGkCompleted[i])
@@ -116,10 +116,10 @@ namespace XFC.View.Dialog.Print
                         case PumpType.GaoYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[1]);
                             break;
-                        case PumpType.ZhongDiYaPump:
+                        case PumpType.GaoDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[2]);
                             break;
-                        case PumpType.GaoDiYaPump:
+                        case PumpType.ZhongDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[3]);
                             break;
 
@@ -149,10 +149,10 @@ namespace XFC.View.Dialog.Print
                         case PumpType.GaoYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[1]);
                             break;
-                        case PumpType.ZhongDiYaPump:
+                        case PumpType.GaoDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[2]);
                             break;
-                        case PumpType.GaoDiYaPump:
+                        case PumpType.ZhongDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
                             break;
 

@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,7 @@ namespace XFC.View
                 if(ConstantValue.EquipemntList[i]!=Equipment.None)
                 {
                     GkSelect(i, ConstantValue.EquipemntList[i]);
+
                 }
                 
             }
@@ -73,6 +75,12 @@ namespace XFC.View
                         ConstantValue.runtime2 = result * 60 * 1000;
                     setcargk(i);
                     ConstantValue.gkStatus = GkStatus.Selected;
+                    int other = Math.Abs(i - 1);
+                    ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastCarID + 1;
+                    ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastCarLabID + 1;
+                    ConstantValue.xfcInfos[i].carBasicInfo.CarID = ConstantValue.xfcInfos[i].carLab.CarID = ConstantValue.IdList[i][0];
+                    ConstantValue.xfcInfos[i].carLab.LabID = ConstantValue.IdList[i][1];
+
                 }
                 else
                 {
@@ -92,10 +100,17 @@ namespace XFC.View
                         ConstantValue.runtime2 = result * 60 * 1000;
                     setpumpgk(i);
                     ConstantValue.gkStatus = GkStatus.Selected;
+                    int other = Math.Abs(i - 1);
+                    ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastPumpID + 1;
+                    ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastPumpLabID + 1;
+                    ConstantValue.xfbInfos[i].pumpLab.PumpLabID = ConstantValue.IdList[i][1];
+                    ConstantValue.xfbInfos[i].pumpLab.PumpID = ConstantValue.IdList[i][1];
+                    ConstantValue.xfbInfos[i].pumpBasicInfo.PumpID = ConstantValue.IdList[i][1];
+
                 }
                 else
                 {
-                    MessageBox.Show($"请输入设备{i}运行时间");
+                    MessageBox.Show($"请输入设备{i+1}运行时间");
                     return;
                 }
             }
@@ -243,40 +258,40 @@ namespace XFC.View
 
         private void setcargk(int i)
         {
-            int k = i - 1;
-            if (i == 1)
+            int k = i;
+            if (i == 0)
             {
 
-                if (rb_13_1.Checked|| !rb_13_1.Visible)
+                if (rb_13_1.Checked && rb_13_1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
-                else if (rb_standard1.Checked || !rb_standard1.Visible)
+                else if (rb_standard1.Checked && rb_standard1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                else if (rb_high1.Checked || !rb_high1.Visible)
+                else if (rb_high1.Checked && rb_high1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid1.Checked || !rb_mid1.Visible)
+                else if (rb_mid1.Checked && rb_mid1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                else if (rb_half1.Checked || !rb_half1.Visible)
+                else if (rb_half1.Checked && rb_half1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super1.Checked || !rb_super1.Visible)
+                else if (rb_super1.Checked && rb_super1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
                 else
                 {
                     MessageBox.Show("未选择具体工况");
                 }
             }
-            else if (i == 2)
+            else if (i == 1)
             {
-                if (rb_13_2.Checked || !rb_13_1.Visible)
+                if (rb_13_2.Checked && rb_13_1.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
-                else if (rb_standard2.Checked || !rb_standard2.Visible)
+                else if (rb_standard2.Checked && rb_standard2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                else if (rb_high2.Checked || !rb_high2.Visible)
+                else if (rb_high2.Checked && rb_high2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid2.Checked || !rb_mid2.Visible)
+                else if (rb_mid2.Checked &&  rb_mid2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                else if (rb_half2.Checked || !rb_half2.Visible)
+                else if (rb_half2.Checked && rb_half2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super2.Checked || !rb_super2.Visible)
+                else if (rb_super2.Checked && rb_super2.Visible)
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
                 else
                 {

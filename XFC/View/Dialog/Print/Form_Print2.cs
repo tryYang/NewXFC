@@ -76,7 +76,7 @@ namespace XFC.View.Dialog.Print
             Printload(0);
         }
 
-        private void Printload( int index)
+        private void Printload( int index)//index的意义，是如何传进来的
         {
             
             List<List<string>> PrintList_car = new List<List<string>>();
@@ -116,10 +116,10 @@ namespace XFC.View.Dialog.Print
                         case PumpType.GaoYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[1]);
                             break;
-                        case PumpType.ZhongDiYaPump:
+                        case PumpType.GaoDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[2]);
                             break;
-                        case PumpType.GaoDiYaPump:
+                        case PumpType.ZhongDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_car[3]);
                             break;
 
@@ -149,10 +149,10 @@ namespace XFC.View.Dialog.Print
                         case PumpType.GaoYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[1]);
                             break;
-                        case PumpType.ZhongDiYaPump:
+                        case PumpType.GaoDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[2]);
                             break;
-                        case PumpType.GaoDiYaPump:
+                        case PumpType.ZhongDiYaPump:
                             ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
                             break;
 

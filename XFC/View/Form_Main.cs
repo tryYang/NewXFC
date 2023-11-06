@@ -98,7 +98,8 @@ namespace XFC.View
             {
                 if (ConstantValue.gkStatus == GkStatus.Stop)
                 {
-                    
+                    Save2Table(0);
+                    Save2Table(1);
                     ConstantValue.DataShowTimer.Start();
                     ConstantValue.gkStatus = GkStatus.Run;
                 }
@@ -121,7 +122,23 @@ namespace XFC.View
           
         }
 
-        
+        private void Save2Table(int i)
+        {
+            if (ConstantValue.EquipemntList[i] == Equipment.None)
+            {
+                return;
+            }
+            else if (ConstantValue.EquipemntList[i] == Equipment.Car)
+            {
+                OledbHelper.InsertData(ConstantValue.xfcInfos[i].carBasicInfo);
+                OledbHelper.InsertData(ConstantValue.xfcInfos[i].carLab);
+            }
+            else if (ConstantValue.EquipemntList[i] == Equipment.Pump)
+            {
+                OledbHelper.InsertData(ConstantValue.xfbInfos[i].pumpBasicInfo);
+                OledbHelper.InsertData(ConstantValue.xfbInfos[i].pumpLab);
+            }
+        }
 
         private void InitSerialPort()
         {
@@ -149,8 +166,10 @@ namespace XFC.View
             
             this.Invoke(new System.Action(() => {
 
-                Task.Run(() => DataShow(0, ConstantValue.EquipemntList[0]));
-                Task.Run(() => DataShow(1, ConstantValue.EquipemntList[1]));             
+                //Task.Run(() => DataShow(0, ConstantValue.EquipemntList[0]));
+                //Task.Run(() => DataShow(1, ConstantValue.EquipemntList[1]));
+                DataShow(0, ConstantValue.EquipemntList[0]);
+                DataShow(0, ConstantValue.EquipemntList[1]);
                 DateTime time = DateTime.Now;
              
             }));
@@ -170,7 +189,7 @@ namespace XFC.View
             {
                 DataShow_xfc(i);
             }
-            else if (eq == Equipment.Pump && ConstantValue.xfcInfos[i].currentGk != Gk.None)
+            else if (eq == Equipment.Pump && ConstantValue.xfbInfos[i].currentGk != Gk.None)
             {
                 DataShow_xfb(i);
             }
@@ -185,45 +204,104 @@ namespace XFC.View
         private void DataShow_xfc(int i)
         {
             Gk gk = ConstantValue.xfcInfos[i].currentGk;
+           
             switch (i) { 
                 case 0:
+                    
                     Vacuum1.Text=tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();
                     LPress1.Text= tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();
                     HPress1.Text=tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();
                     tb_CarPumpSpeed1.Text = NModubs4Helper.Instance.GetValue16(1, 3).ToString();
                     InTemp1.Text=tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();
                     OutTemp1.Text=tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
-                    DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
-                    DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
-                    DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
-                    DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
-                    DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
-                    DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
-                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
-                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
+                    {
+                        DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                        DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
+                    {
+                        DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                        DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                        DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    }
 
                     chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
                     chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
                     break;
                 case 1:
-                    tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
-                    tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
-                    tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
+                    Vacuum2.Text = tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
+                    LPress2.Text = tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
+                    HPress2.Text = tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
                     tb_CarPumpSpeed2.Text = NModubs4Helper.Instance.GetValue16(4, 3).ToString();
-                    tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();
-                    tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();               
+                    InTemp2.Text = tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();
+                    OutTemp2.Text = tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();
+
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
+                    {
+                        DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                        DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
+                    {
+                        DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                        DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                        DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    }
+                    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    }
                     chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
                     chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
-                    DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
-                    DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
-                    DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
-                    DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
-                    DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
-                    DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
-                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
-                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
-                  
+                                                    
                     break;
+            }
+            if (ConstantValue.Tick_Num % 60==0)
+            {
+                ConditionRecord temp = new ConditionRecord();
+                temp.LabID = ConstantValue.IdList[i][1];
+                temp.ConditionNum =(int) ConstantValue.xfcInfos[i].currentGk;
+                if (i == 0)
+                {
+                    temp.CollectTime = ConstantValue.runtime1;
+                    temp.L_Press = double.Parse(tb_LPress1.Text);
+                    temp.H_Press = double.Parse(tb_HPress1.Text);
+                    temp.VacuumDegree = double.Parse(Vacuum1.Text);
+                    temp.Speed= double.Parse(tb_CarPumpSpeed1.Text);
+                    temp.InTemp = double.Parse(InTemp1.Text);
+                    temp.OutTemp = double.Parse(OutTemp1.Text);
+                    
+                    //流量添加
+
+                }
+                else if(i == 1)
+                {
+                    temp.CollectTime = ConstantValue.runtime2;
+                    temp.L_Press = double.Parse(tb_LPress2.Text);
+                    temp.H_Press = double.Parse(tb_HPress2.Text);
+                    temp.VacuumDegree = double.Parse(Vacuum2.Text);
+                    temp.Speed = double.Parse(tb_CarPumpSpeed2.Text);
+                    temp.InTemp = double.Parse(InTemp2.Text);
+                    temp.OutTemp = double.Parse(OutTemp2.Text);
+                    //流量添加
+                }
+
+               
             }
 
         }
@@ -244,14 +322,27 @@ namespace XFC.View
                     tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
                     chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
                     chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
-                    DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
-                    DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
-                    DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
-                    DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
-                    DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
-                    DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
-                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
-                    DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
+                    {
+                        DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                        DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN100])
+                    {
+                        DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                        DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                        DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    }
+                   
 
                     break;
                 case 1:
@@ -263,16 +354,62 @@ namespace XFC.View
                     tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();
                     chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
                     chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
-                    DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
-                    DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
-                    DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
-                    DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
-                    DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
-                    DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
-                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
-                    DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
+                    {
+                        DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
+                        DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN100])
+                    {
+                        DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
+                        DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
+                        DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
+                    }
+                    if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
+                    {
+                        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
+                        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
+                    }
+
+
                     break;
             }
+            if (ConstantValue.Tick_Num % 60 == 0)
+            {
+                ConditionRecord temp = new ConditionRecord();
+                temp.LabID = ConstantValue.IdList[i][1];
+                temp.ConditionNum = (int)ConstantValue.xfbInfos[i].currentGk;
+                if (i == 0)
+                {
+                    temp.CollectTime = ConstantValue.runtime1;
+                    temp.L_Press = double.Parse(tb_LPress1.Text);
+                    temp.H_Press = double.Parse(tb_HPress1.Text);
+                    temp.VacuumDegree = double.Parse(Vacuum1.Text);
+                    temp.Speed = double.Parse(tb_CarPumpSpeed1.Text);
+                    temp.InTemp = double.Parse(InTemp1.Text);
+                    temp.OutTemp = double.Parse(OutTemp1.Text);
+                    //流量添加
+
+                }
+                else if (i == 1)
+                {
+                    temp.CollectTime = ConstantValue.runtime2;
+                    temp.L_Press = double.Parse(tb_LPress2.Text);
+                    temp.H_Press = double.Parse(tb_HPress2.Text);
+                    temp.VacuumDegree = double.Parse(Vacuum2.Text);
+                    temp.Speed = double.Parse(tb_CarPumpSpeed2.Text);
+                    temp.InTemp = double.Parse(InTemp2.Text);
+                    temp.OutTemp = double.Parse(OutTemp2.Text);
+                    //流量添加
+                }
+
+
+            }
+
         }
         /// <summary>
         ///倒计时事件
@@ -325,6 +462,7 @@ namespace XFC.View
             ConstantValue.DataShowTimer.Elapsed += OnTimedCountdown;
             ConstantValue.DataShowTimer.Elapsed += OnTimedChartShow;
             ConstantValue.DataShowTimer.AutoReset = true;
+            
             ConstantValue.DataShowTimer.Start();
             ConstantValue.gkStatus = GkStatus.Run;
         }
@@ -334,15 +472,17 @@ namespace XFC.View
         /// 停止工况运行的定时器
         /// </summary>
         private void stopDataTimer()
-        {
-             ConstantValue.DataShowTimer.Stop();
+        {          
+            ConstantValue.DataShowTimer.Stop();
         }
         /// <summary>
         /// 关闭工况运行的定时器
         /// </summary>
         private void uninitDataTimer()
         {
-            
+            ConstantValue.DataShowTimer.Elapsed -= OnTimedDataShow;
+            ConstantValue.DataShowTimer.Elapsed -= OnTimedCountdown;
+            ConstantValue.DataShowTimer.Elapsed -= OnTimedChartShow;
             ConstantValue.DataShowTimer.Close();
 
         }
@@ -367,8 +507,10 @@ namespace XFC.View
             if (ConstantValue.gkStatus == GkStatus.Run || ConstantValue.gkStatus == GkStatus.Stop) {
                 try
                 {
+                   
                     uninitDataTimer();
                     NModubs4Helper.Instance.Close();
+                    
                     MessageBox.Show("工况结束");
                 }
                 catch (Exception ex){ 

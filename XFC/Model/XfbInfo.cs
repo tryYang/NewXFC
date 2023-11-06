@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,13 @@ namespace XFC.Model
         public bool IsChecked = false;
         public int runtime = -1;
         public Gk currentGk=Gk.None;
+        public Dictionary<FlowType, bool> dic_Flowtype = new Dictionary<FlowType, bool>() { 
+            { FlowType.DN50, false },
+            { FlowType.DN100, false },
+            { FlowType.DN200, false },
+            { FlowType.DN300, false },
+
+        };
         public XfbInfo(int ketid)
         {
             KeyId = ketid;

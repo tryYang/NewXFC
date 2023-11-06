@@ -49,39 +49,35 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.tb_CarName);
             this.panel3.Controls.Add(this.btn_select);
-            this.panel3.Location = new System.Drawing.Point(9, 10);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(14, 15);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(250, 64);
+            this.panel3.Size = new System.Drawing.Size(373, 94);
             this.panel3.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(10, 7);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(15, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 12);
+            this.label2.Size = new System.Drawing.Size(84, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "车辆名称";
             // 
             // tb_CarName
             // 
-            this.tb_CarName.Location = new System.Drawing.Point(12, 22);
-            this.tb_CarName.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_CarName.Location = new System.Drawing.Point(18, 33);
             this.tb_CarName.Name = "tb_CarName";
-            this.tb_CarName.Size = new System.Drawing.Size(131, 21);
+            this.tb_CarName.Size = new System.Drawing.Size(194, 28);
             this.tb_CarName.TabIndex = 4;
             // 
             // btn_select
             // 
             this.btn_select.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_select.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_select.Location = new System.Drawing.Point(172, 13);
-            this.btn_select.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_select.Location = new System.Drawing.Point(258, 20);
             this.btn_select.Name = "btn_select";
-            this.btn_select.Size = new System.Drawing.Size(56, 29);
+            this.btn_select.Size = new System.Drawing.Size(84, 44);
             this.btn_select.TabIndex = 3;
             this.btn_select.Text = "查询";
             this.btn_select.UseVisualStyleBackColor = false;
@@ -93,10 +89,9 @@
             this.panel2.Controls.Add(this.btn_delete);
             this.panel2.Controls.Add(this.btn_updata);
             this.panel2.Controls.Add(this.btn_add);
-            this.panel2.Location = new System.Drawing.Point(408, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(612, 15);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 64);
+            this.panel2.Size = new System.Drawing.Size(576, 94);
             this.panel2.TabIndex = 6;
             // 
             // btn_delete
@@ -104,34 +99,33 @@
             this.btn_delete.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_delete.Cursor = System.Windows.Forms.Cursors.Default;
             this.btn_delete.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_delete.Location = new System.Drawing.Point(262, 14);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete.Location = new System.Drawing.Point(393, 21);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(56, 29);
+            this.btn_delete.Size = new System.Drawing.Size(84, 44);
             this.btn_delete.TabIndex = 2;
             this.btn_delete.Text = "删除";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_updata
             // 
             this.btn_updata.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_updata.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_updata.Location = new System.Drawing.Point(151, 14);
-            this.btn_updata.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_updata.Location = new System.Drawing.Point(226, 21);
             this.btn_updata.Name = "btn_updata";
-            this.btn_updata.Size = new System.Drawing.Size(56, 29);
+            this.btn_updata.Size = new System.Drawing.Size(84, 44);
             this.btn_updata.TabIndex = 1;
             this.btn_updata.Text = "修改";
             this.btn_updata.UseVisualStyleBackColor = false;
+            this.btn_updata.Click += new System.EventHandler(this.btn_updata_Click);
             // 
             // btn_add
             // 
             this.btn_add.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btn_add.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_add.Location = new System.Drawing.Point(32, 14);
-            this.btn_add.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_add.Location = new System.Drawing.Point(48, 21);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(56, 29);
+            this.btn_add.Size = new System.Drawing.Size(84, 44);
             this.btn_add.TabIndex = 0;
             this.btn_add.Text = "添加";
             this.btn_add.UseVisualStyleBackColor = false;
@@ -141,35 +135,32 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(0, 91);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(0, 136);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 12);
+            this.label1.Size = new System.Drawing.Size(122, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "产品信息浏览";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 106);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 159);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(797, 382);
+            this.dataGridView1.Size = new System.Drawing.Size(1196, 573);
             this.dataGridView1.TabIndex = 8;
             // 
             // Form_ChanPin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 496);
+            this.ClientSize = new System.Drawing.Size(1202, 744);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_ChanPin";
             this.Text = "产品信息";
             this.Load += new System.EventHandler(this.Form_ChanPin_Load);

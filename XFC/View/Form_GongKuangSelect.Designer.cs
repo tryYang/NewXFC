@@ -172,7 +172,7 @@
             this.panel2.Controls.Add(this.rb_standard1);
             this.panel2.Controls.Add(this.lb_standard1);
             this.panel2.Location = new System.Drawing.Point(18, 18);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1518, 529);
             this.panel2.TabIndex = 45;
@@ -191,7 +191,7 @@
             // tb_runtime1
             // 
             this.tb_runtime1.Location = new System.Drawing.Point(1380, 117);
-            this.tb_runtime1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_runtime1.Margin = new System.Windows.Forms.Padding(4);
             this.tb_runtime1.Name = "tb_runtime1";
             this.tb_runtime1.Size = new System.Drawing.Size(94, 28);
             this.tb_runtime1.TabIndex = 66;
@@ -234,7 +234,7 @@
             this.rb_mid1.AutoSize = true;
             this.rb_mid1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_mid1.Location = new System.Drawing.Point(96, 460);
-            this.rb_mid1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_mid1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_mid1.Name = "rb_mid1";
             this.rb_mid1.Size = new System.Drawing.Size(47, 25);
             this.rb_mid1.TabIndex = 61;
@@ -247,7 +247,7 @@
             this.rb_high1.AutoSize = true;
             this.rb_high1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_high1.Location = new System.Drawing.Point(96, 386);
-            this.rb_high1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_high1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_high1.Name = "rb_high1";
             this.rb_high1.Size = new System.Drawing.Size(47, 25);
             this.rb_high1.TabIndex = 60;
@@ -382,7 +382,7 @@
             this.rb_half1.AutoSize = true;
             this.rb_half1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_half1.Location = new System.Drawing.Point(96, 309);
-            this.rb_half1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_half1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_half1.Name = "rb_half1";
             this.rb_half1.Size = new System.Drawing.Size(47, 25);
             this.rb_half1.TabIndex = 24;
@@ -395,7 +395,7 @@
             this.rb_super1.AutoSize = true;
             this.rb_super1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_super1.Location = new System.Drawing.Point(96, 234);
-            this.rb_super1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_super1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_super1.Name = "rb_super1";
             this.rb_super1.Size = new System.Drawing.Size(47, 25);
             this.rb_super1.TabIndex = 23;
@@ -408,7 +408,7 @@
             this.rb_13_1.AutoSize = true;
             this.rb_13_1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_13_1.Location = new System.Drawing.Point(96, 159);
-            this.rb_13_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_13_1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_13_1.Name = "rb_13_1";
             this.rb_13_1.Size = new System.Drawing.Size(47, 25);
             this.rb_13_1.TabIndex = 22;
@@ -498,7 +498,7 @@
             this.rb_standard1.AutoSize = true;
             this.rb_standard1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_standard1.Location = new System.Drawing.Point(96, 82);
-            this.rb_standard1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_standard1.Margin = new System.Windows.Forms.Padding(4);
             this.rb_standard1.Name = "rb_standard1";
             this.rb_standard1.Size = new System.Drawing.Size(47, 25);
             this.rb_standard1.TabIndex = 14;
@@ -523,7 +523,7 @@
             this.btn_confirm.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_confirm.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_confirm.Location = new System.Drawing.Point(658, 1138);
-            this.btn_confirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_confirm.Margin = new System.Windows.Forms.Padding(4);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(212, 82);
             this.btn_confirm.TabIndex = 44;
@@ -569,7 +569,7 @@
             this.panel1.Controls.Add(this.rb_standard2);
             this.panel1.Controls.Add(this.lb_standard2);
             this.panel1.Location = new System.Drawing.Point(18, 585);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1518, 528);
             this.panel1.TabIndex = 46;
@@ -588,7 +588,7 @@
             // tb_runtime2
             // 
             this.tb_runtime2.Location = new System.Drawing.Point(1380, 124);
-            this.tb_runtime2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_runtime2.Margin = new System.Windows.Forms.Padding(4);
             this.tb_runtime2.Name = "tb_runtime2";
             this.tb_runtime2.Size = new System.Drawing.Size(94, 28);
             this.tb_runtime2.TabIndex = 73;
@@ -631,7 +631,7 @@
             this.rb_mid2.AutoSize = true;
             this.rb_mid2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_mid2.Location = new System.Drawing.Point(96, 466);
-            this.rb_mid2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_mid2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_mid2.Name = "rb_mid2";
             this.rb_mid2.Size = new System.Drawing.Size(47, 25);
             this.rb_mid2.TabIndex = 69;
@@ -644,7 +644,7 @@
             this.rb_high2.AutoSize = true;
             this.rb_high2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_high2.Location = new System.Drawing.Point(96, 390);
-            this.rb_high2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_high2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_high2.Name = "rb_high2";
             this.rb_high2.Size = new System.Drawing.Size(47, 25);
             this.rb_high2.TabIndex = 68;
@@ -790,7 +790,7 @@
             this.rb_half2.AutoSize = true;
             this.rb_half2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_half2.Location = new System.Drawing.Point(96, 314);
-            this.rb_half2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_half2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_half2.Name = "rb_half2";
             this.rb_half2.Size = new System.Drawing.Size(47, 25);
             this.rb_half2.TabIndex = 24;
@@ -814,7 +814,7 @@
             this.rb_super2.AutoSize = true;
             this.rb_super2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_super2.Location = new System.Drawing.Point(96, 237);
-            this.rb_super2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_super2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_super2.Name = "rb_super2";
             this.rb_super2.Size = new System.Drawing.Size(47, 25);
             this.rb_super2.TabIndex = 23;
@@ -838,7 +838,7 @@
             this.rb_13_2.AutoSize = true;
             this.rb_13_2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_13_2.Location = new System.Drawing.Point(96, 159);
-            this.rb_13_2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_13_2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_13_2.Name = "rb_13_2";
             this.rb_13_2.Size = new System.Drawing.Size(47, 25);
             this.rb_13_2.TabIndex = 22;
@@ -928,7 +928,7 @@
             this.rb_standard2.AutoSize = true;
             this.rb_standard2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rb_standard2.Location = new System.Drawing.Point(96, 82);
-            this.rb_standard2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_standard2.Margin = new System.Windows.Forms.Padding(4);
             this.rb_standard2.Name = "rb_standard2";
             this.rb_standard2.Size = new System.Drawing.Size(47, 25);
             this.rb_standard2.TabIndex = 14;
@@ -952,11 +952,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1558, 1239);
+            this.ClientSize = new System.Drawing.Size(1558, 1258);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btn_confirm);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_GongKuangSelect";
             this.Text = "工况选择";
             this.panel2.ResumeLayout(false);

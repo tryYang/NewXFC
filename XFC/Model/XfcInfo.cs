@@ -23,8 +23,7 @@ namespace XFC.Model
             { FlowType.DN50, false },
             { FlowType.DN100, false },
             { FlowType.DN200, false },
-            { FlowType.DN300, false },
-
+            { FlowType.DN300, false }
         };
         public Gk currentGk=Gk.None ;
         public XfcInfo(int ketid)

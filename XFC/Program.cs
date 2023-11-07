@@ -24,7 +24,7 @@ namespace XFC
             
             
         }
-        static void init()
+        public static void init()
         {
             using (OledbHelper helper = new OledbHelper())
             {

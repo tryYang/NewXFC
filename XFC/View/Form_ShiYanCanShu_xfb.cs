@@ -193,6 +193,7 @@ namespace XFC.View
             SetMainWindowValue();
            
             this.Close();
+            Form_Main.getInstance().Tb_Tip.AppendText("消防泵试验添加成功");
         }
 
         private void SetMainWindowValue()

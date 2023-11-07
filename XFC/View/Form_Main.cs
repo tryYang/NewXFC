@@ -633,8 +633,52 @@ namespace XFC.View
         /// </summary>
         private void EndHandle()
         {
-            
+         
+            for(int i =0;i<=1; i++)
+            {
+                //打印信息添加
+                if (ConstantValue.EquipemntList[i] != Equipment.None) {
+                    ConstantValue.Print[i] = new KeyValuePair<Equipment, List<int>>(ConstantValue.EquipemntList[i], ConstantValue.IdList[i]);
+                }
+                //gk完成信息添加
+                switch (ConstantValue.EquipemntList[i])
+                {                    
+                    case Equipment.Car:
+                        int cargkindex= (int)ConstantValue.xfcInfos[i].currentGk;   
+                        if(cargkindex < 6)   
+                            ConstantValue.xfcInfos[i].IsGkCompleted[cargkindex] =true;
+                        break;
+                    case Equipment.Pump:
+                        int pumpgkindex = (int)ConstantValue.xfbInfos[i].currentGk;
+                        if (pumpgkindex < 6)
+                            ConstantValue.xfbInfos[i].IsGkCompleted[pumpgkindex] = true;
+                        break;
+                    case Equipment.None:
+                        break;
+                }
+                ConstantValueinit();
+                
+            }
+
         }
+
+        private void ConstantValueinit()
+        {
+            ConstantValue.gkStatus = GkStatus.Checked;
+            ConstantValue.IdList = new List<List<int>>()
+            {
+            new List<int>() { -1, -1},//INDEX 0:CarId  1: labId
+            new List<int>() { -1, -1}
+
+            };
+            //LastId 更新
+            Program.init();
+            //運行時間初始化
+            ConstantValue.runtime1= ConstantValue.runtime2=0;
+            ConstantValue.Tick_Num = 0;
+
+        }
+
         private void OnTimedChartShow(object sender, ElapsedEventArgs e)
         {
            
@@ -752,6 +796,7 @@ namespace XFC.View
             if (more == true)
                 e.HasMorePages = true;
         }
+       
     }
 }
 

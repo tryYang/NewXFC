@@ -63,5 +63,19 @@ namespace XFC
             GC.Collect();//强行销毁
             MessageBox.Show("文件： " + fileName + ".xls 保存成功", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        public static void ClearAllTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Text = string.Empty;
+                }
+                if (c.HasChildren)
+                {
+                    ClearAllTextBoxes(c);
+                }
+            }
+        }
     }
 }

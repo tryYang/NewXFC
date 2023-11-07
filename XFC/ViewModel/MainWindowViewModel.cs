@@ -12,6 +12,7 @@ using XFC.View.Dialog;
 using XFC.View.Dialog.Product;
 using XFC.View.Dialog.SongJianDanWei;
 using XFC.View.Dialog.Print;
+using XFC.Model;
 
 namespace XFC.ViewModel
 {
@@ -117,6 +118,16 @@ namespace XFC.ViewModel
 
         private void GkChooseClick()
         {
+            if(ConstantValue.gkStatus ==GkStatus.Uncheck)
+            {
+                MessageBox.Show("请先新建试验");
+                return;
+            }
+            if(ConstantValue.gkStatus == GkStatus.Run|| ConstantValue.gkStatus == GkStatus.Stop)
+            {
+                MessageBox.Show("工况运行中，若要选择工况，请先结束工况");
+                return;
+            }
 
             if (Form_GongKuangSelect.Instance == null)
             {

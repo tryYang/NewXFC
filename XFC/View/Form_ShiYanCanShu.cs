@@ -196,6 +196,7 @@ namespace XFC.View
             }
             
             SetMainWindowValue();
+
             ConstantValue.xfcInfos[index].IsChecked = true;
             ConstantValue.gkStatus = GkStatus.Checked;
             ConstantValue.EquipemntList[index] = Equipment.Car;
@@ -219,6 +220,7 @@ namespace XFC.View
             }
 
             this.Close();
+            Form_Main.getInstance().Tb_Tip.AppendText("消防车试验添加成功");
         }
         private void SetMainWindowValue()
         {

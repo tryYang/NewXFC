@@ -46,18 +46,17 @@ namespace XFC
         public static int LastPumpID = 0;
         public static int LastPumpLabID = 0;
 
+        /// <summary>
+        /// 記錄需要插入ID 第一個索引為設備號，第二個為 0為 ID 1為labId
+        /// </summary>
         public static List<List<int>> IdList = new List<List<int>>()
         {
-            new List<int>() { -1, -1},
+            new List<int>() { -1, -1},//INDEX 0:CarId  1: labId
             new List<int>() { -1, -1}
 
         };
 
-        public static Dictionary<Gk, int> gkKeyValuePairs = new Dictionary<Gk, int>()
-        {
-            { Gk.Diya,0}
-        };
-        
+       
 
         public static List<Dictionary<int, FlowType>> liuliangjiAndFlowtype = new List<Dictionary<int, FlowType>>
         {
@@ -72,9 +71,9 @@ namespace XFC
             }
         };
         //报表该打印的车辆ID 或 水泵Id
-        public static List<KeyValuePair<Equipment, int>> Print = new List<KeyValuePair<Equipment, int>>() {
-             new KeyValuePair<Equipment, int>(Equipment.None, -1),
-             new KeyValuePair<Equipment, int>(Equipment.None, -1),
+        public static List<KeyValuePair<Equipment, List<int>>> Print = new List<KeyValuePair<Equipment, List<int>>>() {
+             new KeyValuePair<Equipment, List<int>>(Equipment.None, IdList[0]),
+             new KeyValuePair<Equipment, List<int>>(Equipment.None,  IdList[1])
 
         };
 

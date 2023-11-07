@@ -259,45 +259,91 @@ namespace XFC.View
         private void setcargk(int i)
         {
             int k = i;
+            string s = string.Empty;
             if (i == 0)
             {
 
                 if (rb_13_1.Checked && rb_13_1.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
+                    s = "1.3工况";
+                }
                 else if (rb_standard1.Checked && rb_standard1.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                else if (rb_high1.Checked && rb_high1.Visible)
+                    s = "低压工况";
+                }
+                else if (rb_high1.Checked && rb_high1.Visible) 
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid1.Checked && rb_mid1.Visible)
+                    s = "高压工况";
+                }
+                else if (rb_mid1.Checked && rb_mid1.Visible) 
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                else if (rb_half1.Checked && rb_half1.Visible)
+                    s = "中压工况";
+                }
+                else if (rb_half1.Checked && rb_half1.Visible) 
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super1.Checked && rb_super1.Visible)
+                    s = "半流量工况";
+                }
+                else if (rb_super1.Checked && rb_super1.Visible) 
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
+                    s = "超流量工况";
+                }                    
                 else
                 {
                     MessageBox.Show("未选择具体工况");
+                    return;
                 }
+                Form_Main.getInstance().Tb_Tip.AppendText($"{i}--消防车试验--{s}选择成功");
             }
             else if (i == 1)
             {
-                if (rb_13_2.Checked && rb_13_1.Visible)
+                if (rb_13_2.Checked && rb_13_2.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
+                    s = "1.3工况";
+                }
+
                 else if (rb_standard2.Checked && rb_standard2.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
+                    s = "低压工况";
+                }
                 else if (rb_high2.Checked && rb_high2.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                else if (rb_mid2.Checked &&  rb_mid2.Visible)
+                    s = "高压工况";
+                }
+                else if (rb_mid2.Checked && rb_mid2.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
+                    s = "中压工况";
+                }
+
                 else if (rb_half2.Checked && rb_half2.Visible)
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                else if (rb_super2.Checked && rb_super2.Visible)
+                    s = "半流量工况";
+                }
+                else if (rb_super2.Checked && rb_super2.Visible) 
+                {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
+                    s = "超流量工况";
+                }
+                   
                 else
                 {
                     MessageBox.Show("未选择具体工况");
+                    return;
                 }
+                Form_Main.getInstance().Tb_Tip.AppendText($"{i}--消防车试验--{s}选择成功");
+                
             }
+            
 
         }
         private void setpumpgk(int i)

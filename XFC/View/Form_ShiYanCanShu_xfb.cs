@@ -50,6 +50,7 @@ namespace XFC.View
             waterpumptype.DataSource = ConstantValue.WaterPumpType;
             cbx_Diya.DataSource = ConstantValue.L_Flowmeter;
             cbx_Gaoya.DataSource = ConstantValue.H_Flowmeter;
+            cbx_PumpId.DataSource = ConstantValue.ID;
             btn_confirm.Click += (sender, e) => viewModel.ConfirmCommand.Execute(null);
             btn_cancel.Click += (sender, e) => viewModel.CancelCommand.Execute(null);
            

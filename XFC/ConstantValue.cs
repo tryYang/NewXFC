@@ -11,8 +11,8 @@ namespace XFC
 {
     public class ConstantValue
     {
-
-       public static List<string> L_Flowmeter = new List<string> {"DN100","DN200","DN300" };
+        public static List<int> ID = new List<int> { 1, 2 };
+        public static List<string> L_Flowmeter = new List<string> {"DN100","DN200","DN300" };
         public static List<string> H_Flowmeter = new List<string> { "DN50", "DN100" };
         public static GkStatus gkStatus = GkStatus.Uncheck;
        public static List<string> WaterPumpType = new List<string> { "低压泵","中压泵","高压泵","中低压泵", "高低压泵" };

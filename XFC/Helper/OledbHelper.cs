@@ -39,11 +39,21 @@ namespace XFC.Helper
         public DataSet GetDataSet()
         {
             DataSet ds = new DataSet();
-            OleDbCommand cmd = new OleDbCommand(sqlstring,connection);            
-            OleDbDataAdapter da = new OleDbDataAdapter();
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-            return ds;
+            try
+            {
+                
+                OleDbCommand cmd = new OleDbCommand(sqlstring, connection);
+                OleDbDataAdapter da = new OleDbDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+
+            }
+          return ds;
+           
 
         }
         public OleDbDataReader GetDataReader()

@@ -279,7 +279,7 @@ namespace XFC.View
                                                     
                     break;
             }
-            if (ConstantValue.Tick_Num % 10==0)
+            if (ConstantValue.Tick_Num % 2==0)
             {
                 bool flag_L = false;
                 bool flag_H = false;
@@ -676,7 +676,7 @@ namespace XFC.View
             //運行時間初始化
             ConstantValue.runtime1= ConstantValue.runtime2=0;
             ConstantValue.Tick_Num = 0;
-
+            
         }
 
         private void OnTimedChartShow(object sender, ElapsedEventArgs e)

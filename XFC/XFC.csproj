@@ -169,7 +169,6 @@
     <Compile Include="Helper\PrintHelper.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper2.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper_Pump2.cs" />
-    <Compile Include="Helper\PrintSqlGenerateHelper_Pump.cs" />
     <Compile Include="Helper\PrintSqlGenerateHelper.cs" />
     <Compile Include="Helper\SettingManager.cs" />
     <Compile Include="Helper\ValueConverter.cs" />

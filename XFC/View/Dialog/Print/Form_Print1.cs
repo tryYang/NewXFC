@@ -63,8 +63,9 @@ namespace XFC.View.Dialog.Print
                 this.reportViewer1.LocalReport.DataSources.Clear();
                 this.reportViewer1.LocalReport.DataSources.Add(rds);
                 this.reportViewer1.RefreshReport();
+
             }
-        }
+            }
 
         /// <summary>
         /// flag1=低压工况；flag2=一点三工况；flag3=超负荷工况；flag4=半流量工况；flag5=高压工况；flag6=中高压工况
@@ -92,73 +93,68 @@ namespace XFC.View.Dialog.Print
 
             using (OledbHelper helper = new OledbHelper())
             {
-                if (ConstantValue.EquipemntList[index] == Equipment.Car)
-                {   List<int> gklist = new List<int>() { 0,0,0,0,0,0};
-                    for(int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
+                 List<int> gklist = new List<int>();
+                    KeyValuePair<Equipment, List<int>> Print = ConstantValue.Print[index];
+                    if (Print.Key == Equipment.Car)
                     {
-                        if (ConstantValue.xfcInfos[index].IsGkCompleted[i])
+                        for (int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
                         {
-                            gklist[i] = 1;
+                            if (ConstantValue.xfcInfos[index].IsGkCompleted[i])
+                            {
+                                gklist.Add(i); 
+                            }
+                           
                         }
-                        else
-                        {
-                            gklist[i] = 0;
-                        }
-                    }
-                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist);
+                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
 
-                    switch (ConstantValue.PumpTypeList[index])
-                    {
-                        case PumpType.DiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_car[0]);
-                            break;
-                        case PumpType.ZhongYaPump:
-                        case PumpType.GaoYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_car[1]);
-                            break;
-                        case PumpType.GaoDiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_car[2]);
-                            break;
-                        case PumpType.ZhongDiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_car[3]);
-                            break;
+                        switch (ConstantValue.PumpTypeList[index])
+                        {
+                            case PumpType.DiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_car[0]);
+                                break;
+                            case PumpType.ZhongYaPump:
+                            case PumpType.GaoYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_car[1]);
+                                break;
+                            case PumpType.GaoDiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_car[2]);
+                                break;
+                            case PumpType.ZhongDiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_car[3]);
+                                break;
 
-                    }
-                }
-                else if (ConstantValue.EquipemntList[index] == Equipment.Pump)
-                {
-                    List<int> gklist = new List<int>(6);
-                    for (int i = 0; i < ConstantValue.xfbInfos[index].IsGkCompleted.Count; i++)
-                    {
-                        if (ConstantValue.xfbInfos[index].IsGkCompleted[i])
-                        {
-                            gklist[i] = 1;
-                        }
-                        else
-                        {
-                            gklist[i] = 0;
                         }
                     }
-                    PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gklist);
-                    switch (ConstantValue.PumpTypeList[index])
+                    else if(Print.Key == Equipment.Pump)
                     {
-                        case PumpType.DiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_pump[0]);
-                            break;
-                        case PumpType.ZhongYaPump:
-                        case PumpType.GaoYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_pump[1]);
-                            break;
-                        case PumpType.GaoDiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_pump[2]);
-                            break;
-                        case PumpType.ZhongDiYaPump:
-                            ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
-                            break;
+                      
+                        for (int i = 0; i < ConstantValue.xfbInfos[index].IsGkCompleted.Count; i++)
+                        {
+                            if (ConstantValue.xfbInfos[index].IsGkCompleted[i])
+                            {
+                                gklist.Add(i);
+                            }
+                        }
+                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
+                        switch (ConstantValue.PumpTypeList[index])
+                        {
+                            case PumpType.DiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_pump[0]);
+                                break;
+                            case PumpType.ZhongYaPump:
+                            case PumpType.GaoYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_pump[1]);
+                                break;
+                            case PumpType.GaoDiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_pump[2]);
+                                break;
+                            case PumpType.ZhongDiYaPump:
+                                ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
+                                break;
 
-
+                            }
                     }
-                }
+                
             }
         }
     }

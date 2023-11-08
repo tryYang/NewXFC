@@ -73,7 +73,7 @@ namespace XFC.View.Dialog.Print
         /// <param name="e"></param>
         private void Form_Print1_Load(object sender, EventArgs e)
         {
-            Printload(0);
+            Printload(1);
         }
 
         private void Printload( int index)//index的意义，是如何传进来的
@@ -92,20 +92,19 @@ namespace XFC.View.Dialog.Print
 
             using (OledbHelper helper = new OledbHelper())
             {
-                if (ConstantValue.EquipemntList[index] == Equipment.Car)
-                {   List<int> gklist = new List<int>(6);
-                    for(int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
+                List<int> gklist = new List<int>();
+                KeyValuePair<Equipment, List<int>> Print = ConstantValue.Print[index];
+                if (Print.Key == Equipment.Car)
+                {
+                    for (int i = 0; i < ConstantValue.xfcInfos[index].IsGkCompleted.Count; i++)
                     {
                         if (ConstantValue.xfcInfos[index].IsGkCompleted[i])
                         {
-                            gklist[i] = 1;
+                            gklist.Add(i);
                         }
-                        else
-                        {
-                            gklist[i] = 0;
-                        }
+
                     }
-                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist);
+                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
 
                     switch (ConstantValue.PumpTypeList[index])
                     {
@@ -125,21 +124,17 @@ namespace XFC.View.Dialog.Print
 
                     }
                 }
-                else if (ConstantValue.EquipemntList[index] == Equipment.Pump)
+                else if (Print.Key == Equipment.Pump)
                 {
-                    List<int> gklist = new List<int>(6);
+
                     for (int i = 0; i < ConstantValue.xfbInfos[index].IsGkCompleted.Count; i++)
                     {
                         if (ConstantValue.xfbInfos[index].IsGkCompleted[i])
                         {
-                            gklist[i] = 1;
-                        }
-                        else
-                        {
-                            gklist[i] = 0;
+                            gklist.Add(i);
                         }
                     }
-                    PrintSqlGenerateHelper_Pump helper1 = new PrintSqlGenerateHelper_Pump(gklist);
+                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
                     switch (ConstantValue.PumpTypeList[index])
                     {
                         case PumpType.DiYaPump:
@@ -156,9 +151,9 @@ namespace XFC.View.Dialog.Print
                             ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
                             break;
 
-
                     }
                 }
+
             }
         }
     }

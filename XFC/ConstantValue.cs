@@ -22,6 +22,8 @@ namespace XFC
         public static List<string> Baurates =new List<string>() {
                          "2400", "4800", "9600", "19200" 
        };
+        //控制保存数据间隔
+        public const int SAVE_DATA_INTEINTERVALS = 4;
         public  const int DATA_SHOW_INTERVALS = 1000;
         public const int DATA_SAVE_INTERVALS = 1000*60;
         public static int Tick_Num = 0;//定时器被触发的次数
@@ -77,7 +79,8 @@ namespace XFC
 
         };
 
-        
+        // 工况对应字符串
+        public static List<string> gkString= new List<string>() { "低压工况", "1.3工况","超流量工况","半流量工况","高压工况","中压工况"};
 
     }
 }

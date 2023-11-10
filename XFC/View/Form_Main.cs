@@ -54,6 +54,7 @@ namespace XFC.View
             viewModel = new MainWindowViewModel();
             //Show Event
             tp_xfc_test.Click+= (sender, e) => viewModel.XfcTestClickCommand.Execute(null);
+            tp_xfb_test.Click += (sender, e) => viewModel.XfbTestClickCommand.Execute(null);
             tp_threshold.Click += (sender, e) => viewModel.thresholdClickCommand.Execute(null);
             tp_userinfo.Click += (sender, e) => viewModel.UserInfoClickCommand.Execute(null);
             tp_xfcproduct.Click += (sender, e) => viewModel.XfcProductClickCommand.Execute(null);
@@ -100,6 +101,7 @@ namespace XFC.View
                 {
                    
                     ConstantValue.DataShowTimer.Start();
+                    Tb_Tip.AppendText("工况成功\n");
                     ConstantValue.gkStatus = GkStatus.Run;
                 }
 
@@ -279,7 +281,7 @@ namespace XFC.View
                                                     
                     break;
             }
-            if (ConstantValue.Tick_Num % 2==0)
+            if (ConstantValue.Tick_Num % ConstantValue.SAVE_DATA_INTEINTERVALS == 0)
             {
                 bool flag_L = false;
                 bool flag_H = false;
@@ -417,12 +419,12 @@ namespace XFC.View
             switch (i)
             {
                 case 0:
-                    tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();
-                    tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();
-                    tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();
+                    Vacuum1.Text=tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();
+                    LPress1.Text =tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();
+                    HPress1.Text = tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();
                     tb_CarPumpSpeed1.Text = NModubs4Helper.Instance.GetValue16(1, 3).ToString();
-                    tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();
-                    tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
+                    InTemp1.Text=tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();
+                    OutTemp1.Text = tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();
                     chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
                     chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
@@ -449,12 +451,12 @@ namespace XFC.View
 
                     break;
                 case 1:
-                    tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
-                    tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
-                    tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
+                    Vacuum2.Text = tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();
+                    LPress2.Text = tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();
+                    HPress2.Text = tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();
                     tb_CarPumpSpeed2.Text = NModubs4Helper.Instance.GetValue16(4, 3).ToString();
-                    tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();
-                    tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();
+                    InTemp2.Text=tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();
+                    OutTemp2.Text = tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();
                     chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
                     chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
@@ -481,37 +483,130 @@ namespace XFC.View
 
                     break;
             }
-            if (ConstantValue.Tick_Num % 60 == 0)
+            if (ConstantValue.Tick_Num % ConstantValue.SAVE_DATA_INTEINTERVALS == 0)
             {
-                ConditionRecord temp = new ConditionRecord();
-                temp.LabID = ConstantValue.IdList[i][1];
+                bool flag_L = false;
+                bool flag_H = false;
+                PumpConditionRecord temp = new PumpConditionRecord();
+                temp.PumpLabID = ConstantValue.IdList[i][1];
                 temp.ConditionNum = (int)ConstantValue.xfbInfos[i].currentGk;
+                temp.SpecificCollectTime = DateTime.Now;
+
                 if (i == 0)
                 {
-                    temp.CollectTime = ConstantValue.runtime1;
-                    temp.L_Press = double.Parse(tb_LPress1.Text);
-                    temp.H_Press = double.Parse(tb_HPress1.Text);
+
+
+                    temp.CollectTime = ConstantValue.runtime1 / 1000 / 60;
+                    if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.L_Press = double.Parse(tb_LPress1.Text);
+                        flag_L = true;
+                    }
+
+                    if (ConstantValue.PumpTypeList[i] != PumpType.DiYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.H_Press = double.Parse(tb_HPress1.Text);
+                        flag_H = true;
+
+                    }
                     temp.VacuumDegree = double.Parse(Vacuum1.Text);
                     temp.Speed = double.Parse(tb_CarPumpSpeed1.Text);
                     temp.InTemp = double.Parse(InTemp1.Text);
                     temp.OutTemp = double.Parse(OutTemp1.Text);
+                    if (flag_L)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][0])
+                        {
+
+                            case FlowType.DN100:
+                                temp.L_Flow = double.Parse(DN100Flow1.Text);
+                                break;
+                            case FlowType.DN200:
+                                temp.L_Flow = double.Parse(DN200Flow1.Text);
+                                break;
+                            case FlowType.DN300:
+                                temp.L_Flow = double.Parse(DN300Flow1.Text);
+                                break;
+
+                        }
+                    }
+                    if (flag_H)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][1])
+                        {
+                            case FlowType.DN50:
+                                temp.H_Flow = double.Parse(DN50Flow1.Text);
+                                break;
+                            case FlowType.DN100:
+                                temp.H_Flow = double.Parse(DN100Flow1.Text);
+                                break;
+
+                        }
+                    }
+
                     //流量添加
 
                 }
                 else if (i == 1)
                 {
-                    temp.CollectTime = ConstantValue.runtime2;
-                    temp.L_Press = double.Parse(tb_LPress2.Text);
-                    temp.H_Press = double.Parse(tb_HPress2.Text);
+                    temp.CollectTime = ConstantValue.runtime2 / 60 / 1000;
+                    if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.L_Press = double.Parse(tb_LPress2.Text);
+                        flag_L = true;
+                    }
+
+                    if (ConstantValue.PumpTypeList[i] != PumpType.DiYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
+                    {
+                        temp.H_Press = double.Parse(tb_HPress2.Text);
+                        flag_H = true;
+
+                    }
                     temp.VacuumDegree = double.Parse(Vacuum2.Text);
                     temp.Speed = double.Parse(tb_CarPumpSpeed2.Text);
                     temp.InTemp = double.Parse(InTemp2.Text);
                     temp.OutTemp = double.Parse(OutTemp2.Text);
                     //流量添加
+                    if (flag_L)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][0])
+                        {
+
+                            case FlowType.DN100:
+                                temp.L_Flow = double.Parse(DN100Flow2.Text);
+                                break;
+                            case FlowType.DN200:
+                                temp.L_Flow = double.Parse(DN200Flow2.Text);
+                                break;
+                            case FlowType.DN300:
+                                temp.L_Flow = double.Parse(DN300Flow2.Text);
+                                break;
+
+                        }
+                    }
+                    if (flag_H)
+                    {
+                        switch (ConstantValue.liuliangjiAndFlowtype[i][1])
+                        {
+                            case FlowType.DN50:
+                                temp.H_Flow = double.Parse(DN50Flow2.Text);
+                                break;
+                            case FlowType.DN100:
+                                temp.H_Flow = double.Parse(DN100Flow2.Text);
+                                break;
+
+                        }
+                    }
+
+                }
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.InsertData(temp);
+
                 }
 
-
             }
+            
 
         }
         /// <summary>
@@ -521,7 +616,7 @@ namespace XFC.View
         /// <param name="e"></param>
         private void OnTimedCountdown(Object source, ElapsedEventArgs e)
         {
-            if (ConstantValue.xfcInfos[0].IsChecked || ConstantValue.runtime1 > 0)
+            if (ConstantValue.EquipemntList[0]!=Equipment.None && ConstantValue.runtime1 > 0)
             {
                 ConstantValue.runtime1 -= 1000;
                 TimeSpan timeSpan1 = TimeSpan.FromMilliseconds(ConstantValue.runtime1);
@@ -531,7 +626,7 @@ namespace XFC.View
 
                 }));
             }
-            if (ConstantValue.xfcInfos[1].IsChecked|| ConstantValue.runtime2>0)
+            if (ConstantValue.EquipemntList[1] != Equipment.None && ConstantValue.runtime2>0)
             {
                 ConstantValue.runtime2 -= 1000;
                 TimeSpan timeSpan2 = TimeSpan.FromMilliseconds(ConstantValue.runtime2);
@@ -541,11 +636,12 @@ namespace XFC.View
 
                 }));
             }
-            
+        
+
             // 都运行结束
-            if(ConstantValue.runtime1<0&& ConstantValue.runtime2 < 0)
+            if (ConstantValue.runtime1<=0&& ConstantValue.runtime2 <=0)
             {
-                
+                    this.Invoke(new System.Action( ()=>DisConnect()));
             }
 
 
@@ -607,27 +703,40 @@ namespace XFC.View
 
         private void btn_DisConnect_Click(object sender, EventArgs e)
         {
-            if (ConstantValue.gkStatus == GkStatus.Run || ConstantValue.gkStatus == GkStatus.Stop) {
+            DisConnect();
+            
+                
+        }
+
+        private void DisConnect()
+        {
+            if (ConstantValue.gkStatus == GkStatus.Run || ConstantValue.gkStatus == GkStatus.Stop)
+            {
                 try
                 {
-                   
+
                     uninitDataTimer();
                     NModubs4Helper.Instance.Close();
+
+
                     EndHandle();
                     MessageBox.Show("工况结束");
+                    Util.ClearAllTextBoxes(Form_Main.getInstance());
+
                 }
-                catch (Exception ex){ 
-                
-                    MessageBox.Show(ex.Message);    
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("暂无工况在运行");
             }
-                
         }
+
         /// <summary>
         /// 工况运行结束后的处理
         /// </summary>
@@ -640,6 +749,7 @@ namespace XFC.View
                 if (ConstantValue.EquipemntList[i] != Equipment.None) {
                     ConstantValue.Print[i] = new KeyValuePair<Equipment, List<int>>(ConstantValue.EquipemntList[i], ConstantValue.IdList[i]);
                 }
+            
                 //gk完成信息添加
                 switch (ConstantValue.EquipemntList[i])
                 {                    
@@ -647,19 +757,27 @@ namespace XFC.View
                         int cargkindex= (int)ConstantValue.xfcInfos[i].currentGk;   
                         if(cargkindex < 6)   
                             ConstantValue.xfcInfos[i].IsGkCompleted[cargkindex] =true;
+                            Gk curGk = ConstantValue.xfcInfos[i].currentGk;
+                            this.Invoke(new System.Action(() => {
+                                Tb_Tip.AppendText($"设备{i + 1}----消防车的{ConstantValue.gkString[(int)curGk]}结束\n");
+                            }));
                         break;
                     case Equipment.Pump:
                         int pumpgkindex = (int)ConstantValue.xfbInfos[i].currentGk;
                         if (pumpgkindex < 6)
                             ConstantValue.xfbInfos[i].IsGkCompleted[pumpgkindex] = true;
+                            Gk curGk_pump = ConstantValue.xfbInfos[i].currentGk;
+                            this.Invoke(new System.Action(() => {
+                                Tb_Tip.AppendText($"设备{i + 1}----消防泵的{ConstantValue.gkString[(int)curGk_pump]}结束\n");
+                            }));
                         break;
                     case Equipment.None:
                         break;
                 }
-                ConstantValueinit();
+               
                 
             }
-
+            ConstantValueinit();
         }
 
         private void ConstantValueinit()

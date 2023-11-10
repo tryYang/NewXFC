@@ -1744,14 +1744,14 @@
                                       <TablixHeader>
                                         <Size>3.7781cm</Size>
                                         <CellContents>
-                                          <Textbox Name="生产厂家">
+                                          <Textbox Name="大气压力1">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!生产厂家.Value</Value>
+                                                    <Value>=Fields!大气压力.Value</Value>
                                                     <Style>
                                                       <FontFamily>宋体</FontFamily>
                                                     </Style>
@@ -1762,7 +1762,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>生产厂家</rd:DefaultName>
+                                            <rd:DefaultName>大气压力1</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>

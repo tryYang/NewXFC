@@ -47,6 +47,16 @@ namespace XFC.View
                 MessageBox.Show("请先退出运行的工况");
                 return;
             }
+            //如果用户选择工况后重新选择，需要将一些数据进行初始化
+            if (ConstantValue.gkStatus == GkStatus.Selected)
+            {
+                //IdList 初始化
+                foreach(var k in ConstantValue.IdList)
+                {
+                    k[0] = -1; k[1] = -1;
+                }
+            }
+
             for (int i=0;i<ConstantValue.EquipemntList.Count;i++)
             {
                 if(ConstantValue.EquipemntList[i]!=Equipment.None)
@@ -94,7 +104,7 @@ namespace XFC.View
                 if (int.TryParse(control_runtime.Text, out int result))
                 {
                     ConstantValue.xfbInfos[i].runtime = result;
-                    if (i == 1)
+                    if (i == 0)
                         ConstantValue.runtime1 = result * 60 * 1000;
                     else
                         ConstantValue.runtime2 = result * 60 * 1000;
@@ -145,7 +155,8 @@ namespace XFC.View
             }
 
             //试验状态更新
-            CarStatusUpdate();
+            StatusUpdate();
+            //CarStatusUpdate();
             //工况状态更新
             GkStatusUpdate();
             SelectUpdate();
@@ -298,7 +309,7 @@ namespace XFC.View
                     MessageBox.Show("未选择具体工况");
                     return;
                 }
-                Form_Main.getInstance().Tb_Tip.AppendText($"{i}--消防车试验--{s}选择成功");
+                Form_Main.getInstance().Tb_Tip.AppendText($"{i}----消防车试验----{s}选择成功\n");
             }
             else if (i == 1)
             {
@@ -340,7 +351,7 @@ namespace XFC.View
                     MessageBox.Show("未选择具体工况");
                     return;
                 }
-                Form_Main.getInstance().Tb_Tip.AppendText($"{i}--消防车试验--{s}选择成功");
+                Form_Main.getInstance().Tb_Tip.AppendText($"{i}----消防车试验----{s}选择成功\n");
                 
             }
             
@@ -349,7 +360,7 @@ namespace XFC.View
         private void setpumpgk(int i)
         {
             int k = i ;
-            if (i+1 == 1)
+            if (i == 0)
             {
 
                 if (rb_13_1.Checked)
@@ -365,7 +376,7 @@ namespace XFC.View
                 else if (rb_super1.Checked)
                     ConstantValue.xfbInfos[k].currentGk = Gk.Supper;
             }
-            else if (i+1 == 2)
+            else if (i == 1)
             {
                 if (rb_13_2.Checked)
                     ConstantValue.xfbInfos[k].currentGk = Gk.Onedot3;
@@ -494,6 +505,113 @@ namespace XFC.View
                 lb_status2.Text = "未建立";
                 lb_status2.BackColor = Color.Red;
                 
+            }
+        }
+
+        public void PumpStatusUpdate()
+        {
+            bool ischeck1 = false;
+            bool ischeck2 = false;
+            foreach (var xfcinfo in ConstantValue.xfcInfos)
+            {
+
+                if (xfcinfo.IsChecked)
+                {
+                    if (xfcinfo.KeyId == 1)
+                    {
+                        ischeck1 = true;
+                    }
+                    else
+                    {
+                        ischeck2 = true;
+                    }
+                }
+            }
+            if (ischeck1)
+            {
+                lb_status1.Text = "已完成";
+                lb_status1.BackColor = Color.White;
+                lb_pumptype1.Text = ConstantValue.xfcInfos[0].carBasicInfo.PumpType;
+
+
+            }
+            else
+            {
+                lb_status1.Text = "未建立";
+                lb_status1.BackColor = Color.Red;
+            }
+            if (ischeck2)
+            {
+                lb_status2.Text = "已完成";
+                lb_status2.BackColor = Color.White;
+                lb_pumptype2.Text = ConstantValue.xfcInfos[1].carBasicInfo.PumpType;
+            }
+            else
+            {
+                lb_status2.Text = "未建立";
+                lb_status2.BackColor = Color.Red;
+
+            }
+        }
+        private void StatusUpdate()
+        {
+            for (int i= 0;i < 1; i++){
+                if ( ConstantValue.EquipemntList[i] == Equipment.Car)
+                {
+                    if (i==0)
+                    {
+                        lb_status1.Text = "已完成";
+                        lb_status1.BackColor = Color.White;
+                        lb_pumptype1.Text = ConstantValue.xfcInfos[0].carBasicInfo.PumpType;
+
+
+                    }
+                    else
+                    {
+                        lb_status1.Text = "未建立";
+                        lb_status1.BackColor = Color.Red;
+                    }
+                    if (i==1)
+                    {
+                        lb_status2.Text = "已完成";
+                        lb_status2.BackColor = Color.White;
+                        lb_pumptype2.Text = ConstantValue.xfcInfos[1].carBasicInfo.PumpType;
+                    }
+                    else
+                    {
+                        lb_status2.Text = "未建立";
+                        lb_status2.BackColor = Color.Red;
+
+                    }
+                }
+                if (ConstantValue.EquipemntList[i] == Equipment.Pump)
+                {
+                    if (i == 0)
+                    {
+                        lb_status1.Text = "已完成";
+                        lb_status1.BackColor = Color.White;
+                        lb_pumptype1.Text = ConstantValue.xfbInfos[0].pumpBasicInfo.PumpType;
+
+
+                    }
+                    else
+                    {
+                        lb_status1.Text = "未建立";
+                        lb_status1.BackColor = Color.Red;
+                    }
+                    if (i == 1)
+                    {
+                        lb_status2.Text = "已完成";
+                        lb_status2.BackColor = Color.White;
+                        lb_pumptype2.Text = ConstantValue.xfbInfos[1].pumpBasicInfo.PumpType;
+                    }
+                    else
+                    {
+                        lb_status2.Text = "未建立";
+                        lb_status2.BackColor = Color.Red;
+
+                    }
+                }
             }
         }
     }

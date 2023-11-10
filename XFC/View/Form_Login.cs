@@ -70,6 +70,10 @@ namespace XFC.View
             }
         }
 
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         void setControl(float newx, float newy, Control cons)
         {
             foreach (Control con in cons.Controls)

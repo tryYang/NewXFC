@@ -69,6 +69,10 @@ namespace XFC
             {
                 if (c is TextBox)
                 {
+                    List<string> unclear = new List<string>() { "txt_DataBits", "Tb_Tip" };
+                    if(unclear.Contains(c.Name)) {
+                        continue;
+                    }
                     ((TextBox)c).Text = string.Empty;
                 }
                 if (c.HasChildren)

@@ -99,11 +99,12 @@ namespace XFC.View
                 MessageBox.Show("请在红色控件处输入正确的值！");
                 return;
             }
-            else if (tb_Speed.Text.Length!=17)
+            else if(cbx_ElectricalMachinery.Text.Trim()=="")
             {
-                MessageBox.Show("底盘VIN必须为17位");
+                MessageBox.Show("请在红色控件处输入正确的值！");
                 return;
             }
+            
             int index = int.Parse(cbx_PumpId.Text) - 1;
 
                      
@@ -194,7 +195,7 @@ namespace XFC.View
             SetMainWindowValue();
            
             this.Close();
-            Form_Main.getInstance().Tb_Tip.AppendText("消防泵试验添加成功");
+            Form_Main.getInstance().Tb_Tip.AppendText("消防泵试验添加成功\n");
         }
 
         private void SetMainWindowValue()
@@ -286,13 +287,14 @@ namespace XFC.View
             dic.Add("select distinct CustomerDepart from	PumpLab", cbx_CustomerDepart);  //送检单位
             dic.Add("select distinct PumpName from PumpBasicInfo", cbx_PumpName);    //水泵名称
             dic.Add("select distinct PumpFac from PumpBasicInfo", cbx_pumpfac);  //水泵厂家            
-            dic.Add("select distinct Speed  from PumpBasicInfo", tb_Speed);  //额定转速     
+               
             //dic.Add("select distinct CarProduceTime	from CarBasicInfo",dateTimePicker2);  //生产日期
             //dic.Add("select distinct PumpType from CarBasicInfo",waterpumptype);  //水泵类型
-            dic.Add("select distinct EpitopeDifference  from PumpBasicInfo", tb_Speed);  //表位差    
+            dic.Add("select distinct EpitopeDifference  from PumpBasicInfo", cbx_EpitopeDifference);  //表位差    
             dic.Add("select distinct PumpModel from	PumpBasicInfo ", cbx_PumpModel);  //水泵型号                                                                      
-            dic.Add("select distinct InPipeD  from	PumpBasicInfo ", tb_OutPipeD);//出口管径
-            dic.Add("select distinct OutPipeD  from	PumpBasicInfo ", tb_InPipeD);//进口管径
+            //dic.Add("select distinct InPipeD  from	PumpBasicInfo ", tb_OutPipeD);//出口管径
+            //dic.Add("select distinct OutPipeD  from	PumpBasicInfo ", tb_InPipeD);//进口管径
+            //dic.Add("select distinct OutPipeD  from	PumpBasicInfo ", tb_InPipeD);//电机
             load(dic);
 
         }

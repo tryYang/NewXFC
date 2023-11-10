@@ -20,6 +20,7 @@ namespace XFC.ViewModel
     {
         //Show 
         public ICommand XfcTestClickCommand { get; }//消防车试验
+        public ICommand XfbTestClickCommand { get; }//消防泵试验
         public ICommand thresholdClickCommand { get; }//阈值管理
         public ICommand UserInfoClickCommand { get; }//操作人员
         public ICommand XfcProductClickCommand { get; }//消防车产品信息
@@ -53,6 +54,7 @@ namespace XFC.ViewModel
 
             //Dialog Show
             XfcTestClickCommand = new RelayCommand(Xfc_Test_Show);
+            XfbTestClickCommand = new RelayCommand(Xfb_Test_Show);
             thresholdClickCommand = new RelayCommand(thresholdShow);
             UserInfoClickCommand = new RelayCommand(UserInfoShow);
             XfcProductClickCommand = new RelayCommand(XfcProductShow);
@@ -81,6 +83,13 @@ namespace XFC.ViewModel
             ExitClickCommand = new RelayCommand(Exit);//Application Exit
 
         }
+
+        private void Xfb_Test_Show()
+        {
+            Form_ShiYanCanShu_xfb.GetInstance().ShowDialog();
+
+        }
+
         //对话框显示
         private void Xfc_Test_Show()
         {
@@ -160,12 +169,23 @@ namespace XFC.ViewModel
         //打印报表
         private void PrintReportTable1()
         {
-            Form_Print1 print1= new Form_Print1();
-            print1.ShowDialog();
+            var keyvalue = ConstantValue.Print[0];
+            if(keyvalue.Key==Equipment.None)
+            {
+                MessageBox.Show("未有可打印的报表");
+            }
+            Form_Print1 print= new Form_Print1();
+            print.ShowDialog();
         }
         private void PrintReportTable2()
         {
-
+            var keyvalue = ConstantValue.Print[1];
+            if (keyvalue.Key == Equipment.None)
+            {
+                MessageBox.Show("未有可打印的报表");
+            }
+            Form_Print2 print = new Form_Print2();
+            print.ShowDialog();
 
         }
 

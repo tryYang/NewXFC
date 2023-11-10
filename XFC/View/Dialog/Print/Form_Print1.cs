@@ -87,7 +87,7 @@ namespace XFC.View.Dialog.Print
             PrintList_car.Add(new List<string>() { "车载泵中低压泵1", "Report_Car_zhongDiYa.rdlc" });
             List<List<string>> PrintList_pump = new List<List<string>>();
             PrintList_pump.Add(new List<string>() { "消防泵低压泵1", "Report_Pump_DiYa.rdlc" });
-            PrintList_pump.Add(new List<string>() { "消防泵高压泵和中压泵1", "Report_Pump_DiYa.rdlc" });
+            PrintList_pump.Add(new List<string>() { "消防泵高压泵和中压泵1", "Report_Pump_GaoAndZhongYa.rdlc" });
             PrintList_pump.Add(new List<string>() { "消防泵高低压泵1", "Report_Pump_GaoDiYa.rdlc" });
             PrintList_pump.Add(new List<string>() { "消防泵中低压泵1", "Report_Car_zhongDiYa.rdlc" });
 

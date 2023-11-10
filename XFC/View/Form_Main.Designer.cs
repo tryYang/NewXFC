@@ -111,9 +111,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.xinjian = new System.Windows.Forms.ToolStripMenuItem();
             this.tp_xfc_test = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripTextBox16 = new System.Windows.Forms.ToolStripTextBox();
+            this.tp_xfb_test = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox17 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox18 = new System.Windows.Forms.ToolStripTextBox();
@@ -1131,7 +1131,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem8,
+            this.xinjian,
             this.toolStripMenuItem9,
             this.tp_testexit});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1139,16 +1139,16 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(77, 23);
             this.toolStripMenuItem1.Text = "试验操作";
             // 
-            // toolStripMenuItem8
+            // xinjian
             // 
-            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xinjian.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tp_xfc_test,
-            this.toolStripTextBox16,
+            this.tp_xfb_test,
             this.toolStripTextBox17});
-            this.toolStripMenuItem8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItem8.Text = "新建试验";
+            this.xinjian.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.xinjian.Name = "xinjian";
+            this.xinjian.Size = new System.Drawing.Size(180, 22);
+            this.xinjian.Text = "新建试验";
             // 
             // tp_xfc_test
             // 
@@ -1157,12 +1157,12 @@
             this.tp_xfc_test.Size = new System.Drawing.Size(100, 23);
             this.tp_xfc_test.Text = "消防车试验";
             // 
-            // toolStripTextBox16
+            // tp_xfb_test
             // 
-            this.toolStripTextBox16.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripTextBox16.Name = "toolStripTextBox16";
-            this.toolStripTextBox16.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox16.Text = "消防泵试验";
+            this.tp_xfb_test.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tp_xfb_test.Name = "tp_xfb_test";
+            this.tp_xfb_test.Size = new System.Drawing.Size(100, 23);
+            this.tp_xfb_test.Text = "消防泵试验";
             // 
             // toolStripTextBox17
             // 
@@ -1179,7 +1179,7 @@
             this.toolStripTextBox20});
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(160, 22);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem9.Text = "打开试验";
             // 
             // toolStripTextBox18
@@ -1226,7 +1226,7 @@
             // 
             this.tp_gkchoose.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkchoose.Name = "tp_gkchoose";
-            this.tp_gkchoose.Size = new System.Drawing.Size(180, 22);
+            this.tp_gkchoose.Size = new System.Drawing.Size(160, 22);
             this.tp_gkchoose.Text = "选择工况";
             // 
             // tp_gkzhanting
@@ -3099,7 +3099,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1924, 849);
+            this.ClientSize = new System.Drawing.Size(1924, 978);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.textBox_name);
@@ -3234,9 +3234,9 @@
         public System.Windows.Forms.TextBox textBox86;
         public System.Windows.Forms.TextBox textBox89;
         public  System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        public  System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        public  System.Windows.Forms.ToolStripMenuItem xinjian;
         public  System.Windows.Forms.ToolStripTextBox tp_xfc_test;
-        public  System.Windows.Forms.ToolStripTextBox toolStripTextBox16;
+        public  System.Windows.Forms.ToolStripTextBox tp_xfb_test;
         public  System.Windows.Forms.ToolStripTextBox toolStripTextBox17;
         public  System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         public  System.Windows.Forms.ToolStripTextBox toolStripTextBox18;

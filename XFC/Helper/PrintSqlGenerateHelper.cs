@@ -87,9 +87,9 @@ namespace XFC.Helper
         void ConditionGenerate()//需改变，且有两辆车实验时主要为这里改变
         {
             if (_equipment == Equipment.Car)
-                condition = $"CarLab.CarID = {LabId}";
+                condition = $"CarLab.LabID = {LabId}";
             else if (_equipment == Equipment.Pump)            
-                condition = $"PumpLab.PumpID = {LabId}";
+                condition = $"PumpLab.PumpLabID = {LabId}";
         }
         void GroupByGenerate()//对应非聚合函数字段，主要为基本信息，需改变
         {

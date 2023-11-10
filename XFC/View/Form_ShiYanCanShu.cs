@@ -221,7 +221,7 @@ namespace XFC.View
             }
 
             this.Close();
-            Form_Main.getInstance().Tb_Tip.AppendText("消防车试验添加成功");
+            Form_Main.getInstance().Tb_Tip.AppendText("消防车试验添加成功\n");
         }
         private void SetMainWindowValue()
         {

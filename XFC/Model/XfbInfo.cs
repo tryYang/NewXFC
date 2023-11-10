@@ -16,8 +16,8 @@ namespace XFC.Model
             get; set;
         } = new PumpLab();
 
-        public List<int> rumtimeList = new List<int>() { 0 };
-        public List<bool> IsGkCompleted = new List<bool>() { false };
+        public List<int> rumtimeList = new List<int>() { 0, 0, 0, 0, 0, 0 };
+        public List<bool> IsGkCompleted = new List<bool>() { false, false, false, false, false, false };
         public bool IsChecked = false;
         public int runtime = -1;
         public Gk currentGk=Gk.None;

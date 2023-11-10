@@ -25,6 +25,8 @@ using System.Timers;
 using Microsoft.Office.Interop.Excel;
 using TextBox = System.Windows.Forms.TextBox;
 using log4net;
+using Newtonsoft.Json.Linq;
+using System.Runtime.InteropServices;
 
 namespace XFC.View
 {
@@ -37,7 +39,11 @@ namespace XFC.View
         private List<TextBox> DNcontrols1;
         private List<TextBox> DNcontrols2;
         GridPrinter gridPrinter;
+        private bool isDatagridViewShowRealTime1 = true;
+        private bool isDatagridViewShowRealTime2 = true;
 
+        System.Data.DataTable dataTable1 = CreateDataTable("设备1");
+        System.Data.DataTable dataTable2 = CreateDataTable("设备2");
         public static Form_Main getInstance()
         {
             if (instance == null)
@@ -84,10 +90,14 @@ namespace XFC.View
             DNcontrols1 = new List<TextBox>() { DN50Flow1, DN50Value1, DN100Flow1, DN100Value1, DN200Flow1, DN200Value1, DN300Flow1, DN300Value1 };
             DNcontrols2 = new List<TextBox>() { DN50Flow2, DN50Value2, DN100Flow2, DN100Value2, DN200Flow2, DN200Value2, DN300Flow2, DN300Value2 };
 
+            
+            dataGridView1.DataSource = dataTable1;
+            dataGridView2.DataSource = dataTable2;
 
 
 
         }
+
 
         private void btn_Connect_Click(object sender, EventArgs e)
         {
@@ -175,15 +185,14 @@ namespace XFC.View
         private  void OnTimedDataShow(Object source, ElapsedEventArgs e)
         {
             
-            this.Invoke(new System.Action(() => {
+          
 
                 //Task.Run(() => DataShow(0, ConstantValue.EquipemntList[0]));
                 //Task.Run(() => DataShow(1, ConstantValue.EquipemntList[1]));
                 DataShow(0, ConstantValue.EquipemntList[0]);
                 DataShow(1, ConstantValue.EquipemntList[1]);
                 DateTime time = DateTime.Now;
-             
-            }));
+           
 
             
             Console.WriteLine("定时器触发的事件在 {0:HH:mm:ss.fff} 执行", e.SignalTime);
@@ -198,14 +207,22 @@ namespace XFC.View
         {
             if (eq == Equipment.Car && ConstantValue.xfcInfos[i].currentGk!=Gk.None)
             {
-                DataShow_xfc(i);
+                this.Invoke(new System.Action(() => {
+                    DataShow_xfc(i);
+                }));
+
             }
             else if (eq == Equipment.Pump && ConstantValue.xfbInfos[i].currentGk != Gk.None)
             {
-                DataShow_xfb(i);
+                this.Invoke(new System.Action(() => {
+
+                    DataShow_xfb(i);
+                }));
+
             }
-           
-                return;
+            ConstantValue.Tick_Num++;
+
+            return;
 
         }
         /// <summary>
@@ -215,7 +232,7 @@ namespace XFC.View
         private void DataShow_xfc(int i)
         {
             Gk gk = ConstantValue.xfcInfos[i].currentGk;
-           
+       
             switch (i) { 
                 case 0:
                     
@@ -288,20 +305,20 @@ namespace XFC.View
                 bool flag_H = false;
                 ConditionRecord temp = new ConditionRecord();
                 temp.LabID = ConstantValue.IdList[i][1];
-                temp.ConditionNum =(int) ConstantValue.xfcInfos[i].currentGk;
+                temp.ConditionNum = (int)ConstantValue.xfcInfos[i].currentGk;
                 temp.SpecificCollectTime = DateTime.Now;
-
+                object[] records = new object[10];
                 if (i == 0)
                 {
-                    
 
-                    temp.CollectTime = ConstantValue.runtime1/1000/60;
+
+                    temp.CollectTime = ConstantValue.runtime1 / 1000 / 60;
                     if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
                     {
                         temp.L_Press = double.Parse(tb_LPress1.Text);
                         flag_L = true;
                     }
-                        
+
                     if (ConstantValue.PumpTypeList[i] != PumpType.DiYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
                     {
                         temp.H_Press = double.Parse(tb_HPress1.Text);
@@ -309,14 +326,14 @@ namespace XFC.View
 
                     }
                     temp.VacuumDegree = double.Parse(Vacuum1.Text);
-                    temp.Speed= double.Parse(tb_CarPumpSpeed1.Text);
+                    temp.Speed = double.Parse(tb_CarPumpSpeed1.Text);
                     temp.InTemp = double.Parse(InTemp1.Text);
                     temp.OutTemp = double.Parse(OutTemp1.Text);
                     if (flag_L)
                     {
                         switch (ConstantValue.liuliangjiAndFlowtype[i][0])
                         {
-                            
+
                             case FlowType.DN100:
                                 temp.L_Flow = double.Parse(DN100Flow1.Text);
                                 break;
@@ -339,7 +356,7 @@ namespace XFC.View
                             case FlowType.DN100:
                                 temp.H_Flow = double.Parse(DN100Flow1.Text);
                                 break;
-                           
+
                         }
                     }
 
@@ -347,9 +364,9 @@ namespace XFC.View
                     //流量添加
 
                 }
-                else if(i == 1)
+                else if (i == 1)
                 {
-                    temp.CollectTime = ConstantValue.runtime2/60/1000;
+                    temp.CollectTime = ConstantValue.runtime2 / 60 / 1000;
                     if (ConstantValue.PumpTypeList[i] != PumpType.GaoYaPump && ConstantValue.PumpTypeList[i] != PumpType.ZhongYaPump && ConstantValue.PumpTypeList[i] != PumpType.None)
                     {
                         temp.L_Press = double.Parse(tb_LPress2.Text);
@@ -397,26 +414,74 @@ namespace XFC.View
 
                         }
                     }
-                    
+
                 }
                 using (OledbHelper helper = new OledbHelper())
                 {
                     helper.InsertData(temp);
 
                 }
+                if(ConstantValue.Tick_Num % ConstantValue.Sampling_Time == 0)
+                {
+
+                    //Datagridview 显示数据
+                    if (isDatagridViewShowRealTime1 && ConstantValue.EquipemntList[0] == Equipment.Car)
+                    {
+                        records[0] = temp.LabID;
+                        records[1] = temp.SpecificCollectTime;
+                        records[2] = temp.L_Press;
+                        records[3] = temp.L_Flow;
+                        records[4] = temp.H_Press;
+                        records[5] = temp.H_Flow;
+                        records[6] = temp.VacuumDegree;
+                        records[7] = temp.Speed;
+                        records[8] = temp.InTemp;
+                        records[9] = temp.OutTemp;
+                        dataTable1.Rows.Add(records);
+                        dataGridView1.DataSource = dataTable1;
+                        dataGridView1.Refresh();
+
+
+                    }
+                    if (isDatagridViewShowRealTime2 && ConstantValue.EquipemntList[1] == Equipment.Car)
+                    {
+                        records[0] = temp.LabID;
+                        records[1] = temp.SpecificCollectTime;
+                        records[2] = temp.L_Press;
+                        records[3] = temp.L_Flow;
+                        records[4] = temp.H_Press;
+                        records[5] = temp.H_Flow;
+                        records[6] = temp.VacuumDegree;
+                        records[7] = temp.Speed;
+                        records[8] = temp.InTemp;
+                        records[9] = temp.OutTemp;
+
+                        dataGridView2.Rows.Add(records);
+                        dataGridView2.Refresh();
+                        dataGridView2.Refresh();
+
+
+
+
+                    }
+                }
+              
+
 
 
             }
-            ConstantValue.Tick_Num++;
+         
 
 
         }
+
+
         /// <summary>
         ///显示消防泵的实时数据
         /// </summary>
         /// <param name="i"></param>
         private void DataShow_xfb(int i)
-        {
+        {  
             switch (i)
             {
                 case 0:
@@ -600,6 +665,53 @@ namespace XFC.View
                     }
 
                 }
+                object[] records = new object[10];
+
+                if (ConstantValue.Tick_Num % ConstantValue.Sampling_Time == 0)
+                {
+
+                    //Datagridview 显示数据
+                    if (isDatagridViewShowRealTime1 && ConstantValue.EquipemntList[0] == Equipment.Pump)
+                    {
+                        records[0] = temp.PumpLabID;
+                        records[1] = temp.SpecificCollectTime;
+                        records[2] = temp.L_Press;
+                        records[3] = temp.L_Flow;
+                        records[4] = temp.H_Press;
+                        records[5] = temp.H_Flow;
+                        records[6] = temp.VacuumDegree;
+                        records[7] = temp.Speed;
+                        records[8] = temp.InTemp;
+                        records[9] = temp.OutTemp;
+                        dataTable1.Rows.Add(records);
+                        dataGridView1.DataSource = dataTable1;
+                        dataGridView1.Refresh();
+
+
+                    }
+                    if (isDatagridViewShowRealTime2 && ConstantValue.EquipemntList[1] == Equipment.Pump)
+                    {
+                        records[0] = temp.PumpLabID;
+                        records[1] = temp.SpecificCollectTime;
+                        records[2] = temp.L_Press;
+                        records[3] = temp.L_Flow;
+                        records[4] = temp.H_Press;
+                        records[5] = temp.H_Flow;
+                        records[6] = temp.VacuumDegree;
+                        records[7] = temp.Speed;
+                        records[8] = temp.InTemp;
+                        records[9] = temp.OutTemp;
+
+                        dataGridView2.Rows.Add(records);
+                        dataGridView2.Refresh();
+                        dataGridView2.Refresh();
+
+
+
+
+                    }
+                }
+
                 using (OledbHelper helper = new OledbHelper())
                 {
                     helper.InsertData(temp);
@@ -784,12 +896,12 @@ namespace XFC.View
         private void ConstantValueinit()
         {
             ConstantValue.gkStatus = GkStatus.Checked;
-            ConstantValue.IdList = new List<List<int>>()
-            {
-            new List<int>() { -1, -1},//INDEX 0:CarId  1: labId
-            new List<int>() { -1, -1}
+            //ConstantValue.IdList = new List<List<int>>()
+            //{
+            //new List<int>() { -1, -1},//INDEX 0:CarId  1: labId
+            //new List<int>() { -1, -1}
 
-            };
+            //};
             //LastId 更新
             Program.init();
             //運行時間初始化
@@ -815,14 +927,16 @@ namespace XFC.View
 
         private void btn_Query_Click(object sender, EventArgs e)
         {
-            dataTimeSpanQuery(1, dataGridView1, time_start1, time_end1);
+            isDatagridViewShowRealTime1 = false;
+            dataTimeSpanQuery(0, dataGridView1, time_start1, time_end1);
 
         }
        
 
         private void btn_Query2_Click(object sender, EventArgs e)
         {
-            dataTimeSpanQuery(2, dataGridView2, time_start2, time_end2);
+            isDatagridViewShowRealTime2= false;
+            dataTimeSpanQuery(1, dataGridView2, time_start2, time_end2);
         }
         private void dataTimeSpanQuery(int index, DataGridView dataGridView, DateTimePicker starttime, DateTimePicker endtime)
         {
@@ -841,14 +955,15 @@ namespace XFC.View
             string end = endtime.Text;
             using (OledbHelper helper = new OledbHelper())
             {
-                string tablename = ConstantValue.EquipemntList[0] == Equipment.Car ? "ConditionRecord" : "PumpConditionRecord";
-
-                helper.sqlstring = string.Format("select [ConditonID],[CollectTime],[L_Press],[L_Flow],[H_Press],[H_Flow],[VacuumDegree],[Speed],[InTemp],[OutTemp] from {0} where [CollectTime] >= #{1}# and [CollectTime] <= #{2}# ", tablename, start, end);
+                string tablename = ConstantValue.EquipemntList[index] == Equipment.Car ? "ConditionRecord" : "PumpConditionRecord";
+                string Idfield = ConstantValue.EquipemntList[index] == Equipment.Car ? "LabID" : "PumpLabID";
+               
+                helper.sqlstring = string.Format("select [ConditionID],[SpecificCollectTime],[L_Press],[L_Flow],[H_Press],[H_Flow],[VacuumDegree],[Speed],[InTemp],[OutTemp] from {0} where [SpecificCollectTime] >= #{1}# and [SpecificCollectTime] <= #{2}# and [{3}] ={4}", tablename, start, end,Idfield, ConstantValue.IdList[index][1]);
                 DataSet ds = helper.GetDataSet();
 
                 dataGridView.DataSource = ds.Tables[0];
                 //设置数据表格上显示的列标题
-                dataGridView.Columns[0].HeaderText = "工况实验ID";
+                dataGridView.Columns[0].HeaderText = "ID";
                 dataGridView.Columns[1].HeaderText = "采集时间";
                 dataGridView.Columns[2].HeaderText = "低压压力";
                 dataGridView.Columns[3].HeaderText = "低压流量";
@@ -915,7 +1030,49 @@ namespace XFC.View
             if (more == true)
                 e.HasMorePages = true;
         }
-       
+        static System.Data.DataTable CreateDataTable(string tableName)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable(tableName);
+            dataTable.Columns.Add("工况实验ID", typeof(int));
+            dataTable.Columns.Add("采集时间", typeof(DateTime));
+            dataTable.Columns.Add("低压压力", typeof(double));
+            dataTable.Columns.Add("低压流量", typeof(double));
+            dataTable.Columns.Add("中高压压力", typeof(double));
+            dataTable.Columns.Add("中高压流量", typeof(double));
+            dataTable.Columns.Add("真空度", typeof(double));
+            dataTable.Columns.Add("消防泵转速", typeof(double));
+            dataTable.Columns.Add("输入轴温度", typeof(double));
+            dataTable.Columns.Add("输出轴温度", typeof(double));
+            return dataTable;
+        }
+
+        private void btn_Collect1_Click(object sender, EventArgs e)
+        {
+            isDatagridViewShowRealTime1 = true;
+            dataGridView1.DataSource = dataTable1;
+            dataGridView1.Refresh();
+        }
+
+        private void btn_Collect2_Click(object sender, EventArgs e)
+        {
+            isDatagridViewShowRealTime2 = true;
+            dataGridView2.DataSource = dataTable1;
+            dataGridView2.Refresh();
+        }
+
+        private void btn_Refresh_Sampling_Click(object sender, EventArgs e)
+        {
+            if(int.TryParse(Sampling_Interval.Text,out int result))
+            {
+                ConstantValue.Sampling_Time = result * 60;
+            }
+
+            else
+            {
+                MessageBox.Show("请检查输入的采样时间是否符合规范");
+            }
+           
+        }
     }
 }
 

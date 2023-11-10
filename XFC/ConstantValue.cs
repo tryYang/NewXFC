@@ -27,6 +27,8 @@ namespace XFC
         public  const int DATA_SHOW_INTERVALS = 1000;
         public const int DATA_SAVE_INTERVALS = 1000*60;
         public static int Tick_Num = 0;//定时器被触发的次数
+        //采样间隔  默认60次  即1分钟
+        public static int Sampling_Time = 60;
         public static System.Timers.Timer DataShowTimer = new System.Timers.Timer(1000) ;
        
         //ValueConvter

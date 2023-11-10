@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -162,8 +162,8 @@
             this.printPreviewDialog4 = new System.Windows.Forms.PrintPreviewDialog();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox84 = new System.Windows.Forms.TextBox();
+            this.btn_Refresh_Sampling = new System.Windows.Forms.Button();
+            this.Sampling_Interval = new System.Windows.Forms.TextBox();
             this.label121 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label110 = new System.Windows.Forms.Label();
@@ -311,6 +311,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.printPreviewDialog3 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.btn_Collect1 = new System.Windows.Forms.Button();
+            this.btn_Collect2 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -1540,33 +1542,34 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.textBox84);
+            this.panel3.Controls.Add(this.btn_Refresh_Sampling);
+            this.panel3.Controls.Add(this.Sampling_Interval);
             this.panel3.Controls.Add(this.label121);
             this.panel3.Location = new System.Drawing.Point(9, 9);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(491, 61);
             this.panel3.TabIndex = 20;
             // 
-            // button2
+            // btn_Refresh_Sampling
             // 
-            this.button2.BackColor = System.Drawing.Color.Tan;
-            this.button2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(341, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 39);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "刷新采样时间";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_Refresh_Sampling.BackColor = System.Drawing.Color.Tan;
+            this.btn_Refresh_Sampling.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Refresh_Sampling.Location = new System.Drawing.Point(341, 9);
+            this.btn_Refresh_Sampling.Name = "btn_Refresh_Sampling";
+            this.btn_Refresh_Sampling.Size = new System.Drawing.Size(130, 39);
+            this.btn_Refresh_Sampling.TabIndex = 19;
+            this.btn_Refresh_Sampling.Text = "刷新采样时间";
+            this.btn_Refresh_Sampling.UseVisualStyleBackColor = false;
+            this.btn_Refresh_Sampling.Click += new System.EventHandler(this.btn_Refresh_Sampling_Click);
             // 
-            // textBox84
+            // Sampling_Interval
             // 
-            this.textBox84.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox84.Location = new System.Drawing.Point(177, 19);
-            this.textBox84.Name = "textBox84";
-            this.textBox84.Size = new System.Drawing.Size(100, 23);
-            this.textBox84.TabIndex = 17;
-            this.textBox84.Text = "1";
+            this.Sampling_Interval.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Sampling_Interval.Location = new System.Drawing.Point(177, 19);
+            this.Sampling_Interval.Name = "Sampling_Interval";
+            this.Sampling_Interval.Size = new System.Drawing.Size(100, 23);
+            this.Sampling_Interval.TabIndex = 17;
+            this.Sampling_Interval.Text = "1";
             // 
             // label121
             // 
@@ -1580,6 +1583,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btn_Collect2);
             this.groupBox4.Controls.Add(this.label110);
             this.groupBox4.Controls.Add(this.time_start2);
             this.groupBox4.Controls.Add(this.btn_Print2);
@@ -1623,7 +1627,7 @@
             // 
             this.btn_Print2.BackColor = System.Drawing.Color.Tan;
             this.btn_Print2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Print2.Location = new System.Drawing.Point(1193, 26);
+            this.btn_Print2.Location = new System.Drawing.Point(1192, 26);
             this.btn_Print2.Name = "btn_Print2";
             this.btn_Print2.Size = new System.Drawing.Size(75, 39);
             this.btn_Print2.TabIndex = 11;
@@ -1635,7 +1639,7 @@
             // 
             this.btn_Export2.BackColor = System.Drawing.Color.Tan;
             this.btn_Export2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Export2.Location = new System.Drawing.Point(1035, 26);
+            this.btn_Export2.Location = new System.Drawing.Point(1034, 26);
             this.btn_Export2.Name = "btn_Export2";
             this.btn_Export2.Size = new System.Drawing.Size(100, 39);
             this.btn_Export2.TabIndex = 10;
@@ -1647,7 +1651,7 @@
             // 
             this.btn_Query2.BackColor = System.Drawing.Color.Tan;
             this.btn_Query2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Query2.Location = new System.Drawing.Point(902, 26);
+            this.btn_Query2.Location = new System.Drawing.Point(901, 26);
             this.btn_Query2.Name = "btn_Query2";
             this.btn_Query2.Size = new System.Drawing.Size(75, 39);
             this.btn_Query2.TabIndex = 9;
@@ -1692,6 +1696,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.btn_Collect1);
             this.groupBox3.Controls.Add(this.label103);
             this.groupBox3.Controls.Add(this.time_start1);
             this.groupBox3.Controls.Add(this.btn_Print1);
@@ -1735,7 +1740,7 @@
             // 
             this.btn_Print1.BackColor = System.Drawing.Color.Tan;
             this.btn_Print1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Print1.Location = new System.Drawing.Point(1193, 29);
+            this.btn_Print1.Location = new System.Drawing.Point(1191, 29);
             this.btn_Print1.Name = "btn_Print1";
             this.btn_Print1.Size = new System.Drawing.Size(75, 39);
             this.btn_Print1.TabIndex = 11;
@@ -1747,7 +1752,7 @@
             // 
             this.btn_Export1.BackColor = System.Drawing.Color.Tan;
             this.btn_Export1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Export1.Location = new System.Drawing.Point(1035, 29);
+            this.btn_Export1.Location = new System.Drawing.Point(1032, 29);
             this.btn_Export1.Name = "btn_Export1";
             this.btn_Export1.Size = new System.Drawing.Size(100, 39);
             this.btn_Export1.TabIndex = 10;
@@ -1759,7 +1764,7 @@
             // 
             this.btn_Query1.BackColor = System.Drawing.Color.Tan;
             this.btn_Query1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Query1.Location = new System.Drawing.Point(902, 29);
+            this.btn_Query1.Location = new System.Drawing.Point(898, 29);
             this.btn_Query1.Name = "btn_Query1";
             this.btn_Query1.Size = new System.Drawing.Size(75, 39);
             this.btn_Query1.TabIndex = 9;
@@ -1939,31 +1944,31 @@
             // 
             // chart2
             // 
-            chartArea1.AxisY.LabelStyle.Format = "N4";
-            chartArea1.AxisY.Maximum = 150D;
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea3.AxisY.LabelStyle.Format = "N4";
+            chartArea3.AxisY.Maximum = 150D;
+            chartArea3.AxisY.Minimum = 0D;
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(3, 47);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "输入轴温度";
-            series1.Name = "输入轴温度";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "输出轴温度";
-            series2.Name = "输出轴温度";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chart2.Series.Add(series1);
-            this.chart2.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.IsXValueIndexed = true;
+            series5.Legend = "Legend1";
+            series5.LegendText = "输入轴温度";
+            series5.Name = "输入轴温度";
+            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.IsXValueIndexed = true;
+            series6.Legend = "Legend1";
+            series6.LegendText = "输出轴温度";
+            series6.Name = "输出轴温度";
+            series6.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            this.chart2.Series.Add(series5);
+            this.chart2.Series.Add(series6);
             this.chart2.Size = new System.Drawing.Size(634, 680);
             this.chart2.TabIndex = 6;
             this.chart2.Text = "chart2";
@@ -2105,31 +2110,31 @@
             // 
             // chart1
             // 
-            chartArea2.AxisY.LabelStyle.Format = "N4";
-            chartArea2.AxisY.Maximum = 150D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea4.AxisY.LabelStyle.Format = "N4";
+            chartArea4.AxisY.Maximum = 150D;
+            chartArea4.AxisY.Minimum = 0D;
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(3, 47);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.IsXValueIndexed = true;
-            series3.Legend = "Legend1";
-            series3.LegendText = "输入轴温度";
-            series3.Name = "输入轴温度";
-            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.IsXValueIndexed = true;
-            series4.Legend = "Legend1";
-            series4.LegendText = "输出轴温度";
-            series4.Name = "输出轴温度";
-            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.IsXValueIndexed = true;
+            series7.Legend = "Legend1";
+            series7.LegendText = "输入轴温度";
+            series7.Name = "输入轴温度";
+            series7.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.IsXValueIndexed = true;
+            series8.Legend = "Legend1";
+            series8.LegendText = "输出轴温度";
+            series8.Name = "输出轴温度";
+            series8.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(634, 680);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -3101,6 +3106,30 @@
             this.printPreviewDialog3.Name = "printPreviewDialog1";
             this.printPreviewDialog3.Visible = false;
             // 
+            // btn_Collect1
+            // 
+            this.btn_Collect1.BackColor = System.Drawing.Color.Tan;
+            this.btn_Collect1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Collect1.Location = new System.Drawing.Point(739, 29);
+            this.btn_Collect1.Name = "btn_Collect1";
+            this.btn_Collect1.Size = new System.Drawing.Size(100, 39);
+            this.btn_Collect1.TabIndex = 16;
+            this.btn_Collect1.Text = "刷新";
+            this.btn_Collect1.UseVisualStyleBackColor = false;
+            this.btn_Collect1.Click += new System.EventHandler(this.btn_Collect1_Click);
+            // 
+            // btn_Collect2
+            // 
+            this.btn_Collect2.BackColor = System.Drawing.Color.Tan;
+            this.btn_Collect2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Collect2.Location = new System.Drawing.Point(743, 26);
+            this.btn_Collect2.Name = "btn_Collect2";
+            this.btn_Collect2.Size = new System.Drawing.Size(100, 39);
+            this.btn_Collect2.TabIndex = 17;
+            this.btn_Collect2.Text = "刷新";
+            this.btn_Collect2.UseVisualStyleBackColor = false;
+            this.btn_Collect2.Click += new System.EventHandler(this.btn_Collect2_Click);
+            // 
             // Form_Main
             // 
             this.AccessibleName = "123";
@@ -3255,8 +3284,8 @@
         public  System.Windows.Forms.Label label9;
         public  System.Windows.Forms.TabPage tabPage3;
         public  System.Windows.Forms.Panel panel3;
-        public  System.Windows.Forms.Button button2;
-        public  System.Windows.Forms.TextBox textBox84;
+        public  System.Windows.Forms.Button btn_Refresh_Sampling;
+        public  System.Windows.Forms.TextBox Sampling_Interval;
         public  System.Windows.Forms.Label label121;
         public  System.Windows.Forms.GroupBox groupBox4;
         public  System.Windows.Forms.Label label110;
@@ -3448,5 +3477,7 @@
         public  System.Windows.Forms.Label label62;
         public System.Windows.Forms.PrintPreviewDialog printPreviewDialog3;
         public System.Drawing.Printing.PrintDocument printDocument3;
+        public System.Windows.Forms.Button btn_Collect2;
+        public System.Windows.Forms.Button btn_Collect1;
     }
 }

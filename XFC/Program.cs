@@ -1,4 +1,6 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
@@ -11,12 +13,14 @@ namespace XFC
 {
     internal static class Program
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
         static void Main()
         {
+            XmlConfigurator.Configure(new System.IO.FileInfo("log4net.config"));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             init();

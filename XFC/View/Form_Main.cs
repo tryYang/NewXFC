@@ -28,10 +28,9 @@ using log4net;
 
 namespace XFC.View
 {
-    private static readonly ILog log = LogManager.GetLogger(typeof(MyClass2));
     public partial class Form_Main : Form
     {
-
+        private static readonly ILog log = LogManager.GetLogger(typeof(Form_Main));
 
         private MainWindowViewModel viewModel;
         private static Form_Main instance;

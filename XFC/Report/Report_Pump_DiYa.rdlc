@@ -7570,11 +7570,18 @@
       </ConnectionProperties>
       <rd:DataSourceID>17f77df1-4b66-4437-8743-ae08535712e0</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="Access_XFC_rdlcDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>7e81e629-c296-4bc4-95d1-2048e9764073</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="消防泵低压泵1">
       <Query>
-        <DataSourceName>Access_XFCDataSet</DataSourceName>
+        <DataSourceName>Access_XFC_rdlcDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -7682,12 +7689,12 @@
           <DataField>一点三工况低压流量</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="一点三工况中一点三压力">
-          <DataField>一点三工况中一点三压力</DataField>
+        <Field Name="一点三工况中高压压力">
+          <DataField>一点三工况中高压压力</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="一点三工况中一点三流量">
-          <DataField>一点三工况中一点三流量</DataField>
+        <Field Name="一点三工况中高压流量">
+          <DataField>一点三工况中高压流量</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="一点三工况真空度">
@@ -7780,8 +7787,8 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Access_XFCDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\y\Desktop\XFC_Project\XFC\Access_XFCDataSet.xsd</rd:SchemaPath>
+        <rd:DataSetName>Access_XFC_rdlcDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\y\Desktop\XFC_Project\XFC\Access_XFC_rdlcDataSet.xsd</rd:SchemaPath>
         <rd:TableName>消防泵低压泵数据集</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

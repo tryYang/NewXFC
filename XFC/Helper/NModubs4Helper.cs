@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using log4net;
 using Microsoft.Office.Interop.Excel;
 using Modbus.Device;
 using XFC.Model;
@@ -12,6 +13,7 @@ namespace XFC.Helper
 {
     public  class NModubs4Helper
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
         private static NModubs4Helper instance;
         public static NModubs4Helper Instance
@@ -76,6 +78,7 @@ namespace XFC.Helper
             }
             catch (Exception ex)
             {
+                log.Error(ex);
                 return -1;
             }
         }

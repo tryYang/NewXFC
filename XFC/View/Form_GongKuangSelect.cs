@@ -68,13 +68,14 @@ namespace XFC.View
                 }
                 
             }
+            this.Close();
            
         }
 
         private bool RuntimeError()
         {
-            string S=string.Empty;
-            if (ConstantValue.EquipemntList[0]!=Equipment.None &&!int.TryParse(tb_runtime1.Text, out int result1)|| ConstantValue.EquipemntList[0] != Equipment.None && !int.TryParse(tb_runtime2.Text, out int result2))
+            
+            if ((ConstantValue.EquipemntList[0]!=Equipment.None &&!int.TryParse(tb_runtime1.Text, out int result1))||(ConstantValue.EquipemntList[1] != Equipment.None && !int.TryParse(tb_runtime2.Text, out int result2)))
             {
                 MessageBox.Show("请检查运行时间是否输入正确");
                 return true;

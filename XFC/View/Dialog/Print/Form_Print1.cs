@@ -66,6 +66,18 @@ namespace XFC.View.Dialog.Print
 
             }
             }
+        public void ShuJuYuan(DataSet data, List<string> print)
+        {                            
+                ReportDataSource rds = new ReportDataSource();
+                rds.Name = print[0];
+                rds.Value = data.Tables[0];
+                this.reportViewer1.LocalReport.ReportPath = print[1];
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                this.reportViewer1.LocalReport.DataSources.Add(rds);
+                this.reportViewer1.RefreshReport();
+
+            
+        }
 
         /// <summary>
         /// flag1=低压工况；flag2=一点三工况；flag3=超负荷工况；flag4=半流量工况；flag5=高压工况；flag6=中高压工况
@@ -105,22 +117,22 @@ namespace XFC.View.Dialog.Print
                             }
                            
                         }
-                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
+                        PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value);
 
                         switch (ConstantValue.PumpTypeList[index])
                         {
                             case PumpType.DiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_car[0]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_car[0]);
                                 break;
                             case PumpType.ZhongYaPump:
                             case PumpType.GaoYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_car[1]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_car[1]);
                                 break;
                             case PumpType.GaoDiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_car[2]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_car[2]);
                                 break;
                             case PumpType.ZhongDiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_car[3]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_car[3]);
                                 break;
 
                         }
@@ -135,21 +147,21 @@ namespace XFC.View.Dialog.Print
                                 gklist.Add(i);
                             }
                         }
-                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value[1]);
+                    PrintSqlGenerateHelper helper1 = new PrintSqlGenerateHelper(gklist, Print.Key, Print.Value);
                         switch (ConstantValue.PumpTypeList[index])
                         {
                             case PumpType.DiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_pump[0]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_pump[0]);
                                 break;
                             case PumpType.ZhongYaPump:
                             case PumpType.GaoYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_pump[1]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_pump[1]);
                                 break;
                             case PumpType.GaoDiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_pump[2]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_pump[2]);
                                 break;
                             case PumpType.ZhongDiYaPump:
-                                ShuJuYuan(helper1.Generate(), PrintList_pump[3]);
+                                ShuJuYuan(helper1.GetReportDataSet(), PrintList_pump[3]);
                                 break;
 
                             }

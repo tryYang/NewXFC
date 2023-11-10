@@ -167,6 +167,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Access_XFCDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Access_XFC_rdlcDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Access_XFC_rdlcDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ConstantValue.cs" />
     <Compile Include="Helper\ConfigurationManager.cs" />
     <Compile Include="Helper\NModubs4Helper.cs" />
@@ -379,6 +384,17 @@
     <None Include="Access_XFCDataSet.xss">
       <DependentUpon>Access_XFCDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Access_XFC_rdlcDataSet.xsc">
+      <DependentUpon>Access_XFC_rdlcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Access_XFC_rdlcDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Access_XFC_rdlcDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Access_XFC_rdlcDataSet.xss">
+      <DependentUpon>Access_XFC_rdlcDataSet.xsd</DependentUpon>
+    </None>
     <None Include="log4net.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -409,6 +425,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Access_XFC.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Access_XFC_rdlc.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SqlServerTypes\readme.htm" />

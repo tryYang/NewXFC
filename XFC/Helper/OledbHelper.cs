@@ -56,6 +56,31 @@ namespace XFC.Helper
            
 
         }
+        public DataTable GetDataTable()
+        {
+            DataTable dataTable = new DataTable();
+            try
+            {
+
+                using (OleDbCommand cmd = new OleDbCommand(sqlstring, connection))
+                {
+
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+            return dataTable;
+        }
         public OleDbDataReader GetDataReader()
         {
             OleDbCommand cmd = new OleDbCommand(sqlstring, connection);

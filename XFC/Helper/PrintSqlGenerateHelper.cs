@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
@@ -97,12 +98,12 @@ namespace XFC.Helper
 
        
         string carbasicInfosql = "Select CheckPeople as 实验人员,CustomerDepart as 送检单位,CarName as 车辆名称,UnderpanFac as 底盘厂家,PumpFac as 水泵厂家,CarNum as 车牌号,CarModel as 车辆型号,UnderpanModel as 底盘型号,PumpModel as 水泵型号,CarFac as 生产厂家, UnderpanVIN as 底盘VIN,PumpType as 水泵类型,Pressure as 大气压力, ThreeTemp as 三米水池温度, ThreePress as 三米水池修正吸深, SevenTemp as 七米水池温度, SevenPress as 七米水池修正吸深  from CarLab inner join CarBasicInfo on CarLab.CarID=CarBasicInfo.CarID where CarLab.CarID ={0}";
-        string pumpbasicInfosql_template = "Select CheckPeople as 实验人员,CustomerDepart as 送检单位,CarName as 车辆名称,UnderpanFac as 底盘厂家,PumpFac as 水泵厂家,CarNum as 车牌号,CarModel as 车辆型号,UnderpanModel as 底盘型号,PumpModel as 水泵型号,CarFac as 生产厂家,UnderpanVIN as 底盘VIN,PumpType as 水泵类型,Pressure as 大气压力, ThreeTemp as 三米水池温度, ThreePress as 三米水池修正吸深, SevenTemp as 七米水池温度, SevenPress as 七米水池修正吸深 from CarLab inner join CarBasicInfo on CarLab.CarID=CarBasicInfo.CarID where CarLab.CarID ={0}";
+        string pumpbasicInfosql_template = "Select CheckPeople as 实验人员,CustomerDepart as 送检单位,PumpName as 水泵名称,PumpFac as 水泵厂家,PumpType as 水泵类型,InPipeD as 进口管径,OutPipeD as 出口管径,EpitopeDifference as 表位差,PumpModel as 水泵型号,Pressure as 大气压力,ThreeTemp as 三米水池温度,ThreePress as 三米水池修正吸深,SevenTemp as 七米水池温度,SevenPress as 七米水池修正吸深 from PumpLab inner join PumpBasicInfo on PumpLab.PumpID=PumpBasicInfo.PumpID where PumpLab.PumpID ={0}";
         public DataSet GetReportDataSet()
         {
-
             DataSet reportDataSet = new DataSet();
             DataSet basicInfoDataSet = new DataSet();
+
             string basicInfoSql=string.Empty;
             if (_equipment == Equipment.Car)
             {
@@ -117,7 +118,7 @@ namespace XFC.Helper
             {
                 helper.sqlstring= basicInfoSql;
                 basicInfoDataSet = helper.GetDataSet();
-                reportDataSet.Merge(basicInfoDataSet);
+                reportDataSet.Merge(basicInfoDataSet.Tables[0]);
             }
 
 
@@ -130,9 +131,38 @@ namespace XFC.Helper
                     helper.sqlstring = singleGenerate(gkList[i]);
                     temp = helper.GetDataSet();
                 }
-                reportDataSet.Merge(temp.Tables[0]);
+                DataRow row = temp.Tables[0].Rows[0];
+                foreach (DataColumn col in temp.Tables[0].Columns)
+                {
+                    AddFieldAndValue(reportDataSet.Tables[0], col.ColumnName, row[col]);
+                }
+               
             }
+          
             return reportDataSet;
         }
+        static void AddFieldAndValue(System.Data.DataTable dataTable, string fieldName, object value)
+        {
+            // 判断字段是否已存在
+            if (!dataTable.Columns.Contains(fieldName))
+            {
+                // 添加新的列
+                DataColumn newColumn = new DataColumn(fieldName, value.GetType());
+                dataTable.Columns.Add(newColumn);
+
+                Console.WriteLine($"Added new field: {fieldName}");
+
+                // 在所有行中添加相应的值
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    row[fieldName] = value;
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Field {fieldName} already exists.");
+            }
+        }
     }
+
 }

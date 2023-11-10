@@ -102,12 +102,16 @@ namespace XFC.View
                     else
                         ConstantValue.runtime2 = result * 60 * 1000;
                     setcargk(i);
-                    ConstantValue.gkStatus = GkStatus.Selected;
-                    int other = Math.Abs(i - 1);
-                    ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastCarID + 1;
-                    ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastCarLabID + 1;
-                    ConstantValue.xfcInfos[i].carBasicInfo.CarID = ConstantValue.xfcInfos[i].carLab.CarID = ConstantValue.IdList[i][0];
-                    ConstantValue.xfcInfos[i].carLab.LabID = ConstantValue.IdList[i][1];
+                    ConstantValue.gkStatus = GkStatus.Selected;                    
+                    if (ConstantValue.IdList[i][0] == -1&&ConstantValue.IdList[i][1] == -1)
+                    {
+                        int other = Math.Abs(i - 1);
+                        ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastCarID + 1;
+                        ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Car ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastCarLabID + 1;
+                        ConstantValue.xfcInfos[i].carBasicInfo.CarID = ConstantValue.xfcInfos[i].carLab.CarID = ConstantValue.IdList[i][0];
+                        ConstantValue.xfcInfos[i].carLab.LabID = ConstantValue.IdList[i][1];
+                    }
+                   
 
                 }
                 else
@@ -128,12 +132,17 @@ namespace XFC.View
                         ConstantValue.runtime2 = result * 60 * 1000;
                     setpumpgk(i);
                     ConstantValue.gkStatus = GkStatus.Selected;
-                    int other = Math.Abs(i - 1);
-                    ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastPumpID + 1;
-                    ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastPumpLabID + 1;
-                    ConstantValue.xfbInfos[i].pumpLab.PumpLabID = ConstantValue.IdList[i][1];
-                    ConstantValue.xfbInfos[i].pumpLab.PumpID = ConstantValue.IdList[i][1];
-                    ConstantValue.xfbInfos[i].pumpBasicInfo.PumpID = ConstantValue.IdList[i][1];
+                   
+                    if (ConstantValue.IdList[i][0] == -1 && ConstantValue.IdList[i][1] == -1)
+                    {
+                        int other = Math.Abs(i - 1);
+                        ConstantValue.IdList[i][0] = ConstantValue.IdList[other][0] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][0] + 1 : ConstantValue.LastPumpID + 1;
+                        ConstantValue.IdList[i][1] = ConstantValue.IdList[other][1] != -1 && ConstantValue.EquipemntList[other] == Equipment.Pump ? ConstantValue.IdList[other][1] + 1 : ConstantValue.LastPumpLabID + 1;
+                        ConstantValue.xfbInfos[i].pumpLab.PumpLabID = ConstantValue.IdList[i][1];
+                        ConstantValue.xfbInfos[i].pumpLab.PumpID = ConstantValue.IdList[i][1];
+                        ConstantValue.xfbInfos[i].pumpBasicInfo.PumpID = ConstantValue.IdList[i][1];
+                    }
+                    
 
                 }
                 else
@@ -374,7 +383,7 @@ namespace XFC.View
                 }
                 
             }
-            Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防车试验----{ConstantValue.gkString[(int)ConstantValue.xfcInfos[i].currentGk]}选择成功\n");
+           Form_Main.getInstance().Tb_Tip.AppendText($"设备{i+1}----消防车试验----{ConstantValue.gkString[(int)ConstantValue.xfcInfos[i].currentGk]}选择成功\n");
 
             //Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防车试验----{s}选择成功\n");
 
@@ -414,7 +423,7 @@ namespace XFC.View
                 else if (rb_super2.Checked)
                     ConstantValue.xfbInfos[k].currentGk = Gk.Supper;
             }
-            Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防泵试验----{ConstantValue.gkString[(int)ConstantValue.xfbInfos[i].currentGk]}选择成功\n");
+            Form_Main.getInstance().Tb_Tip.AppendText($"设备{i+1}----消防泵试验----{ConstantValue.gkString[(int)ConstantValue.xfbInfos[i].currentGk]}选择成功\n");
 
 
         }

@@ -56,6 +56,8 @@ namespace XFC.View
                     k[0] = -1; k[1] = -1;
                 }
             }
+            if (RuntimeError())
+                return;
 
             for (int i=0;i<ConstantValue.EquipemntList.Count;i++)
             {
@@ -67,6 +69,21 @@ namespace XFC.View
                 
             }
            
+        }
+
+        private bool RuntimeError()
+        {
+            string S=string.Empty;
+            if (ConstantValue.EquipemntList[0]!=Equipment.None &&!int.TryParse(tb_runtime1.Text, out int result1)|| ConstantValue.EquipemntList[0] != Equipment.None && !int.TryParse(tb_runtime2.Text, out int result2))
+            {
+                MessageBox.Show("请检查运行时间是否输入正确");
+                return true;
+            }
+            //if(ConstantValue.EquipemntList[0] != Equipment.None && !int.TryParse(tb_runtime2.Text, out int result2))
+            // {
+
+            // }
+            return false;
         }
 
         private void GkSelect(int i, Equipment eq)
@@ -124,7 +141,7 @@ namespace XFC.View
                     return;
                 }
             }
-            this.Close();
+            
         }
 
         public void Update()
@@ -199,11 +216,11 @@ namespace XFC.View
 
                     break;
                 case PumpType.GaoDiYaPump:
-                    selectindex1[0] = true; selectindex1[5] = true; selectindex1[2] = true; selectindex1[3] = true;
+                    selectindex1[0] = true; selectindex1[4] = true; selectindex1[2] = true; selectindex1[3] = true;
 
                     break;
                 case PumpType.ZhongDiYaPump :
-                    selectindex1[0] = true; selectindex1[6] = true; selectindex1[2] = true; selectindex1[3] = true;
+                    selectindex1[0] = true; selectindex1[5] = true; selectindex1[2] = true; selectindex1[3] = true;
 
                     break;
                
@@ -222,19 +239,27 @@ namespace XFC.View
 
                     break;
                 case PumpType.GaoDiYaPump:
-                    selectindex2[0] = true; selectindex2[5] = true; selectindex2[2] = true; selectindex2[3] = true;
+                    selectindex2[0] = true; selectindex2[4] = true; selectindex2[2] = true; selectindex2[3] = true;
 
                     break;
                 case PumpType.ZhongDiYaPump:
-                    selectindex2[0] = true; selectindex2[6] = true; selectindex2[2] = true; selectindex2[3] = true;
+                    selectindex2[0] = true; selectindex2[5] = true; selectindex2[2] = true; selectindex2[3] = true;
 
                     break;
 
             }
+
+            bool flag1 = true;
             for(int i = 0; i < selectindex1.Count; i++)
             {
                 if (selectindex1[i]) {
+                   
                     RadioButtons1[i].Show();
+                    if (flag1) //使得 有个默认选中 工况，避免选中隐藏的工况导致出现错误
+                    {
+                        RadioButtons1[i].Checked = true;
+                        flag1 = false;
+                    }
                 }
                 else
                 {
@@ -242,11 +267,18 @@ namespace XFC.View
                 }
                 
             }
+            bool flag2 = true;
             for (int i = 0; i < selectindex2.Count; i++)
             {
                 if (selectindex2[i])
                 {
                     RadioButtons2[i].Show();
+                    RadioButtons1[i].Show();
+                    if (flag2)
+                    {
+                        RadioButtons2[i].Checked = true;
+                        flag2 = false;
+                    }
                 }
                 else
                 {
@@ -282,68 +314,56 @@ namespace XFC.View
                 else if (rb_standard1.Checked && rb_standard1.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                    s = "低压工况";
                 }
                 else if (rb_high1.Checked && rb_high1.Visible) 
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                    s = "高压工况";
                 }
                 else if (rb_mid1.Checked && rb_mid1.Visible) 
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                    s = "中压工况";
                 }
                 else if (rb_half1.Checked && rb_half1.Visible) 
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                    s = "半流量工况";
                 }
                 else if (rb_super1.Checked && rb_super1.Visible) 
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
-                    s = "超流量工况";
                 }                    
                 else
                 {
                     MessageBox.Show("未选择具体工况");
                     return;
                 }
-                Form_Main.getInstance().Tb_Tip.AppendText($"{i}----消防车试验----{s}选择成功\n");
             }
             else if (i == 1)
             {
                 if (rb_13_2.Checked && rb_13_2.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Onedot3;
-                    s = "1.3工况";
                 }
 
                 else if (rb_standard2.Checked && rb_standard2.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Diya;
-                    s = "低压工况";
                 }
                 else if (rb_high2.Checked && rb_high2.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Gaoya;
-                    s = "高压工况";
                 }
                 else if (rb_mid2.Checked && rb_mid2.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Zhongya;
-                    s = "中压工况";
                 }
 
                 else if (rb_half2.Checked && rb_half2.Visible)
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Half;
-                    s = "半流量工况";
                 }
                 else if (rb_super2.Checked && rb_super2.Visible) 
                 {
                     ConstantValue.xfcInfos[k].currentGk = Gk.Supper;
-                    s = "超流量工况";
                 }
                    
                 else
@@ -351,10 +371,12 @@ namespace XFC.View
                     MessageBox.Show("未选择具体工况");
                     return;
                 }
-                Form_Main.getInstance().Tb_Tip.AppendText($"{i}----消防车试验----{s}选择成功\n");
                 
             }
-            
+            Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防车试验----{ConstantValue.gkString[(int)ConstantValue.xfcInfos[i].currentGk]}选择成功\n");
+
+            //Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防车试验----{s}选择成功\n");
+
 
         }
         private void setpumpgk(int i)
@@ -391,6 +413,8 @@ namespace XFC.View
                 else if (rb_super2.Checked)
                     ConstantValue.xfbInfos[k].currentGk = Gk.Supper;
             }
+            Form_Main.getInstance().Tb_Tip.AppendText($"设备{i}----消防泵试验----{ConstantValue.gkString[(int)ConstantValue.xfbInfos[i].currentGk]}选择成功\n");
+
 
         }
 
@@ -457,7 +481,7 @@ namespace XFC.View
             {
                 control.Text = "已做";
             }
-            if (flag)
+            if (!flag)
             {
                 control.Text = "未做";
             }
@@ -555,7 +579,11 @@ namespace XFC.View
         }
         private void StatusUpdate()
         {
-            for (int i= 0;i < 1; i++){
+            lb_status1.Text = "未建立";
+            lb_status1.BackColor = Color.Red;
+            lb_status2.Text = "未建立";
+            lb_status2.BackColor = Color.Red;
+            for (int i= 0;i <= 1; i++){
                 if ( ConstantValue.EquipemntList[i] == Equipment.Car)
                 {
                     if (i==0)
@@ -565,24 +593,14 @@ namespace XFC.View
                         lb_pumptype1.Text = ConstantValue.xfcInfos[0].carBasicInfo.PumpType;
 
 
-                    }
-                    else
-                    {
-                        lb_status1.Text = "未建立";
-                        lb_status1.BackColor = Color.Red;
-                    }
+                    }                   
                     if (i==1)
                     {
                         lb_status2.Text = "已完成";
                         lb_status2.BackColor = Color.White;
                         lb_pumptype2.Text = ConstantValue.xfcInfos[1].carBasicInfo.PumpType;
                     }
-                    else
-                    {
-                        lb_status2.Text = "未建立";
-                        lb_status2.BackColor = Color.Red;
-
-                    }
+                 
                 }
                 if (ConstantValue.EquipemntList[i] == Equipment.Pump)
                 {
@@ -592,25 +610,14 @@ namespace XFC.View
                         lb_status1.BackColor = Color.White;
                         lb_pumptype1.Text = ConstantValue.xfbInfos[0].pumpBasicInfo.PumpType;
 
-
-                    }
-                    else
-                    {
-                        lb_status1.Text = "未建立";
-                        lb_status1.BackColor = Color.Red;
-                    }
+                    }                   
                     if (i == 1)
                     {
                         lb_status2.Text = "已完成";
                         lb_status2.BackColor = Color.White;
                         lb_pumptype2.Text = ConstantValue.xfbInfos[1].pumpBasicInfo.PumpType;
                     }
-                    else
-                    {
-                        lb_status2.Text = "未建立";
-                        lb_status2.BackColor = Color.Red;
-
-                    }
+                    
                 }
             }
         }

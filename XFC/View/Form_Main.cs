@@ -101,7 +101,7 @@ namespace XFC.View
                 {
                    
                     ConstantValue.DataShowTimer.Start();
-                    Tb_Tip.AppendText("工况成功\n");
+                    Tb_Tip.AppendText("工况开始运行......\n");
                     ConstantValue.gkStatus = GkStatus.Run;
                 }
 

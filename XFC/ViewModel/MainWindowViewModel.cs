@@ -172,7 +172,8 @@ namespace XFC.ViewModel
             var keyvalue = ConstantValue.Print[0];
             if(keyvalue.Key==Equipment.None)
             {
-                MessageBox.Show("未有可打印的报表");
+                MessageBox.Show("设备1没有可打印的报表");
+                return;
             }
             Form_Print1 print= new Form_Print1();
             print.ShowDialog();
@@ -182,7 +183,8 @@ namespace XFC.ViewModel
             var keyvalue = ConstantValue.Print[1];
             if (keyvalue.Key == Equipment.None)
             {
-                MessageBox.Show("未有可打印的报表");
+                MessageBox.Show("设备2没有可打印的报表");
+                return;
             }
             Form_Print2 print = new Form_Print2();
             print.ShowDialog();

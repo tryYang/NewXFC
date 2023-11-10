@@ -24,9 +24,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Timers;
 using Microsoft.Office.Interop.Excel;
 using TextBox = System.Windows.Forms.TextBox;
+using log4net;
 
 namespace XFC.View
 {
+    private static readonly ILog log = LogManager.GetLogger(typeof(MyClass2));
     public partial class Form_Main : Form
     {
 

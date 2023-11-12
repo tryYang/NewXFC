@@ -93,7 +93,15 @@ namespace XFC.View
         /// <param name="e"></param>
         private void btn_confirm_Click(object sender, EventArgs e)
         {
-           
+        
+            Equipment p = ConstantValue.EquipemntList[int.Parse(cbx_CarId.Text) - 1];
+             if (ConstantValue.EquipemntList[int.Parse(cbx_CarId.Text)-1] != Equipment.None)
+            {
+
+                MessageBox.Show($"请先退出设备{int.Parse(cbx_CarId.Text)}当前试验");
+                return;
+            }
+
             if (!CheckInput())
             {
                 MessageBox.Show("请在红色控件处输入正确的值！");

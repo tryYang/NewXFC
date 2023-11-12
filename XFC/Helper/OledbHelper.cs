@@ -100,6 +100,21 @@ namespace XFC.Helper
             }
                 
        }
+        /// <summary>
+        /// 【Threshold】
+        /// </summary>
+        /// <returns></returns>
+        public object ExecuteScalar()
+        {
+
+            using (OleDbCommand cmd = new OleDbCommand(sqlstring, connection))
+            {
+                object result = cmd.ExecuteScalar();
+                return result;
+
+            }
+
+        }
 
         public  void InsertData<T>(T data)
         {

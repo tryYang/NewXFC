@@ -9,7 +9,7 @@ namespace XFC.Model
     //阈值设置表
     public  class Threshold
     {
-        public int ThresholdID      { get; set; }   //	阈值 ID
+       // public int ThresholdID      { get; set; }   //	阈值 ID
         public Double VacuumPressMax{ get; set; }    //	真空压力最大值
         public Double VacuumPressMin{ get; set; }   //	真空压力最小值
         public Double LowPressMax   { get; set; }//	低压压力最大值

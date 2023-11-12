@@ -81,5 +81,25 @@ namespace XFC
                 }
             }
         }
+        public static void test(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                  
+                    List<string> unclear = new List<string>() { "txt_DataBits", "Tb_Tip" };
+                    if (unclear.Contains(c.Name))
+                    {
+                        continue;
+                    }
+                    ((TextBox)c).Text = "1";
+                }
+                if (c.HasChildren)
+                {
+                    test(c);
+                }
+            }
+        }
     }
 }

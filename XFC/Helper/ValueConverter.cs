@@ -29,6 +29,13 @@ namespace XFC.Helper
         //DN200 流量
         public const double DN200_BEGIN = 29;
         public const double DN200_END = 167;
+        //DN300 流量
+        public const double DN300_BEGIN = 36;
+        public const double DN300_END = 500;
+        //DN50 DN100 DN200 DN300 阀门（MPa）
+        public const double Valve_BEGIN = 0;
+        public const double Valve_END = 6.4;
+       
 
         //------车辆状态---------
         //消防泵转速----------------------------注意
@@ -87,7 +94,15 @@ namespace XFC.Helper
         {
             return ValueConverterTemplate(DN200_BEGIN, DN200_END, value);
         }
-        public static double PumoSpeedConverter(double value)
+        public static double DN300Converter(double value)
+        {
+            return ValueConverterTemplate(DN300_BEGIN, DN300_END, value);
+        }
+        public static double ValveConverter(double value)
+        {
+            return ValueConverterTemplate(Valve_BEGIN, Valve_END, value);
+        }
+        public static double PumpSpeedConverter(double value)
         {
             return ValueConverterTemplate(PUMPSPEED_BEGIN,PUMPSPEED_END, value);
         }

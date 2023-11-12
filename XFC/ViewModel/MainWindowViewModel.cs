@@ -13,6 +13,9 @@ using XFC.View.Dialog.Product;
 using XFC.View.Dialog.SongJianDanWei;
 using XFC.View.Dialog.Print;
 using XFC.Model;
+using System.Reflection;
+using System.Diagnostics;
+using System.Collections;
 
 namespace XFC.ViewModel
 {
@@ -47,7 +50,9 @@ namespace XFC.ViewModel
         public ICommand GkExitClickCommand { get; }
         public ICommand ExitClickCommand { get; }
 
+        public ICommand TestExitClickCommand1{ get; }
 
+        public ICommand TestExitClickCommand2{ get; }
 
         public MainWindowViewModel()
         {
@@ -82,8 +87,47 @@ namespace XFC.ViewModel
             //Exit
             ExitClickCommand = new RelayCommand(Exit);//Application Exit
 
+            TestExitClickCommand1= new RelayCommand(TestExit1);
+            TestExitClickCommand2 = new RelayCommand(TestExit2);
         }
+        private void TestExit1( )
+        {
 
+            TestExit(0);
+        }
+        private void TestExit2()
+        {
+            TestExit(1);
+
+        }
+        private void TestExit(int index)
+        {
+            if (ConstantValue.EquipemntList[index] == Equipment.None)
+            {
+                MessageBox.Show($"设备{index+1}无试验");
+            }
+            if (ConstantValue.gkStatus == GkStatus.Run || ConstantValue.gkStatus == GkStatus.Stop) {
+                MessageBox.Show($"请先结束正在运行的工况");
+            }
+            if (ConstantValue.gkStatus == GkStatus.Run)
+            {
+
+            }
+            ConstantValue.xfcInfos[index] = new XfcInfo(index+1);
+            ConstantValue.xfbInfos[index] = new XfbInfo(index+1);
+            
+            ConstantValue.EquipemntList[index] = Equipment.None;
+            if (index == 0) {
+                ConstantValue.runtime1 = 0;
+            }
+            else
+            {
+                ConstantValue.runtime2 = 0;
+            }
+            ConstantValue.IdList[index] = new List<int>() { -1, -1 };
+
+
+        }
         private void Xfb_Test_Show()
         {
             Form_ShiYanCanShu_xfb.GetInstance().ShowDialog();

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -218,6 +218,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btn_refresh_alarm = new System.Windows.Forms.Button();
             this.label117 = new System.Windows.Forms.Label();
             this.dateTime_alarmstart = new System.Windows.Forms.DateTimePicker();
             this.btn_print_alarm = new System.Windows.Forms.Button();
@@ -1159,7 +1160,7 @@
             this.toolStripTextBox17});
             this.xinjian.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.xinjian.Name = "xinjian";
-            this.xinjian.Size = new System.Drawing.Size(180, 24);
+            this.xinjian.Size = new System.Drawing.Size(134, 24);
             this.xinjian.Text = "新建试验";
             // 
             // tp_xfc_test
@@ -1191,7 +1192,7 @@
             this.toolStripTextBox20});
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(134, 24);
             this.toolStripMenuItem9.Text = "打开试验";
             // 
             // toolStripTextBox18
@@ -1221,19 +1222,19 @@
             this.test_exit1,
             this.test_exit2});
             this.退出试验ToolStripMenuItem.Name = "退出试验ToolStripMenuItem";
-            this.退出试验ToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.退出试验ToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.退出试验ToolStripMenuItem.Text = "退出试验";
             // 
             // test_exit1
             // 
             this.test_exit1.Name = "test_exit1";
-            this.test_exit1.Size = new System.Drawing.Size(180, 24);
+            this.test_exit1.Size = new System.Drawing.Size(143, 24);
             this.test_exit1.Text = "试验1退出";
             // 
             // test_exit2
             // 
             this.test_exit2.Name = "test_exit2";
-            this.test_exit2.Size = new System.Drawing.Size(180, 24);
+            this.test_exit2.Size = new System.Drawing.Size(143, 24);
             this.test_exit2.Text = "试验2退出";
             // 
             // toolStripMenuItem2
@@ -1984,31 +1985,31 @@
             // 
             // chart2
             // 
-            chartArea1.AxisY.LabelStyle.Format = "N4";
-            chartArea1.AxisY.Maximum = 150D;
-            chartArea1.AxisY.Minimum = 0D;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea5.AxisY.LabelStyle.Format = "N4";
+            chartArea5.AxisY.Maximum = 150D;
+            chartArea5.AxisY.Minimum = 0D;
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart2.Legends.Add(legend5);
             this.chart2.Location = new System.Drawing.Point(3, 47);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.LegendText = "输入轴温度";
-            series1.Name = "输入轴温度";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.LegendText = "输出轴温度";
-            series2.Name = "输出轴温度";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chart2.Series.Add(series1);
-            this.chart2.Series.Add(series2);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.IsXValueIndexed = true;
+            series9.Legend = "Legend1";
+            series9.LegendText = "输入轴温度";
+            series9.Name = "输入轴温度";
+            series9.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series10.IsXValueIndexed = true;
+            series10.Legend = "Legend1";
+            series10.LegendText = "输出轴温度";
+            series10.Name = "输出轴温度";
+            series10.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            this.chart2.Series.Add(series9);
+            this.chart2.Series.Add(series10);
             this.chart2.Size = new System.Drawing.Size(634, 680);
             this.chart2.TabIndex = 6;
             this.chart2.Text = "chart2";
@@ -2150,31 +2151,31 @@
             // 
             // chart1
             // 
-            chartArea2.AxisY.LabelStyle.Format = "N4";
-            chartArea2.AxisY.Maximum = 150D;
-            chartArea2.AxisY.Minimum = 0D;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea6.AxisY.LabelStyle.Format = "N4";
+            chartArea6.AxisY.Maximum = 150D;
+            chartArea6.AxisY.Minimum = 0D;
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(3, 47);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.IsXValueIndexed = true;
-            series3.Legend = "Legend1";
-            series3.LegendText = "输入轴温度";
-            series3.Name = "输入轴温度";
-            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.IsXValueIndexed = true;
-            series4.Legend = "Legend1";
-            series4.LegendText = "输出轴温度";
-            series4.Name = "输出轴温度";
-            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series11.IsXValueIndexed = true;
+            series11.Legend = "Legend1";
+            series11.LegendText = "输入轴温度";
+            series11.Name = "输入轴温度";
+            series11.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series12.IsXValueIndexed = true;
+            series12.Legend = "Legend1";
+            series12.LegendText = "输出轴温度";
+            series12.Name = "输出轴温度";
+            series12.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(634, 680);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -2197,6 +2198,7 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox6.Controls.Add(this.btn_refresh_alarm);
             this.groupBox6.Controls.Add(this.label117);
             this.groupBox6.Controls.Add(this.dateTime_alarmstart);
             this.groupBox6.Controls.Add(this.btn_print_alarm);
@@ -2214,6 +2216,18 @@
             this.groupBox6.TabIndex = 49;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "报警记录";
+            // 
+            // btn_refresh_alarm
+            // 
+            this.btn_refresh_alarm.BackColor = System.Drawing.Color.Tan;
+            this.btn_refresh_alarm.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_refresh_alarm.Location = new System.Drawing.Point(805, 25);
+            this.btn_refresh_alarm.Name = "btn_refresh_alarm";
+            this.btn_refresh_alarm.Size = new System.Drawing.Size(93, 40);
+            this.btn_refresh_alarm.TabIndex = 17;
+            this.btn_refresh_alarm.Text = "刷新";
+            this.btn_refresh_alarm.UseVisualStyleBackColor = false;
+            this.btn_refresh_alarm.Click += new System.EventHandler(this.btn_refresh_alarm_Click);
             // 
             // label117
             // 
@@ -2264,7 +2278,7 @@
             // 
             this.btn_Query_alarm.BackColor = System.Drawing.Color.Tan;
             this.btn_Query_alarm.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Query_alarm.Location = new System.Drawing.Point(902, 26);
+            this.btn_Query_alarm.Location = new System.Drawing.Point(922, 26);
             this.btn_Query_alarm.Name = "btn_Query_alarm";
             this.btn_Query_alarm.Size = new System.Drawing.Size(75, 39);
             this.btn_Query_alarm.TabIndex = 9;
@@ -3500,5 +3514,6 @@
         private System.Windows.Forms.ToolStripMenuItem 退出试验ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem test_exit1;
         private System.Windows.Forms.ToolStripMenuItem test_exit2;
+        public System.Windows.Forms.Button btn_refresh_alarm;
     }
 }

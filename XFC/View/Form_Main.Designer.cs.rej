@@ -1,0 +1,17 @@
+diff a/XFC/View/Form_Main.Designer.cs b/XFC/View/Form_Main.Designer.cs	(rejected hunks)
+@@ -347,11 +347,11 @@
+             this.groupBox2.Controls.Add(this.panel13);
+             this.groupBox2.Controls.Add(this.panel6);
+             this.groupBox2.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+-            this.groupBox2.Location = new System.Drawing.Point(8, 27);
+-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
++            this.groupBox2.Location = new System.Drawing.Point(11, 34);
++            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+             this.groupBox2.Name = "groupBox2";
+-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+-            this.groupBox2.Size = new System.Drawing.Size(545, 923);
++            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
++            this.groupBox2.Size = new System.Drawing.Size(727, 1154);
+             this.groupBox2.TabIndex = 7;
+             this.groupBox2.TabStop = false;
+             this.groupBox2.Text = "实时数据显示";

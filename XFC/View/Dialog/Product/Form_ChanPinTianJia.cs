@@ -42,7 +42,7 @@ namespace XFC.View.Dialog.Product
                 //string MaxID = cmd1.ToString();
 
 
-                helper.sqlstring = "insert into CarBasicInfo (CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
+                helper.sqlstring = "insert into SaveCarBasicInfo (CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
                 //填充占位符
                 helper.sqlstring = string.Format(helper.sqlstring, textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text);
                 //执行修改操作的SQL

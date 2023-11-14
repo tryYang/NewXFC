@@ -34,7 +34,7 @@ namespace XFC.View.Dialog.Product
         {
             using (OledbHelper helper = new OledbHelper()) 
             {
-                helper.sqlstring = "select CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType from CarBasicInfo";
+                helper.sqlstring = "select CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType from SaveCarBasicInfo";
                 DataSet ds = helper.GetDataSet();
                 //设置表格控件的DataSource属性
                 dataGridView1.DataSource = ds.Tables[0];
@@ -61,7 +61,7 @@ namespace XFC.View.Dialog.Product
             {
                 using(OledbHelper helper = new OledbHelper())
                 {
-                    helper.sqlstring = "select CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType from CarBasicInfo where CarName like '%{0}%'";
+                    helper.sqlstring = "select  CarName,CarModel,CarFac,UnderpanModel,UnderpanFac,PumpModel,PumpFac,PumpType from SaveCarBasicInfo where CarName like '%{0}%'";
                     //填充占位符
                     helper.sqlstring = string.Format(helper.sqlstring, tb_CarName.Text);
                     DataSet ds = helper.GetDataSet();
@@ -107,14 +107,14 @@ namespace XFC.View.Dialog.Product
             //获取DataGridView控件中的值
             
            // int ProductID = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());         
-            string Productname = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();            
-            string truckNo = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();           
-            string manufactureORG = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();           
-            string dipanORG = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();    
-            string dipanClass = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();  
-            string PumperORG = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-            string PumperClass = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            string PumperType = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
+            string Productname = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();            
+            string truckNo = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();           
+            string manufactureORG = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();           
+            string dipanORG = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();    
+            string dipanClass = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();  
+            string PumperORG = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+            string PumperClass = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            string PumperType = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
             //创建updateForm类的对象，并将课程信息传递给修改界面
             Form_ChanPinXiuGai form_ChanPinXiuGai = new Form_ChanPinXiuGai(Productname, truckNo, manufactureORG, dipanORG, dipanClass, PumperORG, PumperClass, PumperType);
             //弹出修改信息窗口
@@ -134,13 +134,13 @@ namespace XFC.View.Dialog.Product
         private void btn_delete_Click(object sender, EventArgs e)
         {
             //获取DataGridView控件中选中行的编号列的值
-            int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            //int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());/****************这里可以修改删除的问题****************/
 
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "delete from CarBasicInfo where CarID ={0}";
+                helper.sqlstring = "delete from SaveCarBasicInfo where CarName ={0}";///用哪个作为唯一值删除呢
                 //填充占位符
-                helper.sqlstring = string.Format(helper.sqlstring, id);
+                helper.sqlstring = string.Format(helper.sqlstring, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 // 执行SQL语句
                 helper.ExecuteCommand();
                 //弹出消息提示删除成功

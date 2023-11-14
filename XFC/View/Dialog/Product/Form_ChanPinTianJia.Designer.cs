@@ -46,8 +46,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btn_affirm = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -233,34 +231,12 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(424, 278);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 20);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "车辆ID：";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(556, 271);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(149, 25);
-            this.textBox9.TabIndex = 27;
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
-            // 
             // Form_ChanPinTianJia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(800, 414);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_affirm);
             this.Controls.Add(this.label9);
@@ -310,7 +286,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_affirm;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
     }
 }

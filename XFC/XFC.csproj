@@ -202,6 +202,24 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\XfcTestViewModel.cs" />
+    <Compile Include="View\Dialog\ProductPump\Form_SavePump.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProductPump\Form_SavePump.Designer.cs">
+      <DependentUpon>Form_SavePump.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ProductPump\Form_SavePumpTianJia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProductPump\Form_SavePumpTianJia.Designer.cs">
+      <DependentUpon>Form_SavePumpTianJia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ProductPump\Form_SavePumpXiuGai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProductPump\Form_SavePumpXiuGai.Designer.cs">
+      <DependentUpon>Form_SavePumpXiuGai.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\User\Form_Userinfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,10 +292,10 @@
     <Compile Include="View\Dialog\User\Form_UserXiuGai.Designer.cs">
       <DependentUpon>Form_UserXiuGai.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_GongKuangSelect.cs">
+    <Compile Include="View\Dialog\ProductPump\Form_GongKuangSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_GongKuangSelect.Designer.cs">
+    <Compile Include="View\Dialog\ProductPump\Form_GongKuangSelect.Designer.cs">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_Login.cs">
@@ -331,6 +349,15 @@
     <EmbeddedResource Include="View\Dialog\Print\Form_Print1.resx">
       <DependentUpon>Form_Print1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProductPump\Form_SavePump.resx">
+      <DependentUpon>Form_SavePump.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProductPump\Form_SavePumpTianJia.resx">
+      <DependentUpon>Form_SavePumpTianJia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProductPump\Form_SavePumpXiuGai.resx">
+      <DependentUpon>Form_SavePumpXiuGai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\Product\Form_ChanPin.resx">
       <DependentUpon>Form_ChanPin.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,7 +385,7 @@
     <EmbeddedResource Include="View\Dialog\User\Form_UserXiuGai.resx">
       <DependentUpon>Form_UserXiuGai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_GongKuangSelect.resx">
+    <EmbeddedResource Include="View\Dialog\ProductPump\Form_GongKuangSelect.resx">
       <DependentUpon>Form_GongKuangSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Login.resx">

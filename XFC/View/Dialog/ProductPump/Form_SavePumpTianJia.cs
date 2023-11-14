@@ -1,28 +1,33 @@
 ﻿using System;
-using System.Data.OleDb;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using XFC.Helper;
+using XFC.Model;
 
-namespace XFC.View.Dialog.Product
+namespace XFC.View.Dialog.ProductPump
 {
-    public partial class Form_ChanPinXiuGai : Form
+    public partial class Form_SavePumpTianJia : Form
     {
-        public Form_ChanPinXiuGai( string Productname, string truckNo, string manufactureORG, string dipanORG, string dipanClass, string PumperORG, string PumperClass, string PumperType)
+        public Form_SavePumpTianJia(string PumpName,string PumpFac,string PumpType,string Speed,string InPipeD,string OutPipeD,string EpitopeDifference,string PumpModel)
         {
             InitializeComponent();
-          // textBox1.Text = ProductID.ToString();
-            textBox2.Text = Productname;
-            textBox3.Text = truckNo;
-            textBox4.Text = manufactureORG;
-            textBox5.Text = dipanORG;
-            textBox6.Text = dipanClass;
-            textBox7.Text = PumperORG;
-            textBox8.Text = PumperClass;
-            textBox9.Text = PumperType;
+            textBox1.Text = PumpName;
+            textBox2.Text = PumpFac;
+            textBox3.Text = PumpType;
+            textBox4.Text = Speed;
+            textBox5.Text = InPipeD;
+            textBox6.Text = OutPipeD;
+            textBox7.Text = EpitopeDifference;
+            textBox8.Text = PumpModel;
         }
         /// <summary>
-        /// 【确认】按钮
+        /// 确认
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -30,30 +35,28 @@ namespace XFC.View.Dialog.Product
         {
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "update SaveCarBasicInfo set [CarModel]='{0}',[CarFac]='{1}',[UnderpanFac]='{2}',[UnderpanModel]='{3}',[PumpFac]='{4}',[PumpModel]='{5}',[PumpType]='{6}' where CarName='{7}'";
-                //填充占位符          
-                helper.sqlstring = string.Format(helper.sqlstring, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text, textBox9.Text, textBox2.Text);
-                // 执行SQL语句
+                //helper.sqlstring = "Select Max(CarID) from CarBasicInfo";
+                //int cmd1 = helper.ExecuteCommand() + 1;
+                //string MaxID = cmd1.ToString();
+
+
+                helper.sqlstring = "insert into PumpBasicInfo (PumpName,PumpFac,PumpType,Speed,InPipeD,OutPipeD,EpitopeDifference,PumpModel) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')";
+                //填充占位符
+                helper.sqlstring = string.Format(helper.sqlstring, textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text);
+                //执行修改操作的SQL
                 helper.ExecuteCommand();
-                //弹出消息提示删除成功
-                MessageBox.Show("修改成功!");
+                MessageBox.Show("添加成功！");
                 //设置当前窗体DislogResult结果为OK
                 this.DialogResult = DialogResult.OK;
                 //关闭窗体
                 this.Close();
 
-
-            }          
-          
+            }
         }
-        /// <summary>
-        /// 【取消】按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -82,11 +85,6 @@ namespace XFC.View.Dialog.Product
         }
 
         private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -126,15 +124,24 @@ namespace XFC.View.Dialog.Product
 
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
     }
 }
-

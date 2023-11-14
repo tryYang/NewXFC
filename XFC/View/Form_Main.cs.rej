@@ -1,0 +1,10 @@
+diff a/XFC/View/Form_Main.cs b/XFC/View/Form_Main.cs	(rejected hunks)
+@@ -68,7 +68,7 @@
+             //打印
+             tp_printtable1.Click += (sender, e) => viewModel.PrintClickCommand1.Execute(null);
+             tp_printtable2.Click += (sender, e) => viewModel.PrintClickCommand2.Execute(null);
+-            tp_printtable3.Click += (sender, e) => viewModel.PrintClickCommand3.Execute(null);
++           // tp_printtable3.Click += (sender, e) => viewModel.PrintClickCommand3.Execute(null);
+ 
+             //退出
+             tp_exit.Click += (sender, e) => viewModel.ExitClickCommand.Execute(null);

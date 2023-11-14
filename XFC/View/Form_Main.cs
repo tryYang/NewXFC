@@ -43,11 +43,13 @@ namespace XFC.View
         GridPrinter gridPrinter;
         private bool isDatagridViewShowRealTime1 = true;
         private bool isDatagridViewShowRealTime2 = true;
+        private bool isDatagridViewShowAlarmRealTime = true;
         bool alarm1 = false;
-bool alarm2 = false;
+        bool alarm2 = false;
 
         System.Data.DataTable dataTable1 = CreateDataTable("设备1");
         System.Data.DataTable dataTable2 = CreateDataTable("设备2");
+        System.Data.DataTable dataTable_alarm = CreateAlarmTable("报警记录表");
         public static Form_Main getInstance()
         {
             if (instance == null)
@@ -100,6 +102,7 @@ bool alarm2 = false;
             
             dataGridView1.DataSource = dataTable1;
             dataGridView2.DataSource = dataTable2;
+            dataGridView4.DataSource = dataTable_alarm;
 
 
 
@@ -212,25 +215,28 @@ bool alarm2 = false;
         /// <param name="alarmMessage"></param>
         private void alarming(int conditionID, string equipmentType, string alarmMessage)
         {
-            using (OledbHelper helper = new OledbHelper())
+            if (isDatagridViewShowAlarmRealTime)
             {
-                helper.sqlstring = "insert into AlarmRecord ([ConditionID],[EquipmentType],[AlarmMessage],[SpecificCollectTime]) values ('{0}','{1}','{2}','{3}')";
-                string time = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
-                //填充占位符
-                helper.sqlstring = string.Format(helper.sqlstring, conditionID, equipmentType, alarmMessage, time);
-                helper.ExecuteCommand();
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "insert into AlarmRecord ([ConditionID],[EquipmentType],[AlarmMessage],[SpecificCollectTime]) values ('{0}','{1}','{2}','{3}')";
+                    string time = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                    object[] alarmrecords = new object[4];
+                    alarmrecords[0] = conditionID;
+                    alarmrecords[1] = equipmentType;
+                    alarmrecords[2] = alarmMessage;
+                    alarmrecords[3] = time;
+                    dataTable_alarm.Rows.Add(alarmrecords);
+                    dataGridView4.DataSource = dataTable1;
+                    dataGridView4.Refresh();
+                    //填充占位符
+                    helper.sqlstring = string.Format(helper.sqlstring, conditionID, equipmentType, alarmMessage, time);
+                    helper.ExecuteCommand();
 
-                helper.sqlstring = "select * from AlarmRecord";
-                DataSet ds = helper.GetDataSet();
-                //设置表格控件的DataSource属性
-                dataGridView4.DataSource = ds.Tables[0];
-                //设置数据表格上显示的列标题              
-                dataGridView4.Columns[0].HeaderText = "报警ID";
-                dataGridView4.Columns[1].HeaderText = "工况ID";
-                dataGridView4.Columns[2].HeaderText = "设备类型";
-                dataGridView4.Columns[3].HeaderText = "报警信息";
-                dataGridView4.Columns[4].HeaderText = "采集时间";
+                }
+
             }
+           
         }
         /// <summary>
         /// 显示设备的实时数据
@@ -2097,6 +2103,17 @@ bool alarm2 = false;
             dataTable.Columns.Add("输出轴温度", typeof(double));
             return dataTable;
         }
+        static System.Data.DataTable CreateAlarmTable(string tableName)
+        {
+            System.Data.DataTable dataTable = new System.Data.DataTable(tableName);
+            dataTable.Columns.Add("工况ID", typeof(int));
+            dataTable.Columns.Add("设备类型", typeof(double));
+            dataTable.Columns.Add("报警信息", typeof(string));
+            dataTable.Columns.Add("采集时间", typeof(DateTime));
+
+
+            return dataTable;
+        }
 
         private void btn_Collect1_Click(object sender, EventArgs e)
         {
@@ -2143,41 +2160,35 @@ bool alarm2 = false;
 
         private void btn_Query_alarm_Click(object sender, EventArgs e)
         {
-            //if (ConstantValue.gkStatus != GkStatus.Run)
-            //{
+            isDatagridViewShowAlarmRealTime = false;
+            string start = dateTime_alarmstart.Text;
+            string end = dateTime_alarmend.Text;
+            using (OledbHelper helper = new OledbHelper())
+            {
+                string tablename = @"AlarmRecord";
 
-            //    MessageBox.Show("设备1未有运行工况");
-            //    return;
-            //}
-            //if (ConstantValue.EquipemntList[index] == Equipment.None)
-            //{
-            //    MessageBox.Show("设备1未有运行工况");
-            //    return;
-            //}
-            //string start = dateTime_alarmstart.Text;
-            //string end = dateTime_alarmend.Text;
-            //using (OledbHelper helper = new OledbHelper())
-            //{
-            //    string tablename = @"AlarmRecord";
-            //    string Idfield = ConstantValue.EquipemntList[index] == Equipment.Car ? "LabID" : "PumpLabID";
+                helper.sqlstring = string.Format("select [AlarmId],[LabID],[EquipmentType],[AlarmMessage],[SpecificCollectTime] from {0} where [SpecificCollectTime] >= #{1}# and [SpecificCollectTime] <= #{2}# ", tablename, start, end);
+                DataSet ds = helper.GetDataSet();
 
-            //    helper.sqlstring = string.Format("select [AlarmId],[LabID],[EquipmentType],[AlarmMessage],[SpecificCollectTime] from {0} where [SpecificCollectTime] >= #{1}# and [SpecificCollectTime] <= #{2}# and [{3}] ={4}", tablename, start, end, Idfield, ConstantValue.IdList[index][1]);
-            //    DataSet ds = helper.GetDataSet();
+                dataGridView4.DataSource = ds.Tables[0];
+                //设置数据表格上显示的列标题
+                dataGridView4.Columns[0].HeaderText = "报警ID";
+                dataGridView4.Columns[1].HeaderText = "工况ID";
+                dataGridView4.Columns[2].HeaderText = "设备类型";
+                dataGridView4.Columns[3].HeaderText = "报警信息";
+                dataGridView4.Columns[4].HeaderText = "采集时间";
 
-            //    dataGridView4.DataSource = ds.Tables[0];
-            //    //设置数据表格上显示的列标题
-            //    dataGridView4.Columns[0].HeaderText = "ID";
-            //    dataGridView4.Columns[1].HeaderText = "采集时间";
-            //    dataGridView4.Columns[2].HeaderText = "低压压力";
-            //    dataGridView4.Columns[3].HeaderText = "低压流量";
-            //    dataGridView4.Columns[4].HeaderText = "中高压压力";
-            //    dataGridView4.Columns[5].HeaderText = "中高压流量";
-            //    dataGridView4.Columns[6].HeaderText = "真空度";
-            //    dataGridView4.Columns[7].HeaderText = "消防泵转速";
-            //    dataGridView4.Columns[8].HeaderText = "输入轴温度";
-            //    dataGridView4.Columns[9].HeaderText = "输出轴温度";
+                dataGridView4.Refresh(); 
+            }
 
-            //}
+
+        }
+
+        private void btn_refresh_alarm_Click(object sender, EventArgs e)
+        {
+            isDatagridViewShowAlarmRealTime = true;
+            dataGridView4.DataSource = dataTable_alarm;
+            dataGridView4.Refresh();
         }
     }
 }

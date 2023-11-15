@@ -138,7 +138,7 @@ namespace XFC.View.Dialog.Product
 
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "delete from SaveCarBasicInfo where CarName ={0}";///用哪个作为唯一值删除呢
+                helper.sqlstring = "delete from SaveCarBasicInfo where CarName ='{0}'";///用哪个作为唯一值删除呢
                 //填充占位符
                 helper.sqlstring = string.Format(helper.sqlstring, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 // 执行SQL语句

@@ -95,9 +95,8 @@
             this.LabTime = new System.Windows.Forms.DateTimePicker();
             this.btn_confirm = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.tb_UserPeople = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tb_UserPeople = new System.Windows.Forms.ComboBox();
             this.cbx_PumpId = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -365,7 +364,7 @@
             this.panel1.Controls.Add(this.cbx_ElectricalMachinery);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(17, 282);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 49);
             this.panel1.TabIndex = 24;
@@ -394,7 +393,7 @@
             this.panelLowtype.Controls.Add(this.cbx_Diya);
             this.panelLowtype.Controls.Add(this.Lbl_Diya);
             this.panelLowtype.Location = new System.Drawing.Point(17, 170);
-            this.panelLowtype.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLowtype.Margin = new System.Windows.Forms.Padding(4);
             this.panelLowtype.Name = "panelLowtype";
             this.panelLowtype.Size = new System.Drawing.Size(353, 49);
             this.panelLowtype.TabIndex = 17;
@@ -424,7 +423,7 @@
             this.panelHightype.Controls.Add(this.cbx_Gaoya);
             this.panelHightype.Controls.Add(this.Lbl_Gaoya);
             this.panelHightype.Location = new System.Drawing.Point(17, 226);
-            this.panelHightype.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHightype.Margin = new System.Windows.Forms.Padding(4);
             this.panelHightype.Name = "panelHightype";
             this.panelHightype.Size = new System.Drawing.Size(353, 49);
             this.panelHightype.TabIndex = 18;
@@ -456,7 +455,7 @@
             this.panelHigh.Controls.Add(this.txt_highflow);
             this.panelHigh.Controls.Add(this.txt_highp);
             this.panelHigh.Location = new System.Drawing.Point(17, 111);
-            this.panelHigh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHigh.Margin = new System.Windows.Forms.Padding(4);
             this.panelHigh.Name = "panelHigh";
             this.panelHigh.Size = new System.Drawing.Size(501, 46);
             this.panelHigh.TabIndex = 17;
@@ -504,7 +503,7 @@
             this.panelLow.Controls.Add(this.txt_lowflow);
             this.panelLow.Controls.Add(this.txt_lowp);
             this.panelLow.Location = new System.Drawing.Point(17, 58);
-            this.panelLow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLow.Margin = new System.Windows.Forms.Padding(4);
             this.panelLow.Name = "panelLow";
             this.panelLow.Size = new System.Drawing.Size(501, 46);
             this.panelLow.TabIndex = 16;
@@ -810,34 +809,15 @@
             this.btn_cancel.TabIndex = 11;
             this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = false;
-            // 
-            // tb_UserPeople
-            // 
-            this.tb_UserPeople.Location = new System.Drawing.Point(976, 575);
-            this.tb_UserPeople.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_UserPeople.Name = "tb_UserPeople";
-            this.tb_UserPeople.Size = new System.Drawing.Size(171, 25);
-            this.tb_UserPeople.TabIndex = 12;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button3.Location = new System.Drawing.Point(1140, 570);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 31);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.tb_UserPeople);
             this.groupBox4.Controls.Add(this.cbx_PumpId);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.groupBox1);
-            this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.gb_Pump);
-            this.groupBox4.Controls.Add(this.tb_UserPeople);
             this.groupBox4.Controls.Add(this.groupBox3);
             this.groupBox4.Controls.Add(this.btn_cancel);
             this.groupBox4.Controls.Add(this.label33);
@@ -846,13 +826,23 @@
             this.groupBox4.Controls.Add(this.LabTime);
             this.groupBox4.ForeColor = System.Drawing.Color.Red;
             this.groupBox4.Location = new System.Drawing.Point(16, 15);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(1449, 782);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "实验信息";
+            // 
+            // tb_UserPeople
+            // 
+            this.tb_UserPeople.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tb_UserPeople.FormattingEnabled = true;
+            this.tb_UserPeople.Location = new System.Drawing.Point(992, 579);
+            this.tb_UserPeople.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_UserPeople.Name = "tb_UserPeople";
+            this.tb_UserPeople.Size = new System.Drawing.Size(171, 23);
+            this.tb_UserPeople.TabIndex = 16;
             // 
             // cbx_PumpId
             // 
@@ -961,7 +951,6 @@
         private System.Windows.Forms.DateTimePicker LabTime;
         private System.Windows.Forms.Button btn_confirm;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.TextBox tb_UserPeople;
         private System.Windows.Forms.NumericUpDown ud5;
         private System.Windows.Forms.NumericUpDown ud6;
         private System.Windows.Forms.NumericUpDown ud7;
@@ -970,7 +959,6 @@
         private System.Windows.Forms.NumericUpDown ud3;
         private System.Windows.Forms.NumericUpDown ud2;
         private System.Windows.Forms.NumericUpDown ud1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DateTimePicker cbx_PumpProduceTime;
         private System.Windows.Forms.ComboBox cbx_Gaoya;
         private System.Windows.Forms.ComboBox cbx_Diya;
@@ -991,5 +979,6 @@
         private System.Windows.Forms.ComboBox cbx_ElectricalMachinery;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_OutPipeD;
+        private System.Windows.Forms.ComboBox tb_UserPeople;
     }
 }

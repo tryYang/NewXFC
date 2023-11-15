@@ -30,9 +30,9 @@ namespace XFC.View.Dialog.User
         {
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "update UserInfo set [UserName]='{0}',[UserPassWord]='{1}'";
+                helper.sqlstring = "update UserInfo set [UserName]='{0}',[UserPassWord]='{1}'  where UserName='{2}'";
                 //填充占位符          
-                helper.sqlstring = string.Format(helper.sqlstring, tb_UserName,tb_UserPassWord,tb_UserID);
+                helper.sqlstring = string.Format(helper.sqlstring, tb_UserName.Text,tb_UserPassWord.Text, tb_UserName.Text);
                 // 执行SQL语句
                 helper.ExecuteCommand();
                 //弹出消息提示删除成功

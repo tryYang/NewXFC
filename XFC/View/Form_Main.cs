@@ -82,7 +82,6 @@ namespace XFC.View
             //打印
             tp_printtable1.Click += (sender, e) => viewModel.PrintClickCommand1.Execute(null);
             tp_printtable2.Click += (sender, e) => viewModel.PrintClickCommand2.Execute(null);
-            tp_printtable3.Click += (sender, e) => viewModel.PrintClickCommand3.Execute(null);
 
             //退出
             tp_exit.Click += (sender, e) => viewModel.ExitClickCommand.Execute(null);

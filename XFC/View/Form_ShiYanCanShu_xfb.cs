@@ -284,7 +284,7 @@ namespace XFC.View
         private void Form_ShiYanCanShu_Load(object sender, EventArgs e)
         {
             Dictionary<string, Control> dic = new Dictionary<string, Control>();
-            dic.Add("select distinct CustomerDepart from	PumpLab", cbx_CustomerDepart);  //送检单位
+            dic.Add("select distinct CustomerDepart from CustomerInfo", cbx_CustomerDepart);  //送检单位
             dic.Add("select distinct PumpName from PumpBasicInfo", cbx_PumpName);    //水泵名称
             dic.Add("select distinct PumpFac from PumpBasicInfo", cbx_pumpfac);  //水泵厂家            
                
@@ -295,8 +295,14 @@ namespace XFC.View
             //dic.Add("select distinct InPipeD  from	PumpBasicInfo ", tb_OutPipeD);//出口管径
             //dic.Add("select distinct OutPipeD  from	PumpBasicInfo ", tb_InPipeD);//进口管径
             //dic.Add("select distinct OutPipeD  from	PumpBasicInfo ", tb_InPipeD);//电机
+             dic.Add("select distinct UserName from	UserInfo", tb_UserPeople);  //用户名称
             load(dic);
 
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }  
 }

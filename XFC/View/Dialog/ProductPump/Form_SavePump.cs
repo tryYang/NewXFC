@@ -100,14 +100,14 @@ namespace XFC.View.Dialog.ProductPump
         /// <param name="e"></param>
         private void btn_updata_Click(object sender, EventArgs e)
         {
-            string PumpName = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            string PumpFac = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            string PumpType = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            string Speed = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            string InPipeD = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            string OutPipeD = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-            string EpitopeDifference = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            string PumpModel = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
+            string PumpName = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            string PumpFac = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            string PumpType = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            string Speed = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            string InPipeD = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            string OutPipeD = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+            string EpitopeDifference = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            string PumpModel = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
 
             //创建updateForm类的对象，并将课程信息传递给修改界面
             Form_SavePumpXiuGai form_SavePumpXiuGai = new Form_SavePumpXiuGai(PumpName, PumpFac, PumpType, Speed, InPipeD, OutPipeD, EpitopeDifference, PumpModel);
@@ -129,7 +129,19 @@ namespace XFC.View.Dialog.ProductPump
         /// <param name="e"></param>
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            using (OledbHelper helper = new OledbHelper())
+            {
+                helper.sqlstring = "delete from SavePumpBasicInfo where PumpName ='{0}'";///用哪个作为唯一值删除呢
+                //填充占位符
+                helper.sqlstring = string.Format(helper.sqlstring, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                // 执行SQL语句
+                helper.ExecuteCommand();
+                //弹出消息提示删除成功
+                MessageBox.Show("删除成功!");
+                //调用查询全部的方法，刷新DataGridView控件中的数据
+                QueryAll();
 
+            }
         }
 
        

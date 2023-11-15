@@ -16,6 +16,7 @@ using XFC.Model;
 using System.Reflection;
 using System.Diagnostics;
 using System.Collections;
+using XFC.View.Dialog.ProductPump;
 
 namespace XFC.ViewModel
 {
@@ -164,8 +165,9 @@ namespace XFC.ViewModel
         }
         private void XfbProductShow()
         {
+            Form_SavePump form = new Form_SavePump();
+            form.ShowDialog();
 
-         
         }
         //工况
 
@@ -252,6 +254,11 @@ namespace XFC.ViewModel
         //退出
         private void Exit()
         {
+            if(ConstantValue.gkStatus==GkStatus.Run|| ConstantValue.gkStatus == GkStatus.Stop)
+            {
+                MessageBox.Show("请先结束工况，再退出程序");
+                return;
+            }
             Application.Exit();
         }
     }

@@ -38,9 +38,9 @@ namespace XFC.View.Dialog.ProductPump
         {
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "update SavePumpBasicInfo set [PumpFac]='{0}',[PumpType]='{1}',[Speed]='{2}',[InPipeD]='{3}',[OutPipeD]='{4}',[EpitopeDifference]='{5}',[PumpModel]='{6}' where PumpName={1}";
+                helper.sqlstring = "update SavePumpBasicInfo set [PumpName]='{0}',[PumpFac]='{1}',[PumpType]='{2}',[Speed]='{3}',[InPipeD]='{4}',[OutPipeD]='{5}',[EpitopeDifference]='{6}',[PumpModel]='{7}' where PumpName={8}";
                 //填充占位符          
-                helper.sqlstring = string.Format(helper.sqlstring, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text, textBox1.Text);
+                helper.sqlstring = string.Format(helper.sqlstring, textBox1.Text,textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text, textBox8.Text, textBox1.Text);
                 // 执行SQL语句
                 helper.ExecuteCommand();
                 //弹出消息提示删除成功

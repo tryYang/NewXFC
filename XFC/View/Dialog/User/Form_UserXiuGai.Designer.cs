@@ -35,9 +35,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_UserName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_UserID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tb_UserPassWord
@@ -110,42 +107,12 @@
             this.tb_UserName.Size = new System.Drawing.Size(149, 25);
             this.tb_UserName.TabIndex = 37;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(145, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
-            this.label1.TabIndex = 46;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(145, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 20);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "登录ID：";
-            // 
-            // tb_UserID
-            // 
-            this.tb_UserID.Location = new System.Drawing.Point(277, 88);
-            this.tb_UserID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_UserID.Name = "tb_UserID";
-            this.tb_UserID.Size = new System.Drawing.Size(149, 25);
-            this.tb_UserID.TabIndex = 44;
-            // 
             // Form_UserXiuGai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(570, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_UserID);
             this.Controls.Add(this.tb_UserPassWord);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_cancel);
@@ -169,8 +136,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_UserName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_UserID;
     }
 }

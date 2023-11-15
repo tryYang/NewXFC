@@ -96,10 +96,10 @@ namespace XFC.View.Dialog.SongJianDanWei
         /// <param name="e"></param>
         private void btn_updata_Click(object sender, EventArgs e)
         {
-            string CustomerDepart = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            string ContactPeople = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            string PhoneNum = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            string Address = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            string CustomerDepart = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            string ContactPeople = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            string PhoneNum = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            string Address = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
           
             //创建updateForm类的对象，并将课程信息传递给修改界面
             Form_SongJianXiuGai form_SongJianXiuGai = new Form_SongJianXiuGai(CustomerDepart, ContactPeople, PhoneNum, Address);
@@ -120,13 +120,13 @@ namespace XFC.View.Dialog.SongJianDanWei
         private void btn_delete_Click(object sender, EventArgs e)
         {
             //获取DataGridView控件中选中行的编号列的值
-            int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            //int id = int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
             using (OledbHelper helper = new OledbHelper())
             {
-                helper.sqlstring = "delete from CustomerInfo where CustomerID ={0}";
+                helper.sqlstring = "delete from CustomerInfo where CustomerDepart ='{0}'";
                 //填充占位符
-                helper.sqlstring = string.Format(helper.sqlstring, id);
+                helper.sqlstring = string.Format(helper.sqlstring, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 // 执行SQL语句
                 helper.ExecuteCommand();
                 //弹出消息提示删除成功

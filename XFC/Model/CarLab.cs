@@ -21,9 +21,9 @@ namespace XFC.Model
         public double ThreeTemp  { get; set; } //	三米水池温度
         public double ThreePress { get; set; }  //	三米水池修正吸深
         public double SevenTemp  { get; set; }  //	七米水井温度
-        public double SevenPress { get; set; }  //	七米水井修正吸深
-        public double CarHeight	 { get; set; }  //	车泵高度
+        public double SevenPress { get; set; }  //	七米水井修正吸深       
         public double Pressure { get; set; }  //	大气压力
-        public double Temp { get; set; }  //	车泵高度
+        public double Temp { get; set; }  //	环境温度
+        public double CarHeight { get; set; }  //	车泵高度
     }
 }

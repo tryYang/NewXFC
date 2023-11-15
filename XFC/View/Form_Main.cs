@@ -273,91 +273,7 @@ namespace XFC.View
             Gk gk = ConstantValue.xfcInfos[i].currentGk;
        
             switch (i) {
-                //case 0:
-                //    List<string> ERROR1 = new List<string>();
-                //    Vacuum1.Text=tb_Vacuum1.Text = NModubs4Helper.Instance.GetValue16(1, 0).ToString();//真空度
-                //    LPress1.Text= tb_LPress1.Text = NModubs4Helper.Instance.GetValue16(1, 1).ToString();//低压压力
-                //    HPress1.Text=tb_HPress1.Text = NModubs4Helper.Instance.GetValue16(1, 2).ToString();//中高压压力
-                //    tb_CarPumpSpeed1.Text = NModubs4Helper.Instance.GetValue16(1, 3).ToString();//车载泵转速
-                //    InTemp1.Text=tb_InTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 4).ToString();//输入轴温度
-                //    OutTemp1.Text=tb_OutTemp1.Text = NModubs4Helper.Instance.GetValue16(1, 5).ToString();//输出轴温度
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
-                //    {
-                //        DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();//50流量仪
-                //        DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();//50阀门仪
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
-                //    {
-                //        DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();//100流量仪
-                //        DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();//100阀门仪
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
-                //    {
-                //        DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();//200流量仪
-                //        DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();//200阀门
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
-                //    {
-                //        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();//300流量仪
-                //        DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();//300阀门
-                //    }
-                //    if (alarm1)
-                //    {
-                //        string final = "【设备1】";
-                //        foreach (string er in ERROR1)
-                //        {
-                //            final += "\n" + er;
-                //        }
-                //        MessageBox.Show(final);
-
-                //    }
-
-                //    chart1.Series[0].Points.AddY(double.Parse(tb_InTemp1.Text));
-                //    chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
-                //    break;
-                //case 1:
-                //    List<string> ERROR2 = new List<string>();
-                //    Vacuum2.Text = tb_Vacuum2.Text = NModubs4Helper.Instance.GetValue16(4, 0).ToString();//真空度
-                //    LPress2.Text = tb_LPress2.Text = NModubs4Helper.Instance.GetValue16(4, 1).ToString();//低压压力
-                //    HPress2.Text = tb_HPress2.Text = NModubs4Helper.Instance.GetValue16(4, 2).ToString();//中高压压力
-                //    tb_CarPumpSpeed2.Text = NModubs4Helper.Instance.GetValue16(4, 3).ToString();//车载泵转速
-                //    InTemp2.Text = tb_InTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 4).ToString();//输入轴温度
-                //    OutTemp2.Text = tb_OutTemp2.Text = NModubs4Helper.Instance.GetValue16(4, 5).ToString();//输出轴温度
-
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
-                //    {
-                //        DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
-                //        DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
-                //    {
-                //        DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
-                //        DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
-                //    {
-                //        DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
-                //        DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
-                //    }
-                //    if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
-                //    {
-                //        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
-                //        DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
-                //    }
-                //    if (alarm2)
-                //    {
-                //        string final = "【设备2】";
-                //        foreach (string er in ERROR2)
-                //        {
-                //            final += "\n" + er;
-                //        }
-                //        MessageBox.Show(final);
-
-                //    }
-                //    chart2.Series[0].Points.AddY(double.Parse(tb_InTemp2.Text));
-                //    chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
-
-                //    break;
+     
                 /**************************z【值转换与报警】****************************/
                 case 0:
                     List<string> ERROR1 = new List<string>();
@@ -366,23 +282,115 @@ namespace XFC.View
                     double HPress = ValueConverter.LHPressConverter(NModubs4Helper.Instance.GetValue16(1, 2));
                     double CarPumpSpeed = ValueConverter.PumpSpeedConverter(NModubs4Helper.Instance.GetValue16(1, 3));
                     double InTemp = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(1, 4));
-                    double OutTemp = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(1, 5));
-
-                    double DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
-                    double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
-                    double DN100Flow = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
-                    double DN100Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
-                    double DN200Flow = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
-                    double DN200Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
-                    double DN300Flow = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
-                    double DN300Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
-
+                    double OutTemp = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(1, 5));                  
                     Vacuum1.Text = tb_Vacuum1.Text = Vacuum.ToString();//真空度                   
                     LPress1.Text = tb_LPress1.Text = LPress.ToString();//低压压力
                     HPress1.Text = tb_HPress1.Text = HPress.ToString();//中高压压力
-                    tb_CarPumpSpeed1.Text = CarPumpSpeed.ToString();//车载泵转速
-                    InTemp1.Text = tb_InTemp1.Text = InTemp.ToString();//输入轴温度
-                    OutTemp1.Text = tb_OutTemp1.Text = OutTemp.ToString();//输出轴温度
+                    tb_CarPumpSpeed1.Text = CarPumpSpeed1.Text= CarPumpSpeed.ToString();//车载泵转速
+                    InTemp1.Text = tb_InTemp1.Text = lbl_InTemp1.Text = InTemp.ToString();//输入轴温度
+                    OutTemp1.Text = tb_OutTemp1.Text = lbl_OutTemp1.Text =OutTemp.ToString();//输出轴温度
+
+                    double ThreeDepth = ValueConverter.ThreeDepthConverter(NModubs4Helper.Instance.GetValue16(3, 0));//水位3米
+                    double ThreeTemp = ValueConverter.ThreeTempConverter(NModubs4Helper.Instance.GetValue16(3, 1));//水温3米
+                    double Pressure0 = ValueConverter.PressureConverter(NModubs4Helper.Instance.GetValue16(3, 2));//大气压力
+                    double Temp0 = ValueConverter.Temp0Converter(NModubs4Helper.Instance.GetValue16(3, 3));//环境温度
+                    double SevenPress = ValueConverter.SevenDepthConverter(NModubs4Helper.Instance.GetValue16(3, 4));//水位7米
+                    double SevenTemp = ValueConverter.SevenTempConverter(NModubs4Helper.Instance.GetValue16(3, 5));//水温7米
+                    High_3m.Text= ThreeDepth.ToString();//真空度                   
+                    Temp_3m.Text= ThreeTemp.ToString();//低压压力
+                    Pressure.Text  = Pressure0.ToString();//中高压压力
+                    Temp.Text  = Temp0.ToString();//车载泵转速
+                    High_7m.Text= SevenPress.ToString();//输入轴温度
+                    Temp_7m.Text  = SevenTemp.ToString();//输出轴温度
+                    //水位3米
+                    if (ThreeDepth < ConstantValue.threshold.ThreeDepthMin || ThreeDepth > ConstantValue.threshold.ThreeDepthMax)
+                    {
+                        ERROR1.Add("水位3米异常，异常值：" + High_3m.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】水位3米异常，异常值：" + High_3m.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+                    //水温3米
+                    if (ThreeTemp < ConstantValue.threshold.ThreeTempMin || ThreeTemp > ConstantValue.threshold.ThreeTempMax)
+                    {
+                        ERROR1.Add("水温3米异常，异常值：" + Temp_3m.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】水温3米异常，异常值：" + Temp_3m.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+                    //大气压力
+                    if (Pressure0 < ConstantValue.threshold.AirPressMin || Pressure0 > ConstantValue.threshold.AirPressMax)
+                    {
+                        ERROR1.Add("大气压力异常，异常值：" + Pressure.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】大气压力异常，异常值：" + Pressure.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+                    //环境温度
+                    if (Temp0 < ConstantValue.threshold.EnvironmentTempMin || Temp0 > ConstantValue.threshold.EnvironmentTempMax)
+                    {
+                        ERROR1.Add("环境温度异常，异常值：" + Temp.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】环境温度异常，异常值：" + Temp.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+                    //水位7米
+                    if (SevenPress < ConstantValue.threshold.SevenDepthMin || SevenPress > ConstantValue.threshold.SevenDepthMax)
+                    {
+                        ERROR1.Add("水位7米异常，异常值：" + High_7m.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】水位7米异常，异常值：" + High_7m.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+                    //水温7米
+                    if (SevenTemp < ConstantValue.threshold.SevenTempMin || SevenTemp > ConstantValue.threshold.SevenTempMax)
+                    {
+                        ERROR1.Add("水温7米异常，异常值：" + Temp_7m.Text);
+                        alarm1 = true;
+                        using (OledbHelper helper = new OledbHelper())
+                        {
+                            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                            string equipmentType = "消防车";
+                            string alarmMessage = "【设备1】水温7米异常，异常值：" + Temp_7m.Text;
+                            alarming(conditionID, equipmentType, alarmMessage);
+                        }
+                    }
+
+
+
+
+
                     //真空度
                     if (Vacuum < ConstantValue.threshold.VacuumPressMin || Vacuum > ConstantValue.threshold.VacuumPressMax)
                     {
@@ -470,6 +478,8 @@ namespace XFC.View
 
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
                     {
+                        double DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
+                        double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));                        
                         DN50Flow1.Text = DN50Flow.ToString();//50流量仪
                         DN50Value1.Text = DN50Valve.ToString();//50阀门仪
 
@@ -504,6 +514,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
                     {
+                        double DN100Flow = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
+                        double DN100Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
+                     
                         DN100Flow1.Text = DN100Flow.ToString();//100流量仪
                         DN100Value1.Text = DN100Valve.ToString().ToString();//100阀门仪
 
@@ -538,6 +551,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
                     {
+                        double DN200Flow = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
+                        double DN200Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
+                        
                         DN200Flow1.Text = DN200Flow.ToString();//200流量仪
                         DN200Value1.Text = DN200Valve.ToString().ToString();//200阀门
 
@@ -573,6 +589,8 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN300])
                     {
+                        double DN300Flow = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
+                        double DN300Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
                         DN300Flow1.Text = DN300Flow.ToString();//300流量仪
                         DN300Flow1.Text = DN300Valve.ToString().ToString();//300阀门
 
@@ -629,21 +647,13 @@ namespace XFC.View
                     double InTemp2d = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(4, 4));
                     double OutTemp2d = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(4, 5));
 
-                    double DN50Flow2d = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
-                    double DN50Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
-                    double DN100Flow2d = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
-                    double DN100Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
-                    double DN200Flow2d = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
-                    double DN200Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
-                    double DN300Flow2d = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
-                    double DN300Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
-
+    
                     Vacuum2.Text = tb_Vacuum2.Text = Vacuum2d.ToString();//真空度
                     LPress2.Text = tb_LPress2.Text = LPress2d.ToString();//低压压力
                     HPress2.Text = tb_HPress2.Text = HPress2d.ToString();//中高压压力
-                    tb_CarPumpSpeed2.Text = CarPumpSpeed2d.ToString();//车载泵转速
-                    InTemp2.Text = tb_InTemp2.Text = InTemp2d.ToString();//输入轴温度
-                    OutTemp2.Text = tb_OutTemp2.Text = OutTemp2d.ToString();//输出轴温度
+                    tb_CarPumpSpeed2.Text = CarPumpSpeed2.Text = CarPumpSpeed2d.ToString();//车载泵转速
+                    InTemp2.Text = tb_InTemp2.Text = lbl_InTemp2.Text =InTemp2d.ToString();//输入轴温度
+                    OutTemp2.Text = tb_OutTemp2.Text = lbl_OutTemp2.Text=OutTemp2d.ToString();//输出轴温度
 
                     //真空度
                     if (Vacuum2d < ConstantValue.threshold.VacuumPressMin || Vacuum2d > ConstantValue.threshold.VacuumPressMax)
@@ -733,6 +743,10 @@ namespace XFC.View
 
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
                     {
+                        double DN50Flow2d = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
+                        double DN50Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
+                       
+
                         DN50Flow2.Text = DN50Flow2d.ToString();
                         DN50Value2.Text = DN50Valve2d.ToString();
 
@@ -768,6 +782,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN100])
                     {
+                        double DN100Flow2d = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
+                        double DN100Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
+                       
                         DN100Flow2.Text = DN100Flow2d.ToString();
                         DN100Value2.Text = DN100Valve2d.ToString();
 
@@ -803,6 +820,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN200])
                     {
+                        double DN200Flow2d = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
+                        double DN200Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
+                        
                         DN200Flow2.Text = DN200Flow2d.ToString();
                         DN200Value2.Text = DN200Valve2d.ToString();                     
 
@@ -838,6 +858,8 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN300])
                     {
+                        double DN300Flow2d = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
+                        double DN300Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
                         DN300Flow2.Text = DN300Flow2d.ToString();
                         DN300Flow2.Text = DN300Valve2d.ToString();
 
@@ -1082,21 +1104,14 @@ namespace XFC.View
                     double InTemp = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(1, 4));
                     double OutTemp = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(1, 5));
 
-                    double DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
-                    double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
-                    double DN100Flow = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
-                    double DN100Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
-                    double DN200Flow = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
-                    double DN200Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
-                    double DN300Flow = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
-                    double DN300Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
+                   
 
                     Vacuum1.Text = tb_Vacuum1.Text = Vacuum.ToString();//真空度                   
                     LPress1.Text = tb_LPress1.Text = LPress.ToString();//低压压力
                     HPress1.Text = tb_HPress1.Text = HPress.ToString();//中高压压力
-                    tb_CarPumpSpeed1.Text = CarPumpSpeed.ToString();//车载泵转速
-                    InTemp1.Text = tb_InTemp1.Text = InTemp.ToString();//输入轴温度
-                    OutTemp1.Text = tb_OutTemp1.Text = OutTemp.ToString();//输出轴温度
+                    tb_CarPumpSpeed1.Text = CarPumpSpeed1.Text = CarPumpSpeed.ToString();//车载泵转速
+                    InTemp1.Text = tb_InTemp1.Text = lbl_InTemp1.Text = InTemp.ToString();//输入轴温度
+                    OutTemp1.Text = tb_OutTemp1.Text = lbl_OutTemp1.Text = OutTemp.ToString();//输出轴温度
 
                     //真空度
                     if (Vacuum < ConstantValue.threshold.VacuumPressMin || Vacuum > ConstantValue.threshold.VacuumPressMax)
@@ -1188,6 +1203,9 @@ namespace XFC.View
                     chart1.Series[1].Points.AddY(double.Parse(tb_OutTemp1.Text));
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
                     {
+                        double DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
+                        double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
+                       
                         DN50Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
                         DN50Value1.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
 
@@ -1224,6 +1242,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN100])
                     {
+                        double DN100Flow = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
+                        double DN100Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
+                       
                         DN100Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
                         DN100Value1.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
 
@@ -1258,6 +1279,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
                     {
+                        double DN200Flow = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
+                        double DN200Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
+                        
                         DN200Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
                         DN200Value1.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
 
@@ -1292,6 +1316,8 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN300])
                     {
+                        double DN300Flow = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
+                        double DN300Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
                         DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
                         DN300Flow1.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
 
@@ -1346,22 +1372,14 @@ namespace XFC.View
                     double InTemp2d = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(4, 4));
                     double OutTemp2d = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(4, 5));
 
-                    double DN50Flow2d = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
-                    double DN50Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
-                    double DN100Flow2d = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
-                    double DN100Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
-                    double DN200Flow2d = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
-                    double DN200Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
-                    double DN300Flow2d = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
-                    double DN300Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
+                
 
                     Vacuum2.Text = tb_Vacuum2.Text = Vacuum2d.ToString();//真空度
                     LPress2.Text = tb_LPress2.Text = LPress2d.ToString();//低压压力
                     HPress2.Text = tb_HPress2.Text = HPress2d.ToString();//中高压压力
-                    tb_CarPumpSpeed2.Text = CarPumpSpeed2d.ToString();//车载泵转速
-                    InTemp2.Text = tb_InTemp2.Text = InTemp2d.ToString();//输入轴温度
-                    OutTemp2.Text = tb_OutTemp2.Text = OutTemp2d.ToString();//输出轴温度
-
+                    tb_CarPumpSpeed2.Text = CarPumpSpeed2.Text = CarPumpSpeed2d.ToString();//车载泵转速
+                    InTemp2.Text = tb_InTemp2.Text = lbl_InTemp2.Text = InTemp2d.ToString();//输入轴温度
+                    OutTemp2.Text = tb_OutTemp2.Text = lbl_OutTemp2.Text = OutTemp2d.ToString();//输出轴温度
                     //真空度
                     if (Vacuum2d < ConstantValue.threshold.VacuumPressMin || Vacuum2d > ConstantValue.threshold.VacuumPressMax)
                     {
@@ -1452,6 +1470,9 @@ namespace XFC.View
                     chart2.Series[1].Points.AddY(double.Parse(tb_OutTemp2.Text));
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN50])
                     {
+                        double DN50Flow2d = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
+                        double DN50Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
+                       
                         DN50Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 0).ToString();
                         DN50Value2.Text = NModubs4Helper.Instance.GetValue16(2, 1).ToString();
 
@@ -1489,6 +1510,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN100])
                     {
+                        double DN100Flow2d = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
+                        double DN100Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
+                        
                         DN100Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 2).ToString();
                         DN100Value2.Text = NModubs4Helper.Instance.GetValue16(2, 3).ToString();
 
@@ -1523,6 +1547,9 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN200])
                     {
+                        double DN200Flow2d = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
+                        double DN200Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
+                        
                         DN200Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 4).ToString();
                         DN200Value2.Text = NModubs4Helper.Instance.GetValue16(2, 5).ToString();
 
@@ -1558,6 +1585,8 @@ namespace XFC.View
                     }
                     if (ConstantValue.xfbInfos[i].dic_Flowtype[FlowType.DN300])
                     {
+                        double DN300Flow2d = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
+                        double DN300Valve2d = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
                         DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 6).ToString();
                         DN300Flow2.Text = NModubs4Helper.Instance.GetValue16(2, 7).ToString();
 

@@ -69,13 +69,37 @@ namespace XFC.Helper
         public const double HIGH_7M_BEGIN = 0;
         public const double HIGH_7M_END = 10;
 
+        public static double ThreeDepthConverter(double value)
+        {
+            return ValueConverterTemplate(HIGH_3M_BEGIN, HIGH_3M_END, value);
+        }
+        public static double ThreeTempConverter(double value)
+        {
+            return ValueConverterTemplate(TEMP_3M_BEGIN, TEMP_3M_END, value);
+        }
+        public static double PressureConverter(double value)
+        {
+            return ValueConverterTemplate(TEMP_BEGIN, TEMP_END, value);
+        }
+        public static double Temp0Converter(double value)
+        {
+            return ValueConverterTemplate(PREESURE_BEGIN, PREESURE_END, value);
+        }    
+        public static double SevenDepthConverter(double value)
+        {
+            return ValueConverterTemplate(HIGH_7M_BEGIN, LPRESS_END, value);
+        }
+        public static double SevenTempConverter(double value)
+        {
+            return ValueConverterTemplate(TEMP_7M_BEGIN, TEMP_7M_END, value);
+        }
         public static double LPressConverter(double value)
         {
-            return ValueConverterTemplate(LPRESS_BEGIN,LPRESS_END, value);
+            return ValueConverterTemplate(LPRESS_BEGIN, LPRESS_END, value);
         }
         public static double LHPressConverter(double value)
         {
-            return ValueConverterTemplate(LHPRESS_BEGIN, LHPRESS_END, value);
+            return ValueConverterTemplate(LHPRESS_BEGIN, HIGH_7M_END, value);
         }
 
         public static double RealPressConverter(double value)

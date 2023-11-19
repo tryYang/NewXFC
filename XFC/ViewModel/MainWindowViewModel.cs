@@ -17,6 +17,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.Collections;
 using XFC.View.Dialog.ProductPump;
+using XFC.View.Dialog.ShowLab;
 
 namespace XFC.ViewModel
 {
@@ -30,6 +31,11 @@ namespace XFC.ViewModel
         public ICommand XfcProductClickCommand { get; }//消防车产品信息
         public ICommand XfbProductClickCommand { get; }//消防泵产品信息
         public ICommand ClientInfoClickCommand { get; }//客户信息
+
+        public ICommand OpenXfcTestClickCommand { get; }//消防车试验
+
+        public ICommand OpenXfbTestClickCommand { get; }//消防车试验
+
 
         //工况
         public ICommand GkChooseCommand { get; }//
@@ -66,6 +72,10 @@ namespace XFC.ViewModel
             XfcProductClickCommand = new RelayCommand(XfcProductShow);
             XfbProductClickCommand = new RelayCommand(XfbProductShow);
             ClientInfoClickCommand = new RelayCommand(ClientInfoShow);
+            OpenXfcTestClickCommand = new RelayCommand(OpenXfc_Test_Show);
+            OpenXfbTestClickCommand = new RelayCommand(OpenXfb_Test_Show);
+
+
 
             //GK choose
 
@@ -127,6 +137,20 @@ namespace XFC.ViewModel
             }
             ConstantValue.IdList[index] = new List<int>() { -1, -1 };
 
+
+        }
+        private void OpenXfb_Test_Show()
+        {
+            Form_OpenPumpLab form_OpenPumpLab = new Form_OpenPumpLab();
+            form_OpenPumpLab.ShowDialog();
+
+        }
+
+        //对话框显示
+        private void OpenXfc_Test_Show()
+        {
+            Form_OpenCarLab form_OpenCarLab = new Form_OpenCarLab();
+            form_OpenCarLab.ShowDialog();
 
         }
         private void Xfb_Test_Show()

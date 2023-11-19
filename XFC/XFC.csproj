@@ -220,6 +220,18 @@
     <Compile Include="View\Dialog\ProductPump\Form_SavePumpXiuGai.Designer.cs">
       <DependentUpon>Form_SavePumpXiuGai.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialog\ShowLab\Form_OpenCarLab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ShowLab\Form_OpenCarLab.Designer.cs">
+      <DependentUpon>Form_OpenCarLab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ShowLab\Form_OpenPumpLab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ShowLab\Form_OpenPumpLab.Designer.cs">
+      <DependentUpon>Form_OpenPumpLab.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialog\User\Form_Userinfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +378,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\Product\Form_ChanPinXiuGai.resx">
       <DependentUpon>Form_ChanPinXiuGai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ShowLab\Form_OpenCarLab.resx">
+      <DependentUpon>Form_OpenCarLab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ShowLab\Form_OpenPumpLab.resx">
+      <DependentUpon>Form_OpenPumpLab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dialog\SongJianDanWei\Form_SongJianDanWei.resx">
       <DependentUpon>Form_SongJianDanWei.cs</DependentUpon>

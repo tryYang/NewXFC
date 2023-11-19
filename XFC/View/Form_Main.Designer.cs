@@ -107,8 +107,8 @@
             this.tp_xfc_test = new System.Windows.Forms.ToolStripMenuItem();
             this.tp_xfb_test = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox18 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox19 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openCartest = new System.Windows.Forms.ToolStripMenuItem();
+            this.openPumptest = new System.Windows.Forms.ToolStripMenuItem();
             this.退出试验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.test_exit1 = new System.Windows.Forms.ToolStripMenuItem();
             this.test_exit2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1068,42 +1068,42 @@
             // 
             this.tp_xfc_test.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_xfc_test.Name = "tp_xfc_test";
-            this.tp_xfc_test.Size = new System.Drawing.Size(224, 26);
+            this.tp_xfc_test.Size = new System.Drawing.Size(167, 26);
             this.tp_xfc_test.Text = "消防车试验";
             // 
             // tp_xfb_test
             // 
             this.tp_xfb_test.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_xfb_test.Name = "tp_xfb_test";
-            this.tp_xfb_test.Size = new System.Drawing.Size(224, 26);
+            this.tp_xfb_test.Size = new System.Drawing.Size(167, 26);
             this.tp_xfb_test.Text = "消防泵试验";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
             this.toolStripMenuItem9.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox18,
-            this.toolStripTextBox19});
+            this.openCartest,
+            this.openPumptest});
             this.toolStripMenuItem9.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
             this.toolStripMenuItem9.Size = new System.Drawing.Size(224, 30);
             this.toolStripMenuItem9.Text = "打开试验";
             // 
-            // toolStripTextBox18
+            // openCartest
             // 
-            this.toolStripTextBox18.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
-            this.toolStripTextBox18.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripTextBox18.Name = "toolStripTextBox18";
-            this.toolStripTextBox18.Size = new System.Drawing.Size(224, 26);
-            this.toolStripTextBox18.Text = "消防车试验";
+            this.openCartest.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
+            this.openCartest.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.openCartest.Name = "openCartest";
+            this.openCartest.Size = new System.Drawing.Size(224, 26);
+            this.openCartest.Text = "消防车试验";
             // 
-            // toolStripTextBox19
+            // openPumptest
             // 
-            this.toolStripTextBox19.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
-            this.toolStripTextBox19.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripTextBox19.Name = "toolStripTextBox19";
-            this.toolStripTextBox19.Size = new System.Drawing.Size(224, 26);
-            this.toolStripTextBox19.Text = "消防泵试验";
+            this.openPumptest.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
+            this.openPumptest.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.openPumptest.Name = "openPumptest";
+            this.openPumptest.Size = new System.Drawing.Size(224, 26);
+            this.openPumptest.Text = "消防泵试验";
             // 
             // 退出试验ToolStripMenuItem
             // 
@@ -1117,13 +1117,13 @@
             // test_exit1
             // 
             this.test_exit1.Name = "test_exit1";
-            this.test_exit1.Size = new System.Drawing.Size(224, 30);
+            this.test_exit1.Size = new System.Drawing.Size(181, 30);
             this.test_exit1.Text = "试验1退出";
             // 
             // test_exit2
             // 
             this.test_exit2.Name = "test_exit2";
-            this.test_exit2.Size = new System.Drawing.Size(224, 30);
+            this.test_exit2.Size = new System.Drawing.Size(181, 30);
             this.test_exit2.Text = "试验2退出";
             // 
             // toolStripMenuItem2
@@ -1142,28 +1142,28 @@
             // 
             this.tp_gkchoose.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkchoose.Name = "tp_gkchoose";
-            this.tp_gkchoose.Size = new System.Drawing.Size(224, 26);
+            this.tp_gkchoose.Size = new System.Drawing.Size(155, 26);
             this.tp_gkchoose.Text = "选择工况";
             // 
             // tp_gkzhanting
             // 
             this.tp_gkzhanting.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkzhanting.Name = "tp_gkzhanting";
-            this.tp_gkzhanting.Size = new System.Drawing.Size(224, 26);
+            this.tp_gkzhanting.Size = new System.Drawing.Size(155, 26);
             this.tp_gkzhanting.Text = "暂停工况";
             // 
             // tp_gkrun
             // 
             this.tp_gkrun.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkrun.Name = "tp_gkrun";
-            this.tp_gkrun.Size = new System.Drawing.Size(224, 26);
+            this.tp_gkrun.Size = new System.Drawing.Size(155, 26);
             this.tp_gkrun.Text = "运行工况";
             // 
             // tp_gkexit
             // 
             this.tp_gkexit.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_gkexit.Name = "tp_gkexit";
-            this.tp_gkexit.Size = new System.Drawing.Size(224, 26);
+            this.tp_gkexit.Size = new System.Drawing.Size(155, 26);
             this.tp_gkexit.Text = "结束工况";
             // 
             // toolStripMenuItem3
@@ -1182,20 +1182,20 @@
             this.tp_printtable2});
             this.toolStripTextBox8.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripTextBox8.Name = "toolStripTextBox8";
-            this.toolStripTextBox8.Size = new System.Drawing.Size(224, 26);
+            this.toolStripTextBox8.Size = new System.Drawing.Size(155, 26);
             this.toolStripTextBox8.Text = "生成报表";
             // 
             // tp_printtable1
             // 
             this.tp_printtable1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_printtable1.Name = "tp_printtable1";
-            this.tp_printtable1.Size = new System.Drawing.Size(224, 26);
+            this.tp_printtable1.Size = new System.Drawing.Size(161, 26);
             this.tp_printtable1.Text = "打印报表1";
             // 
             // tp_printtable2
             // 
             this.tp_printtable2.Name = "tp_printtable2";
-            this.tp_printtable2.Size = new System.Drawing.Size(224, 26);
+            this.tp_printtable2.Size = new System.Drawing.Size(161, 26);
             this.tp_printtable2.Text = "打印报表2";
             // 
             // toolStripMenuItem4
@@ -1214,7 +1214,7 @@
             // 
             this.tp_clientinfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_clientinfo.Name = "tp_clientinfo";
-            this.tp_clientinfo.Size = new System.Drawing.Size(224, 26);
+            this.tp_clientinfo.Size = new System.Drawing.Size(185, 26);
             this.tp_clientinfo.Text = "客户信息管理";
             // 
             // toolStripMenuItem11
@@ -1224,35 +1224,35 @@
             this.tp_xfbproduct});
             this.toolStripMenuItem11.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(224, 26);
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(185, 26);
             this.toolStripMenuItem11.Text = "产品信息管理";
             // 
             // tp_xfcproduct
             // 
             this.tp_xfcproduct.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_xfcproduct.Name = "tp_xfcproduct";
-            this.tp_xfcproduct.Size = new System.Drawing.Size(224, 26);
+            this.tp_xfcproduct.Size = new System.Drawing.Size(167, 26);
             this.tp_xfcproduct.Text = "消防车产品";
             // 
             // tp_xfbproduct
             // 
             this.tp_xfbproduct.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_xfbproduct.Name = "tp_xfbproduct";
-            this.tp_xfbproduct.Size = new System.Drawing.Size(224, 26);
+            this.tp_xfbproduct.Size = new System.Drawing.Size(167, 26);
             this.tp_xfbproduct.Text = "消防泵产品";
             // 
             // tp_threshold
             // 
             this.tp_threshold.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_threshold.Name = "tp_threshold";
-            this.tp_threshold.Size = new System.Drawing.Size(224, 26);
+            this.tp_threshold.Size = new System.Drawing.Size(185, 26);
             this.tp_threshold.Text = "阈值管理";
             // 
             // tp_userinfo
             // 
             this.tp_userinfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tp_userinfo.Name = "tp_userinfo";
-            this.tp_userinfo.Size = new System.Drawing.Size(224, 26);
+            this.tp_userinfo.Size = new System.Drawing.Size(185, 26);
             this.tp_userinfo.Text = "操作人员管理";
             // 
             // tp_exit
@@ -3464,8 +3464,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         public System.Windows.Forms.ToolStripMenuItem tp_xfc_test;
         public System.Windows.Forms.ToolStripMenuItem tp_xfb_test;
-        public System.Windows.Forms.ToolStripMenuItem toolStripTextBox18;
-        private System.Windows.Forms.ToolStripMenuItem toolStripTextBox19;
+        public System.Windows.Forms.ToolStripMenuItem openCartest;
+        private System.Windows.Forms.ToolStripMenuItem openPumptest;
         public System.Windows.Forms.ToolStripMenuItem tp_gkzhanting;
         public System.Windows.Forms.ToolStripMenuItem tp_gkrun;
         public System.Windows.Forms.ToolStripMenuItem tp_gkexit;

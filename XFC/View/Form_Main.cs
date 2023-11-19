@@ -206,15 +206,19 @@ namespace XFC.View
             {
                 if (ConstantValue.EquipemntList[0] != Equipment.None)
                 {
-                    LPress1.Text= tb_LPress1.Text = ConstantValue.slaveValue.LPress.ToString();
-                    tb_LFlow1 .Text = ConstantValue.slaveValue.LPress.ToString();
+                    LPress1.Text = tb_LPress1.Text = ConstantValue.slaveValue.LPress.ToString();
+                    tb_LFlow1.Text = ConstantValue.slaveValue.LPress.ToString();
                     tb_HFlow1.Text = ConstantValue.slaveValue.LPress.ToString();
                     HPress1.Text = tb_HPress1.Text = ConstantValue.slaveValue.HPress.ToString();
-                    Vacuum1.Text = tb_Vacuum1 .Text = ConstantValue.slaveValue.Vacuum.ToString();
-                    CarPumpSpeed1.Text =tb_CarPumpSpeed1.Text = ConstantValue.slaveValue.CarPumpSpeed.ToString();
+                    Vacuum1.Text = tb_Vacuum1.Text = ConstantValue.slaveValue.Vacuum.ToString();
+                    CarPumpSpeed1.Text = tb_CarPumpSpeed1.Text = ConstantValue.slaveValue.CarPumpSpeed.ToString();
                     InTemp1.Text = tb_InTemp1.Text = ConstantValue.slaveValue.InTemp.ToString();
                     OutTemp1.Text = tb_OutTemp1.Text = ConstantValue.slaveValue.OutTemp.ToString();
-                   
+                    if (isDatagridViewShowRealTime1)
+                    {
+                        dataGridView1.DataSource = dataTable1;
+                        dataGridView1.Refresh();
+                    }
 
                 }
                 if (ConstantValue.EquipemntList[1] != Equipment.None)
@@ -227,22 +231,32 @@ namespace XFC.View
                     CarPumpSpeed2.Text = tb_CarPumpSpeed2.Text = ConstantValue.slaveValue.CarPumpSpeed2d.ToString();
                     InTemp2.Text = tb_InTemp2.Text = ConstantValue.slaveValue.InTemp2d.ToString();
                     OutTemp2.Text = tb_OutTemp2.Text = ConstantValue.slaveValue.OutTemp2d.ToString();
+                    if (isDatagridViewShowRealTime2)
+                    {
+                        dataGridView2.DataSource = dataTable2;
+                        dataGridView2.Refresh();
+                    }
 
+                }
+                if (isDatagridViewShowAlarmRealTime)
+                {
+                    dataGridView4.DataSource = dataTable_alarm;
+                    dataGridView4.Refresh();
                 }
                 Temp.Text = ConstantValue.slaveValue.Temp0.ToString();
                 Pressure.Text = ConstantValue.slaveValue.Pressure0.ToString();
-                Temp_3m.Text=ConstantValue.slaveValue.ThreeTemp.ToString();
-                High_3m.Text=ConstantValue.slaveValue.Temp0.ToString();
-                Depth_3m.Text=ConstantValue.slaveValue.Temp0.ToString();
-                Temp_7m.Text=ConstantValue.slaveValue.Temp0.ToString();
-                High_7m.Text= ConstantValue.slaveValue.Temp0.ToString();
+                Temp_3m.Text = ConstantValue.slaveValue.ThreeTemp.ToString();
+                High_3m.Text = ConstantValue.slaveValue.Temp0.ToString();
+                Depth_3m.Text = ConstantValue.slaveValue.Temp0.ToString();
+                Temp_7m.Text = ConstantValue.slaveValue.Temp0.ToString();
+                High_7m.Text = ConstantValue.slaveValue.Temp0.ToString();
                 Depth_7m.Text = ConstantValue.slaveValue.Temp0.ToString();
 
 
 
 
             }));
-            
+
             //DataShow(0, ConstantValue.EquipemntList[0]);
             //DataShow(1, ConstantValue.EquipemntList[1]);
             DateTime time = DateTime.Now;
@@ -267,22 +281,17 @@ namespace XFC.View
             alarmRecord.AlarmMessage = alarmMessage;
             alarmRecord.SpecificCollectTime = DateTime.Now.ToLocalTime();
             ConstantValue.QueueAlarmRecord.Enqueue(alarmRecord);
-            if (isDatagridViewShowAlarmRealTime)
-            {
 
-                string time = alarmRecord.SpecificCollectTime.ToString("yyyy-MM-dd HH:mm:ss");
-                object[] alarmrecords = new object[4];
-                alarmrecords[0] = conditionID;
-                alarmrecords[1] = equipmentType;
-                alarmrecords[2] = alarmMessage;
-                alarmrecords[3] = time;
-                dataTable_alarm.Rows.Add(alarmrecords);
-                dataGridView4.DataSource = dataTable1;
-                dataGridView4.Refresh();
+            //给主界面的datagridview的数据源 加数据
+            string time = alarmRecord.SpecificCollectTime.ToString("yyyy-MM-dd HH:mm:ss");
+            object[] alarmrecords = new object[4];
+            alarmrecords[0] = conditionID;
+            alarmrecords[1] = equipmentType;
+            alarmrecords[2] = alarmMessage;
+            alarmrecords[3] = time;
+            dataTable_alarm.Rows.Add(alarmrecords);
 
 
-
-            }
 
         }
         /// <summary>
@@ -974,7 +983,7 @@ namespace XFC.View
 
 
 
-            
+
 
 
 
@@ -1526,7 +1535,7 @@ namespace XFC.View
 
                     break;
             }
-            
+
 
 
         }
@@ -1723,7 +1732,7 @@ namespace XFC.View
 
         }
 
-      
+
         private void initChart()
         {
             // 设置图表属性和样式  
@@ -1982,11 +1991,14 @@ namespace XFC.View
                 double? DN300Flow = null;
                 double? DN300Valve = null;
                 Dictionary<FlowType, Equipment> dic_DN = new Dictionary<FlowType, Equipment>();
+                Dictionary<int, FlowType> dic_flow = new Dictionary<int, FlowType>();
+
                 if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN50] || ConstantValue.xfcInfos[1].dic_Flowtype[FlowType.DN50])
                 {
                     DN50Flow = ConstantValue.slaveValue.DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
                     DN50Valve = ConstantValue.slaveValue.DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
                     dic_DN.Add(FlowType.DN50, Equipment.Car);
+                    
                 }
                 if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN100] || ConstantValue.xfcInfos[1].dic_Flowtype[FlowType.DN100])
                 {
@@ -2114,7 +2126,7 @@ namespace XFC.View
                     if (Vacuum2d < ConstantValue.threshold.VacuumPressMin || Vacuum2d > ConstantValue.threshold.VacuumPressMax)
                     {
 
-                        string alarmMessage = "【设备1】真空度异常，异常值：" + Vacuum2d;
+                        string alarmMessage = "【设备2】真空度异常，异常值：" + Vacuum2d;
                         alarming(conditionID, equipmentType2, alarmMessage);
 
                     }
@@ -2329,7 +2341,7 @@ namespace XFC.View
             }
 
         }
-      
+
 
         private void DataShow(int i, Equipment eq)
         {
@@ -2463,7 +2475,7 @@ namespace XFC.View
             return;
 
         }
-        private void SetRecordCar(int i,double lpress,double hpress,double vacuum, double carpumpspeed,double intemp ,double outtemp,double dn50, double dn100, double dn200, double dn300)
+        private void SetRecordCar(int i, double lpress, double hpress, double vacuum, double carpumpspeed, double intemp, double outtemp, double dn50, double dn100, double dn200, double dn300)
         {
             if (ConstantValue.Tick_Num % ConstantValue.SAVE_DATA_INTEINTERVALS == 0)
             {
@@ -2545,7 +2557,7 @@ namespace XFC.View
                         flag_H = true;
 
                     }
-                    temp.VacuumDegree =vacuum;
+                    temp.VacuumDegree = vacuum;
                     temp.Speed = carpumpspeed;
                     temp.InTemp = intemp;
                     temp.OutTemp = outtemp;
@@ -2656,7 +2668,7 @@ namespace XFC.View
 
                     }
                     temp.VacuumDegree = vacuum;
-                    temp.Speed =carpumpspeed;
+                    temp.Speed = carpumpspeed;
                     temp.InTemp = intemp;
                     temp.OutTemp = outtemp;
                     if (flag_L)
@@ -2751,7 +2763,7 @@ namespace XFC.View
                 {
 
                     //Datagridview 显示数据
-                    if (isDatagridViewShowRealTime1 && ConstantValue.EquipemntList[0] == Equipment.Pump)
+                    if (ConstantValue.EquipemntList[0] == Equipment.Pump)
                     {
                         records[0] = temp.PumpLabID;
                         records[1] = temp.SpecificCollectTime;
@@ -2769,7 +2781,7 @@ namespace XFC.View
 
 
                     }
-                    if (isDatagridViewShowRealTime2 && ConstantValue.EquipemntList[1] == Equipment.Pump)
+                    if (ConstantValue.EquipemntList[1] == Equipment.Pump)
                     {
                         records[0] = temp.PumpLabID;
                         records[1] = temp.SpecificCollectTime;
@@ -2792,10 +2804,10 @@ namespace XFC.View
                     }
                 }
 
-                
-                    ConstantValue.QueuepumpConditionRecord.Enqueue(temp);
 
-                
+                ConstantValue.QueuepumpConditionRecord.Enqueue(temp);
+
+
 
             }
         }

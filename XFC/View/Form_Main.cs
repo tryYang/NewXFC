@@ -247,105 +247,105 @@ namespace XFC.View
         /// </summary>
         /// <param name="i"></param>
         /// <param name="eq"></param>
-        private void DataShow(int i , Equipment eq)
-        {
-            List<string> ERROR1 = new List<string>();
-            double ThreeDepth = ValueConverter.ThreeDepthConverter(NModubs4Helper.Instance.GetValue16(3, 0));//水位3米
-            double ThreeTemp = ValueConverter.ThreeTempConverter(NModubs4Helper.Instance.GetValue16(3, 1));//水温3米
-            double Pressure0 = ValueConverter.PressureConverter(NModubs4Helper.Instance.GetValue16(3, 2));//大气压力
-            double Temp0 = ValueConverter.Temp0Converter(NModubs4Helper.Instance.GetValue16(3, 3));//环境温度
-            double SevenPress = ValueConverter.SevenDepthConverter(NModubs4Helper.Instance.GetValue16(3, 4));//水位7米
-            double SevenTemp = ValueConverter.SevenTempConverter(NModubs4Helper.Instance.GetValue16(3, 5));//水温7米
-            High_3m.Text = ThreeDepth.ToString();//真空度                   
-            Temp_3m.Text = ThreeTemp.ToString();//低压压力
-            Pressure.Text = Pressure0.ToString();//中高压压力
-            Temp.Text = Temp0.ToString();//车载泵转速
-            High_7m.Text = SevenPress.ToString();//输入轴温度
-            Temp_7m.Text = SevenTemp.ToString();//输出轴温度
-                                                //水位3米
-            if (ThreeDepth < ConstantValue.threshold.ThreeDepthMin || ThreeDepth > ConstantValue.threshold.ThreeDepthMax)
-            {
-                ERROR1.Add("水位3米异常，异常值：" + High_3m.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】水位3米异常，异常值：" + High_3m.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
-            //水温3米
-            if (ThreeTemp < ConstantValue.threshold.ThreeTempMin || ThreeTemp > ConstantValue.threshold.ThreeTempMax)
-            {
-                ERROR1.Add("水温3米异常，异常值：" + Temp_3m.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】水温3米异常，异常值：" + Temp_3m.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
-            //大气压力
-            if (Pressure0 < ConstantValue.threshold.AirPressMin || Pressure0 > ConstantValue.threshold.AirPressMax)
-            {
-                ERROR1.Add("大气压力异常，异常值：" + Pressure.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】大气压力异常，异常值：" + Pressure.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
-            //环境温度
-            if (Temp0 < ConstantValue.threshold.EnvironmentTempMin || Temp0 > ConstantValue.threshold.EnvironmentTempMax)
-            {
-                ERROR1.Add("环境温度异常，异常值：" + Temp.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】环境温度异常，异常值：" + Temp.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
-            //水位7米
-            if (SevenPress < ConstantValue.threshold.SevenDepthMin || SevenPress > ConstantValue.threshold.SevenDepthMax)
-            {
-                ERROR1.Add("水位7米异常，异常值：" + High_7m.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】水位7米异常，异常值：" + High_7m.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
-            //水温7米
-            if (SevenTemp < ConstantValue.threshold.SevenTempMin || SevenTemp > ConstantValue.threshold.SevenTempMax)
-            {
-                ERROR1.Add("水温7米异常，异常值：" + Temp_7m.Text);
-                alarm1 = true;
-                using (OledbHelper helper = new OledbHelper())
-                {
-                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
-                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
-                    string equipmentType = "消防车";
-                    string alarmMessage = "【设备1】水温7米异常，异常值：" + Temp_7m.Text;
-                    alarming(conditionID, equipmentType, alarmMessage);
-                }
-            }
+        //private void DataShow(int i, Equipment eq)
+        //{
+        //    List<string> ERROR1 = new List<string>();
+        //    double ThreePress = ValueConverter.ThreeDepthConverter(NModubs4Helper.Instance.GetValue16(3, 0));//水位3米
+        //    double ThreeTemp = ValueConverter.ThreeTempConverter(NModubs4Helper.Instance.GetValue16(3, 1));//水温3米
+        //    double Pressure0 = ValueConverter.PressureConverter(NModubs4Helper.Instance.GetValue16(3, 2));//大气压力
+        //    double Temp0 = ValueConverter.Temp0Converter(NModubs4Helper.Instance.GetValue16(3, 3));//环境温度
+        //    double SevenPress = ValueConverter.SevenDepthConverter(NModubs4Helper.Instance.GetValue16(3, 4));//水位7米
+        //    double SevenTemp = ValueConverter.SevenTempConverter(NModubs4Helper.Instance.GetValue16(3, 5));//水温7米
+        //    High_3m.Text = ThreePress.ToString();//真空度                   
+        //    Temp_3m.Text = ThreeTemp.ToString();//低压压力
+        //    Pressure.Text = Pressure0.ToString();//中高压压力
+        //    Temp.Text = Temp0.ToString();//车载泵转速
+        //    High_7m.Text = SevenPress.ToString();//输入轴温度
+        //    Temp_7m.Text = SevenTemp.ToString();//输出轴温度
+        //                                        //水位3米
+        //    if (ThreePress < ConstantValue.threshold.ThreeDepthMin || ThreePress > ConstantValue.threshold.ThreeDepthMax)
+        //    {
+        //        ERROR1.Add("水位3米异常，异常值：" + High_3m.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】水位3米异常，异常值：" + High_3m.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
+        //    //水温3米
+        //    if (ThreeTemp < ConstantValue.threshold.ThreeTempMin || ThreeTemp > ConstantValue.threshold.ThreeTempMax)
+        //    {
+        //        ERROR1.Add("水温3米异常，异常值：" + Temp_3m.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】水温3米异常，异常值：" + Temp_3m.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
+        //    //大气压力
+        //    if (Pressure0 < ConstantValue.threshold.AirPressMin || Pressure0 > ConstantValue.threshold.AirPressMax)
+        //    {
+        //        ERROR1.Add("大气压力异常，异常值：" + Pressure.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】大气压力异常，异常值：" + Pressure.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
+        //    //环境温度
+        //    if (Temp0 < ConstantValue.threshold.EnvironmentTempMin || Temp0 > ConstantValue.threshold.EnvironmentTempMax)
+        //    {
+        //        ERROR1.Add("环境温度异常，异常值：" + Temp.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】环境温度异常，异常值：" + Temp.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
+        //    //水位7米
+        //    if (SevenPress < ConstantValue.threshold.SevenDepthMin || SevenPress > ConstantValue.threshold.SevenDepthMax)
+        //    {
+        //        ERROR1.Add("水位7米异常，异常值：" + High_7m.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】水位7米异常，异常值：" + High_7m.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
+        //    //水温7米
+        //    if (SevenTemp < ConstantValue.threshold.SevenTempMin || SevenTemp > ConstantValue.threshold.SevenTempMax)
+        //    {
+        //        ERROR1.Add("水温7米异常，异常值：" + Temp_7m.Text);
+        //        alarm1 = true;
+        //        using (OledbHelper helper = new OledbHelper())
+        //        {
+        //            helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+        //            int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+        //            string equipmentType = "消防车";
+        //            string alarmMessage = "【设备1】水温7米异常，异常值：" + Temp_7m.Text;
+        //            alarming(conditionID, equipmentType, alarmMessage);
+        //        }
+        //    }
 
 
 
@@ -356,26 +356,28 @@ namespace XFC.View
 
 
 
-            if (eq == Equipment.Car && ConstantValue.xfcInfos[i].currentGk!=Gk.None)
-            {
-                this.Invoke(new System.Action(() => {
-                    DataShow_xfc(i);
-                }));
+        //    if (eq == Equipment.Car && ConstantValue.xfcInfos[i].currentGk != Gk.None)
+        //    {
+        //        this.Invoke(new System.Action(() =>
+        //        {
+        //            DataShow_xfc(i);
+        //        }));
 
-            }
-            else if (eq == Equipment.Pump && ConstantValue.xfbInfos[i].currentGk != Gk.None)
-            {
-                this.Invoke(new System.Action(() => {
+        //    }
+        //    else if (eq == Equipment.Pump && ConstantValue.xfbInfos[i].currentGk != Gk.None)
+        //    {
+        //        this.Invoke(new System.Action(() =>
+        //        {
 
-                    DataShow_xfb(i);
-                }));
+        //            DataShow_xfb(i);
+        //        }));
 
-            }
-            ConstantValue.Tick_Num++;
+        //    }
+        //    ConstantValue.Tick_Num++;
 
-            return;
+        //    return;
 
-        }
+        //}
         /// <summary>
         ///显示消防车的实时数据
         /// </summary>
@@ -492,7 +494,8 @@ namespace XFC.View
                     if (ConstantValue.xfcInfos[i].dic_Flowtype[FlowType.DN50])
                     {
                         double DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
-                        double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));                        
+                        double DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));  
+                        
                         DN50Flow1.Text = DN50Flow.ToString();//50流量仪
                         DN50Value1.Text = DN50Valve.ToString();//50阀门仪
 
@@ -2230,6 +2233,410 @@ namespace XFC.View
             isDatagridViewShowAlarmRealTime = true;
             dataGridView4.DataSource = dataTable_alarm;
             dataGridView4.Refresh();
+        }
+        private void DoWork()
+        {
+            List<string> ERROR1 = new List<string>();
+
+            double Vacuum = ConstantValue.slaveValue.Vacuum = ValueConverter.RealPressConverter(NModubs4Helper.Instance.GetValue16(1, 0));
+            double LPress = ConstantValue.slaveValue.LPress = ValueConverter.LPressConverter(NModubs4Helper.Instance.GetValue16(1, 1));
+            double HPress = ConstantValue.slaveValue.HPress = ValueConverter.LHPressConverter(NModubs4Helper.Instance.GetValue16(1, 2));
+            double CarPumpSpeed = ConstantValue.slaveValue.CarPumpSpeed = ValueConverter.PumpSpeedConverter(NModubs4Helper.Instance.GetValue16(1, 3));
+            double InTemp = ConstantValue.slaveValue.InTemp = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(1, 4));
+            double OutTemp = ConstantValue.slaveValue.OutTemp = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(1, 5));
+            double Speed110kw = ConstantValue.slaveValue.Speed110kw = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(1, 6));
+            double Torque110kw = ConstantValue.slaveValue.Torque110kw = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(1, 7));
+            double ThreePress = ConstantValue.slaveValue.ThreePress = ValueConverter.ThreeDepthConverter(NModubs4Helper.Instance.GetValue16(3, 0));//水位3米
+            double ThreeTemp = ConstantValue.slaveValue.ThreeTemp = ValueConverter.ThreeTempConverter(NModubs4Helper.Instance.GetValue16(3, 1));//水温3米
+            double Pressure0 = ConstantValue.slaveValue.Pressure0 = ValueConverter.PressureConverter(NModubs4Helper.Instance.GetValue16(3, 2));//大气压力
+            double Temp0 = ConstantValue.slaveValue.Temp0 = ValueConverter.Temp0Converter(NModubs4Helper.Instance.GetValue16(3, 3));//环境温度
+            double SevenPress = ConstantValue.slaveValue.SevenPress = ValueConverter.SevenDepthConverter(NModubs4Helper.Instance.GetValue16(3, 4));//水位7米
+            double SevenTemp = ConstantValue.slaveValue.SevenTemp = ValueConverter.SevenTempConverter(NModubs4Helper.Instance.GetValue16(3, 5));//水温7米      
+            double DN50Flow = ConstantValue.slaveValue.DN50Flow = ValueConverter.DN50Converter(NModubs4Helper.Instance.GetValue16(2, 0));
+            double DN50Valve = ConstantValue.slaveValue.DN50Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 1));
+            double DN100Flow = ConstantValue.slaveValue.DN100Flow = ValueConverter.DN100Converter(NModubs4Helper.Instance.GetValue16(2, 2));
+            double DN100Valve = ConstantValue.slaveValue.DN100Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 3));
+            double DN200Flow = ConstantValue.slaveValue.DN200Flow = ValueConverter.DN200Converter(NModubs4Helper.Instance.GetValue16(2, 4));
+            double DN200Valve = ConstantValue.slaveValue.DN200Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 5));
+            double DN300Flow = ConstantValue.slaveValue.DN300Flow = ValueConverter.DN300Converter(NModubs4Helper.Instance.GetValue16(2, 6));
+            double DN300Valve = ConstantValue.slaveValue.DN300Valve = ValueConverter.ValveConverter(NModubs4Helper.Instance.GetValue16(2, 7));
+            double Vacuum2d = ConstantValue.slaveValue.Vacuum2d = ValueConverter.RealPressConverter(NModubs4Helper.Instance.GetValue16(4, 0));
+            double LPress2d = ConstantValue.slaveValue.LPress2d = ValueConverter.LPressConverter(NModubs4Helper.Instance.GetValue16(4, 1));
+            double HPress2d = ConstantValue.slaveValue.HPress2d = ValueConverter.LHPressConverter(NModubs4Helper.Instance.GetValue16(4, 2));
+            double CarPumpSpeed2d = ConstantValue.slaveValue.CarPumpSpeed2d = ValueConverter.PumpSpeedConverter(NModubs4Helper.Instance.GetValue16(4, 3));
+            double InTemp2d = ConstantValue.slaveValue.InTemp2d = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(4, 4));
+            double OutTemp2d = ConstantValue.slaveValue.OutTemp2d = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(4, 5));
+            double Speed110kw2d = ConstantValue.slaveValue.Speed110kw2d = ValueConverter.InTempConverter(NModubs4Helper.Instance.GetValue16(4, 6));
+            double Torque110kw2d = ConstantValue.slaveValue.Torque110kw2d = ValueConverter.OutTempConverter(NModubs4Helper.Instance.GetValue16(4, 7));
+
+            if (Vacuum < ConstantValue.threshold.VacuumPressMin || Vacuum > ConstantValue.threshold.VacuumPressMax)
+            {
+                ERROR1.Add("真空度异常，异常值：" + Vacuum1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】真空度异常，异常值：" + Vacuum1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //低压压力
+            if (LPress < ConstantValue.threshold.LowPressMin || LPress > ConstantValue.threshold.LowPressMax)
+            {
+                ERROR1.Add("低压压力异常，异常值：" + LPress1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】低压压力异常，异常值：" + LPress1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //中高压压力
+            if (HPress < ConstantValue.threshold.HighPressMin || HPress > ConstantValue.threshold.HighPressMax)
+            {
+                ERROR1.Add("中高压压力异常，异常值：" + HPress1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】中高压压力异常，异常值：" + HPress1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //车载泵转速
+            if (CarPumpSpeed < ConstantValue.threshold.PumpSpeedMin || CarPumpSpeed > ConstantValue.threshold.PumpSpeedMax)
+            {
+                ERROR1.Add("车载泵转速异常，异常值：" + tb_CarPumpSpeed1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】车载泵转速异常，异常值：" + tb_CarPumpSpeed1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //输入轴温度
+            if (InTemp < ConstantValue.threshold.InTempMin || InTemp > ConstantValue.threshold.InTempMax)
+            {
+                ERROR1.Add("输入轴温度异常，异常值：" + InTemp1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】输入轴温度异常，异常值：" + InTemp1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //输出轴温度
+            if (OutTemp < ConstantValue.threshold.OutTempMin || OutTemp > ConstantValue.threshold.OutTempMax)
+            {
+                ERROR1.Add("输出轴温度异常，异常值：" + OutTemp1.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】输出轴温度异常，异常值：" + OutTemp1.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+
+            if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN50])
+            {
+
+                DN50Flow1.Text = DN50Flow.ToString();//50流量仪
+                DN50Value1.Text = DN50Valve.ToString();//50阀门仪
+
+                //DN50流量仪
+                if (DN50Flow < ConstantValue.threshold.FlowmeterMin50 || DN50Flow > ConstantValue.threshold.FlowmeterMax50)
+                {
+                    ERROR1.Add("DN50流量仪流量异常，异常值：" + DN50Flow1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN50流量仪流量异常，异常值：" + DN50Flow1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+                //DN50阀门仪
+                if (DN50Valve < ConstantValue.threshold.ValveMin50 || DN50Valve > ConstantValue.threshold.ValveMax50)
+                {
+                    ERROR1.Add("DN50阀门仪开度异常，异常值：" + DN50Value1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN50阀门仪开度异常，异常值：" + DN50Value1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+            }
+            if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN100])
+            {
+
+                DN100Flow1.Text = DN100Flow.ToString();//100流量仪
+                DN100Value1.Text = DN100Valve.ToString().ToString();//100阀门仪
+
+                //DN100流量仪
+                if (DN100Flow < ConstantValue.threshold.FlowmeterMin100 || DN100Flow > ConstantValue.threshold.FlowmeterMax100)
+                {
+                    ERROR1.Add("DN100流量仪流量异常，异常值：" + DN100Flow1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN100流量仪流量异常，异常值：" + DN100Flow1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+                //DN100阀门仪
+                if (DN100Valve < ConstantValue.threshold.ValveMin100 || DN100Valve > ConstantValue.threshold.ValveMax100)
+                {
+                    ERROR1.Add("DN100阀门仪开度异常，异常值：" + DN100Value1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN100阀门仪开度异常，异常值：" + DN100Value1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+            }
+            if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN200])
+            {
+
+
+                DN200Flow1.Text = DN200Flow.ToString();//200流量仪
+                DN200Value1.Text = DN200Valve.ToString().ToString();//200阀门
+
+                //DN200流量仪
+                if (DN200Flow < ConstantValue.threshold.FlowmeterMin200 || DN200Flow > ConstantValue.threshold.FlowmeterMax200)
+                {
+                    ERROR1.Add("DN200流量仪流量异常，异常值：" + DN200Flow1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN200流量仪流量异常，异常值：" + DN200Flow1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+                //DN200阀门仪
+                if (DN200Valve < ConstantValue.threshold.ValveMin200 || DN200Valve > ConstantValue.threshold.ValveMax200)
+                {
+                    ERROR1.Add("DN200阀门仪开度异常，异常值：" + DN200Value1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN200阀门仪开度异常，异常值：" + DN200Value1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+
+            }
+            if (ConstantValue.xfcInfos[0].dic_Flowtype[FlowType.DN300])
+
+                DN300Flow1.Text = DN300Flow.ToString();//300流量仪
+                DN300Flow1.Text = DN300Valve.ToString().ToString();//300阀门
+
+                //DN300流量仪
+                if (DN300Flow < ConstantValue.threshold.FlowmeterMin300 || DN300Flow > ConstantValue.threshold.FlowmeterMax300)
+                {
+                    ERROR1.Add("DN300流量仪流量异常，异常值：" + DN300Flow1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN300流量仪流量异常，异常值：" + DN300Flow1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+                //DN300阀门仪
+                if (DN300Valve < ConstantValue.threshold.ValveMin300 || DN300Valve > ConstantValue.threshold.ValveMax300)
+                {
+                    ERROR1.Add("DN300阀门仪开度异常，异常值：" + DN300Value1.Text);
+                    alarm1 = true;
+                    using (OledbHelper helper = new OledbHelper())
+                    {
+                        helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                        int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                        string equipmentType = "消防车";
+                        string alarmMessage = "【设备1】DN300阀门仪开度异常，异常值：" + DN300Value1.Text;
+                        alarming(conditionID, equipmentType, alarmMessage);
+                    }
+                }
+
+            
+            if (alarm1)
+            {
+                string final = "【设备1】";
+                foreach (string er in ERROR1)
+                {
+                    final += "\n" + er;
+                }
+                MessageBox.Show(final);
+
+            }
+        }
+        private void DataShow(int i, Equipment eq)
+        {
+            SlaveValue slaveValue = ConstantValue.slaveValue;
+            List<string> ERROR1 = new List<string>();
+            double ThreePress = slaveValue.ThreePress;
+            double ThreeTemp = slaveValue.ThreeTemp;
+            double Pressure0 = slaveValue.Pressure0;
+            double Temp0 = slaveValue.Temp0;
+            double SevenPress = slaveValue.SevenPress;
+            double SevenTemp = slaveValue.SevenTemp;
+            High_3m.Text = ThreePress.ToString();//真空度                   
+            Temp_3m.Text = ThreeTemp.ToString();//低压压力
+            Pressure.Text = Pressure0.ToString();//中高压压力
+            Temp.Text = Temp0.ToString();//车载泵转速
+            High_7m.Text = SevenPress.ToString();//输入轴温度
+            Temp_7m.Text = SevenTemp.ToString();//输出轴温度
+                                                //水位3米
+            if (ThreePress < ConstantValue.threshold.ThreeDepthMin || ThreePress > ConstantValue.threshold.ThreeDepthMax)
+            {
+                ERROR1.Add("水位3米异常，异常值：" + High_3m.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】水位3米异常，异常值：" + High_3m.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //水温3米
+            if (ThreeTemp < ConstantValue.threshold.ThreeTempMin || ThreeTemp > ConstantValue.threshold.ThreeTempMax)
+            {
+                ERROR1.Add("水温3米异常，异常值：" + Temp_3m.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】水温3米异常，异常值：" + Temp_3m.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //大气压力
+            if (Pressure0 < ConstantValue.threshold.AirPressMin || Pressure0 > ConstantValue.threshold.AirPressMax)
+            {
+                ERROR1.Add("大气压力异常，异常值：" + Pressure.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】大气压力异常，异常值：" + Pressure.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //环境温度
+            if (Temp0 < ConstantValue.threshold.EnvironmentTempMin || Temp0 > ConstantValue.threshold.EnvironmentTempMax)
+            {
+                ERROR1.Add("环境温度异常，异常值：" + Temp.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】环境温度异常，异常值：" + Temp.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //水位7米
+            if (SevenPress < ConstantValue.threshold.SevenDepthMin || SevenPress > ConstantValue.threshold.SevenDepthMax)
+            {
+                ERROR1.Add("水位7米异常，异常值：" + High_7m.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】水位7米异常，异常值：" + High_7m.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+            //水温7米
+            if (SevenTemp < ConstantValue.threshold.SevenTempMin || SevenTemp > ConstantValue.threshold.SevenTempMax)
+            {
+                ERROR1.Add("水温7米异常，异常值：" + Temp_7m.Text);
+                alarm1 = true;
+                using (OledbHelper helper = new OledbHelper())
+                {
+                    helper.sqlstring = "select Max(ConditionID) from ConditionRecord";
+                    int conditionID = Convert.ToInt32(helper.ExecuteScalar());
+                    string equipmentType = "消防车";
+                    string alarmMessage = "【设备1】水温7米异常，异常值：" + Temp_7m.Text;
+                    alarming(conditionID, equipmentType, alarmMessage);
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+            if (eq == Equipment.Car && ConstantValue.xfcInfos[i].currentGk != Gk.None)
+            {
+                this.Invoke(new System.Action(() =>
+                {
+                    DataShow_xfc(i);
+                }));
+
+            }
+            else if (eq == Equipment.Pump && ConstantValue.xfbInfos[i].currentGk != Gk.None)
+            {
+                this.Invoke(new System.Action(() =>
+                {
+
+                    DataShow_xfb(i);
+                }));
+
+            }
+            ConstantValue.Tick_Num++;
+
+            return;
+
         }
     }
 }

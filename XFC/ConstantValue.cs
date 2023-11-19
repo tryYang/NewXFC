@@ -38,6 +38,7 @@ namespace XFC
 
         public static ConditionRecord RealTimeData1;
         public static ConditionRecord RealTimeData2;
+        public static SlaveValue slaveValue=new SlaveValue();
 
         public static long runtime1= 0;
         public static long runtime2 = 0;

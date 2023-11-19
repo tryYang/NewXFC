@@ -189,6 +189,7 @@
     <Compile Include="Model\PumpConditionRecord.cs" />
     <Compile Include="Model\PumpLab.cs" />
     <Compile Include="Model\SerialPortParams.cs" />
+    <Compile Include="Model\SlaveValue.cs" />
     <Compile Include="Model\Threshold.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Model\XfbInfo.cs" />

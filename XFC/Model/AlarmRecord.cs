@@ -9,7 +9,7 @@ namespace XFC.Model
     //报警记录表
     public class AlarmRecord
     {
-        public int AlarmId { get; set; }  //	报警 ID
+        //public int AlarmId { get; set; }  //	报警 ID
         public int LabID { get; set; }  //	工况 ID
 
         public string AlarmMessage { get; set; } //	报警文本

@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI;
 using XFC.Model;
 
 namespace XFC
@@ -50,7 +51,10 @@ namespace XFC
         public static int LastCarID = 0;
         public static int LastCarLabID = 0;
         public static int LastPumpID = 0;
-        public static int LastPumpLabID = 0;
+        public static int LastPumpLabID = 0; 
+        public static Queue<AlarmRecord> QueueAlarmRecord = new Queue<AlarmRecord>();
+        public static Queue<ConditionRecord> QueueConditionRecord = new Queue<ConditionRecord>();
+        public static Queue<PumpConditionRecord> QueuepumpConditionRecord = new Queue<PumpConditionRecord>();
 
         /// <summary>
         /// 記錄需要插入ID 第一個索引為設備號，第二個為 0為 ID 1為labId

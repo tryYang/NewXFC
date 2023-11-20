@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -52,9 +53,11 @@ namespace XFC
         public static int LastCarLabID = 0;
         public static int LastPumpID = 0;
         public static int LastPumpLabID = 0; 
-        public static Queue<AlarmRecord> QueueAlarmRecord = new Queue<AlarmRecord>();
-        public static Queue<ConditionRecord> QueueConditionRecord = new Queue<ConditionRecord>();
-        public static Queue<PumpConditionRecord> QueuepumpConditionRecord = new Queue<PumpConditionRecord>();
+        public static ConcurrentQueue<AlarmRecord> QueueAlarmRecord = new ConcurrentQueue<AlarmRecord>();
+        public static ConcurrentQueue<ConditionRecord> QueueConditionRecord = new ConcurrentQueue<ConditionRecord>();
+        public static ConcurrentQueue<PumpConditionRecord> QueuepumpConditionRecord = new ConcurrentQueue<PumpConditionRecord>();
+        public static bool IsStop = false;
+        public static bool IsDisneect = false;
 
         /// <summary>
         /// 記錄需要插入ID 第一個索引為設備號，第二個為 0為 ID 1為labId
